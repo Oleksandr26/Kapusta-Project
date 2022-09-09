@@ -13,7 +13,7 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-export const userApi = createApi({
+const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery,
   endpoints: builder => ({
