@@ -24,8 +24,17 @@ export const transactionApi = createApi({
       getExpenseCategories: builder.query({
         query: () => `expense-categories`,
       }),
+      getPeriodData: builder.query({
+        query: (data) => `period-data?date=${data}`,
+      }),
+      getIncome: builder.query({
+        query: () => `income`,
+      }),
+      getExpense: builder.query({
+        query: () => `expense`,
+      }),
   }),
   })
 
 
-export const { useGetIncomeCategoriesQuery, useGetExpenseCategoriesQuery } = transactionApi;
+export const { useGetIncomeCategoriesQuery, useGetExpenseCategoriesQuery, useGetPeriodDataQuery, useGetIncomeQuery, useGetExpenseQuery } = transactionApi;
