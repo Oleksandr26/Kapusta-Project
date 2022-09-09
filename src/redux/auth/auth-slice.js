@@ -53,7 +53,7 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (store, { payload }) => {
       store.userData = { ...payload.userData };
-      store.token = payload.token;
+      store.accessToken = payload.accessToken;
       store.loading = false;
     },
     [login.rejected]: (store, { payload }) => {
