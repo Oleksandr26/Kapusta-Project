@@ -51,6 +51,7 @@ const UserForm = () => {
       <button type="button" onClick={logOut}>
         Log Out
       </button>
+      
     </form>
   );
 };
