@@ -11,6 +11,7 @@ const getActive = ({ isActive }) => {
 
 const UserMenu = () => {
   const auth = useSelector(state => state.auth);
+  console.log('auth: ', auth);
   const dispatch = useDispatch();
   const exit = () => {
     dispatch(logout());
@@ -18,27 +19,31 @@ const UserMenu = () => {
 
   return (
     <nav className={s.nav}>
-      <div className={s.thumb}>
-        <NavLink className={getActive} to="/">
-          Home
-        </NavLink>
-        {auth.isLoggedIn && (
+      <ul className={s.list}>
+        <li className={s.item}>
+          <NavLink className={getActive} to="/">
+            Home
+          </NavLink>
+        </li>
+        <li>
           <NavLink className={getActive} to="/contacts">
             Phonebook
           </NavLink>
-        )}
-      </div>
+        </li>
+      </ul>
       <div className={s.thumb}>
-        {auth.isLoggedIn && (
-          <>
-            <span className={s.title}>
-              Welcome, <span className={s.name}>{auth.user.name}</span>
+        <>
+          <span className={s.title}>
+            Welcome,
+            <span className={s.name}>
+              {auth?.user?.name}
+              Имя пользователя
             </span>
-            <button className={s.button} type="button" onClick={exit}>
-              Exit
-            </button>
-          </>
-        )}
+          </span>
+          <button className={s.button} type="button" onClick={exit}>
+            Exit
+          </button>
+        </>
       </div>
     </nav>
   );

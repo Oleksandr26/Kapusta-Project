@@ -1,8 +1,4 @@
-.container {
-  padding: 20px;
-}
-.block {
-  padding: 20px;
+.header {
   display: flex;
 }
 .item:not(:last-child) {
