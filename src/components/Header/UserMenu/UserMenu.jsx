@@ -11,7 +11,6 @@ const getActive = ({ isActive }) => {
 
 const UserMenu = () => {
   const auth = useSelector(state => state.auth);
-  console.log('auth: ', auth);
   const dispatch = useDispatch();
   const exit = () => {
     dispatch(logout());

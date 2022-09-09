@@ -6,6 +6,8 @@ const ReportPage = () => {
   return (
     <>
       <div className={s.header}>
+        <button className={s.item}> ---Back to Main menu--- </button>
+        <div className={s.item}>Balance</div>
         <button className={s.item}>Main menu</button>
         <div className={s.item}>
           <Balance />
