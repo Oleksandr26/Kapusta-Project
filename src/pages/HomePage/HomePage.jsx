@@ -1,5 +1,5 @@
 import s from './HomePage.module.css';
-import Alkohol from 'assets/svg/alkohol.svg';
+// import Alkohol from 'assets/svg/alkohol.svg';
 import React from 'react';
 import UserForm from 'components/UserForm/UserForm';
 import {
@@ -16,10 +16,9 @@ import {
   /*useGetUserQuery,*/
   useUpdateBalanceMutation,
 } from 'redux/user/userOperations';
-
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   // const [expense, setExpense] = useState({
@@ -51,9 +50,9 @@ const HomePage = () => {
       <h2>HomePage</h2>
       <div>
         <Balance />
-        <Link>
-          Reports <Alkohol size="15px" />
-        </Link>
+        {/* <Link> */}
+        {/* Reports <Alkohol size="15px" /> */}
+        {/* </Link> */}
       </div>
       <UserForm />
       <div className={s.block}>

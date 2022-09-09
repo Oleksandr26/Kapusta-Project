@@ -1,0 +1,50 @@
+.list {
+  list-style-type: none;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  background: #ffffff;
+
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+}
+
+.item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+
+  color: #52555f;
+}
+
+.item + .item {
+  position: relative;
+  margin-left: 40px;
+}
+
+.item + .item ::before {
+  display: flex;
+  content: '';
+  position: absolute;
+  height: 35px;
+  top: 5px;
+  left: -24px;
+  border: 1px solid #e0e5eb;
+}
+
+.extense {
+  color: red;
+  margin-left: 15px;
+  letter-spacing: 0.04em;
+}
+
+.income {
+  color: green;
+  margin-left: 15px;
+  letter-spacing: 0.04em;
+}
