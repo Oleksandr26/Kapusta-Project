@@ -1,3 +1,6 @@
+import 'modern-normalize/modern-normalize.css';
+import UserForm from './UserForm/UserForm';
+
 export const App = () => {
   return (
     <div
@@ -7,9 +10,10 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
+      <UserForm />
       React homework template
     </div>
   );
