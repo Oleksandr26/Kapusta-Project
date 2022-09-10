@@ -16,7 +16,7 @@ export const App = () => {
     <div>
       <Header />
 
-      <HomePage />
+      <AuthPage />
       <ReportsPage />
       <Dashboard />
 
