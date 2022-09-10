@@ -1,4 +1,4 @@
-import s from './HomePage.module.css';
+import s from './TransationPage.module.css';
 // import Alkohol from 'assets/svg/alkohol.svg';
 import React from 'react';
 import UserForm from 'components/UserForm/UserForm';
