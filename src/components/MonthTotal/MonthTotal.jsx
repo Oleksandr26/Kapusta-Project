@@ -1,6 +1,7 @@
 import s from './MonthTotal.module.css';
 import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
 
+
 export default function MonthDefault() {
   const formatDate = () => {
     let d = new Date();
@@ -29,4 +30,5 @@ export default function MonthDefault() {
       </ul>
     </>
   );
+
 }

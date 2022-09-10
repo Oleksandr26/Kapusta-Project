@@ -40,6 +40,7 @@ export function Diagram() {
 
   const expenses = useGetExpenseQuery().currentData?.expenses;
 
+
   const labels = expenses
     ?.map(({ description }) => description)
     .filter((el, index, array) => array.indexOf(el) === index);
