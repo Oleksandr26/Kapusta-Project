@@ -9,15 +9,17 @@ const Balance = () => {
   console.log('updateBalanceData: ', updateBalanceData);
   let newBalance = 120000;
   return (
-    <div>
-      Balance:<div>{newBalance}грн </div>
-      <div>
+    <div className={s.container}>
+      <span className={s.balance}>Balance:</span>
+
+      <div className={s.wrap}>
+        <div className={s.amount}>{newBalance} UAH</div>
         <button
-          className={s.item}
+          className={s.confirmBtn}
           type="button"
           onClick={() => updateBalance({ newBalance })}
         >
-          update Balance | confirm
+          CONFIRM
         </button>
       </div>
     </div>
