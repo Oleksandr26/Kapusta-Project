@@ -1,0 +1,9 @@
+.expenses {
+  border: 2px solid tomato;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
