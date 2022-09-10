@@ -18,6 +18,11 @@ export const App = () => {
       <Header/>
 
 
+      <AuthPage />
+      <ReportsPage />
+      <Dashboard />
+
+
       <Container maxWidth="xl">
         <Box xl={{height: '100vh'}}>
           <AuthPage/>
