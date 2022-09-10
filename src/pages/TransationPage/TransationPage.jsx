@@ -1,5 +1,5 @@
 import s from './TransationPage.module.css';
-// import Alkohol from 'assets/svg/alkohol.svg';
+import Alkohol from 'assets/svg/alkohol.svg';
 import React from 'react';
 import UserForm from 'components/UserForm/UserForm';
 import {
@@ -46,9 +46,10 @@ const HomePage = () => {
       <h2>HomePage</h2>
       <div>
         <Balance />
-        {/* <Link> */}
-        {/* Reports <Alkohol size="15px" /> */}
-        {/* </Link> */}
+        <button>
+          Reports
+          {/* <Alkohol size="15px" /> */}
+        </button>
       </div>
       {/* <UserForm /> */}
       <div className={s.block}>
