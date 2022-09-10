@@ -2,6 +2,8 @@ import s from './ReportsPage.module.css';
 import React from 'react';
 import Balance from 'components/Balance/Balance';
 
+import { MonthTotal } from 'components/MonthTotal';
+
 const ReportPage = () => {
   return (
     <>
@@ -13,6 +15,9 @@ const ReportPage = () => {
           <Balance />
         </div>
         <div className={s.item}>Calendar</div>
+      </div>
+      <div>
+        <MonthTotal />
       </div>
     </>
   );
