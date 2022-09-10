@@ -8,23 +8,26 @@ import Dashboard from './Dashboard/Dashboard';
 
 import AuthPage from 'pages/AuthPage/AuthPage';
 
-import { Container, Box } from '@mui/system';
+import {Container, Box} from '@mui/system';
+import HomePage from "pages/TransationPage/TransationPage";
 
 
 export const App = () => {
   return (
     <div>
-      <Header />
+      <Header/>
+
 
       <AuthPage />
       <ReportsPage />
       <Dashboard />
 
+
       <Container maxWidth="xl">
-        <Box xl={{ height: '100vh' }}>
-          <AuthPage />
-          <TransationPage />
-          <ReportsPage />
+        <Box xl={{height: '100vh'}}>
+          <AuthPage/>
+          <TransationPage/>
+          <ReportsPage/>
         </Box>
       </Container>
 
@@ -33,5 +36,5 @@ export const App = () => {
 };
 
 <Container maxWidth="sm">
-  <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' }} />
+  <Box sx={{bgcolor: '#cfe8fc', height: '100vh'}}/>
 </Container>;
