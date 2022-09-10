@@ -2,7 +2,8 @@ import s from './ReportsPage.module.css';
 import React from 'react';
 import Balance from 'components/Balance/Balance';
 
-import { MonthTotal } from 'components/MonthTotal';
+import MonthTotal from 'components/MonthTotal/MonthTotal';
+import ReportsByCategories from 'components/ReportsByCategories/ReportsByCategories';
 import { Diagram } from 'components/Diagram/Diagram';
 
 const ReportPage = () => {
@@ -19,6 +20,9 @@ const ReportPage = () => {
       </div>
       <div>
         <MonthTotal />
+      </div>
+      <div>
+        <ReportsByCategories />
       </div>
       <div>
         <Diagram />

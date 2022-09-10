@@ -1,0 +1,42 @@
+.container {
+  min-width: 320px;
+  max-width: 480px;
+  padding: 32px 20px;
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 1200px;
+  }
+}
+.title {
+  margin: 0;
+  text-align: center;
+}
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+.info {
+  max-width: 103px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.icon {
+  margin: 5px 0;
+  width: 59px;
+}
