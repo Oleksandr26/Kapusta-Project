@@ -1,6 +1,28 @@
 .header {
   display: flex;
 }
+.container {
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
 .item:not(:last-child) {
   margin-right: 30px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding: 32px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
 }
