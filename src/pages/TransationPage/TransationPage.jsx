@@ -50,7 +50,7 @@ const HomePage = () => {
         {/* Reports <Alkohol size="15px" /> */}
         {/* </Link> */}
       </div>
-      <UserForm />
+      {/* <UserForm /> */}
       <div className={s.block}>
         <button
           className={s.item}

@@ -1,13 +1,13 @@
 import s from './UserMenu.module.css';
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 
-const getActive = ({ isActive }) => {
-  return isActive ? s.activeLink : s.link;
-};
+// const getActive = ({ isActive }) => {
+//   return isActive ? s.activeLink : s.link;
+// };
 
 const UserMenu = () => {
   const auth = useSelector(state => state.auth);
@@ -18,7 +18,7 @@ const UserMenu = () => {
 
   return (
     <nav className={s.nav}>
-      <ul className={s.list}>
+      {/* <ul className={s.list}>
         <li className={s.item}>
           <NavLink className={getActive} to="/">
             Home
@@ -29,21 +29,21 @@ const UserMenu = () => {
             Phonebook
           </NavLink>
         </li>
-      </ul>
-      <div className={s.thumb}>
-        <>
-          <span className={s.title}>
-            Welcome,
+      </ul> */}
+      {/* <div className={s.thumb}> */}
+        {/* <> */}
+          {/* <span className={s.title}>
+            Welcome, */}
             <span className={s.name}>
               {auth?.user?.name}
               Имя пользователя
             </span>
-          </span>
+          {/* </span> */}
           <button className={s.button} type="button" onClick={exit}>
-            Exit
+          Log Out
           </button>
-        </>
-      </div>
+        {/* </> */}
+      {/* </div> */}
     </nav>
   );
 };

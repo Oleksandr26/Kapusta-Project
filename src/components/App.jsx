@@ -10,7 +10,6 @@ import { Container, Box } from '@mui/system';
 export const App = () => {
   return (
     <div>
-      <h2>Kapu$ta smart finance</h2>
       <Header />
       <Container maxWidth="xl">
         <Box xl={{ height: '100vh' }}>
