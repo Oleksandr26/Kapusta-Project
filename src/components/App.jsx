@@ -3,6 +3,7 @@ import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
 import HomePage from 'pages/HomePage/HomePage';
 import ReportsPage from 'pages/ReportsPage/ReportsPage';
+import Dashboard from './Dashboard/Dashboard';
 
 export const App = () => {
   return (
@@ -11,6 +12,7 @@ export const App = () => {
       <Header />
       <HomePage />
       <ReportsPage />
+      <Dashboard />
     </div>
   );
 };
