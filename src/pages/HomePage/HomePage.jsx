@@ -12,10 +12,8 @@ import {
   useAddExpenseMutation,
   useAddIncomeMutation,
 } from 'redux/transaction/transactionOperations';
-import {
-  /*useGetUserQuery,*/
-  useUpdateBalanceMutation,
-} from 'redux/user/userOperations';
+import /*useGetUserQuery,*/
+'redux/user/userOperations';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 // import { Link } from 'react-router-dom';
@@ -42,8 +40,6 @@ const HomePage = () => {
   console.log('addExpenseData: ', addExpenseData);
   const [addIncome, addIncomeData] = useAddIncomeMutation();
   console.log('addIncomeData: ', addIncomeData);
-  const [updateBalance, updateBalanceData] = useUpdateBalanceMutation();
-  console.log('updateBalanceData: ', updateBalanceData);
 
   return (
     <div className={s.container}>
@@ -90,13 +86,6 @@ const HomePage = () => {
           }
         >
           Add income
-        </button>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() => updateBalance({ newBalance: 120000 })}
-        >
-          update Balance
         </button>
       </div>
     </div>

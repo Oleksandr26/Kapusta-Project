@@ -11,6 +11,7 @@ export default function MonthDefault() {
   let incomeAmount = 0;
 
   userTransactions?.map(({ amount, category }) => {
+    console.log('amount: ', amount);
     if (category !== 'З/П' && category !== 'Доп. доход') {
       return (extenseAmount += amount);
     } else {
