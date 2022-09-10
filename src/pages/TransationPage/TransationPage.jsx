@@ -16,6 +16,7 @@ import /*useGetUserQuery,*/
 'redux/user/userOperations';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
+import Dashboard from "../../components/Dashboard/Dashboard";
 // import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -51,6 +52,7 @@ const HomePage = () => {
           {/* <Alkohol size="15px" /> */}
         </button>
       </div>
+      <Dashboard/>
       {/* <UserForm /> */}
       <div className={s.block}>
         <button
