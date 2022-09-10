@@ -18,3 +18,40 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
+
+const arr = [
+  {
+    description: "Подарок",
+    total: 300,
+  },
+  {
+    description: "Подарок",
+    total: 300,
+  },
+  {
+    description: "Подарок",
+    total: 300,
+  },
+  {
+    description: "Свадьба",
+    total: 300,
+  },
+  {
+    description: "Свадьба",
+    total: 300,
+  },
+  {
+    description: "Свадьба",
+    total: 300,
+  },
+]
+
+function das (arr) {
+  
+}
+
+// function sumTotalInCategory (arr) {
+//   return arr.reduce((item, acc) => ({description: item.description, total: item.total + acc.total}))
+// }
+//
+// console.log(sumTotalInCategory(arr))
