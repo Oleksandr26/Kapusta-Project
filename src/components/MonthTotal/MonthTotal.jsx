@@ -9,6 +9,7 @@ import s from './MonthTotal.module.css';
 export default function MonthDefault() {
   const dispatch = useDispatch();
 
+
   // useEffect(() => {
   //   dispatch(transactionApi.useGetIncomeQuery());
   //   dispatch(transactionApi.useGetExpenseQuery());
@@ -17,6 +18,7 @@ export default function MonthDefault() {
   // const expenses = transactionApi?.useGetExpenseQuery().currentData?.expenses;
   // console.log(incomes);
   // console.log(expenses);
+
 
   return (
     <>
