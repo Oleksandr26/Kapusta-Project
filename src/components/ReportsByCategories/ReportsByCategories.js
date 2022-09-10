@@ -1,7 +1,7 @@
 import { useUpdateBalanceMutation } from 'redux/user/userOperations';
 import s from './ReportsByCategories.module.css';
 import { nanoid } from '@reduxjs/toolkit';
-import { ReactComponent as AlcoholIcon } from 'assets/svg/alkohol.svg';
+import sprite from 'assets/svg/sprite.svg';
 import { useSelector } from 'react-redux';
 import {
   useGetIncomeCategoriesQuery,
@@ -16,22 +16,18 @@ const ReportsByCategories = () => {
     skip: isLogin,
   });
 
-  // const { name, email } = useSelector(getUser);
-  const elements = expenseCategories?.map(name => (
-    <li className={s.item} key={nanoid()}>
-      <p className={s.info}>123123</p>
-      <svg width="59px">
-        <use
-          className={s.icon}
-          href="./images/sprite/symbol-defs.svg#icon-film"
-        ></use>
-      </svg>
-      {/* <div>
-        <AlcoholIcon className={s.icon} />
-      </div> */}
-      <p className={s.info}>{name}</p>
-    </li>
-  ));
+  const elements = expenseCategories?.map(name => {
+    const iconPath = sprite + `#${name}`;
+    return (
+      <li className={s.item} key={nanoid()}>
+        <p className={s.info}>123123</p>
+        <svg width="59px">
+          <use className={s.icon} href={iconPath}></use>
+        </svg>
+        <p className={s.info}>{name}</p>
+      </li>
+    );
+  });
 
   return (
     <div className={s.container}>
