@@ -14,10 +14,6 @@ export const Expenses = () => {
     skip: token,
   });
 
-  // const dasds = () => {
-  //   data.
-  // }
-
   const handleChange = e => {
     const name = e.currentTarget.name;
     const value = e.currentTarget.value;
