@@ -3,6 +3,7 @@ import React from 'react';
 import Balance from 'components/Balance/Balance';
 
 import { MonthTotal } from 'components/MonthTotal';
+import { Diagram } from 'components/Diagram/Diagram';
 
 const ReportPage = () => {
   return (
@@ -18,6 +19,9 @@ const ReportPage = () => {
       </div>
       <div>
         <MonthTotal />
+      </div>
+      <div>
+        <Diagram />
       </div>
     </>
   );
