@@ -26,8 +26,8 @@ const Dashboard = () => {
       <Button variant="text" onClick={getIncomeStatistics}>
         Income
       </Button>
-      {showExpenses ? <Expenses /> : <></>}
-      {showIncome ? <Income /> : <></>}
+      {showExpenses ? <Expenses /> : null}
+      {showIncome ? <Income /> : null}
     </div>
   );
 };
