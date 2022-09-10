@@ -1,19 +1,20 @@
 import 'modern-normalize/modern-normalize.css';
 // import { Routes, Route } from 'react-router-dom';
 import Header from 'components/Header/Header';
-import HomePage from 'pages/HomePage/HomePage';
+import TransationPage from 'pages/TransationPage/TransationPage';
 import ReportsPage from 'pages/ReportsPage/ReportsPage';
+import AuthPage from 'pages/AuthPage/AuthPage';
 
 import { Container, Box } from '@mui/system';
 
 export const App = () => {
   return (
     <div>
-      <h2>Kapu$ta smart finance</h2>
       <Header />
       <Container maxWidth="xl">
         <Box xl={{ height: '100vh' }}>
-          <HomePage />
+          <AuthPage />
+          <TransationPage />
           <ReportsPage />
         </Box>
       </Container>

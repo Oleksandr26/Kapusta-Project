@@ -1,7 +1,7 @@
 import s from './UserForm.module.css';
 
 import { useDispatch } from 'react-redux';
-import { login, logout /*,register*/ } from 'redux/auth/auth-operations';
+import { login, register,  } from 'redux/auth/auth-operations';
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -13,13 +13,14 @@ const UserForm = () => {
       email: email.value,
       password: password.value,
     };
-
-    dispatch(login(newUser));
-  };
-
-  const logOut = () => {
-    dispatch(logout());
-  };
+  //   console.log(event.target);
+  //   if (event.target.elements.login) {
+  //     dispatch(login(newUser));
+  //     return
+  //   }
+  //   dispatch(register(newUser));
+  dispatch(register(newUser));
+  }
 
   return (
     <form className={s.form} onSubmit={submitData}>
@@ -45,12 +46,11 @@ const UserForm = () => {
           required
         />
       </label>
-      <button className={s.button} type="submit">
-        Register
+      <button className={s.button} type="submit" name='login'>
+       Login
       </button>
-
-      <button type="button" onClick={logOut}>
-        Log Out
+      <button className={s.button} type="submit" name='register'>
+        Register
       </button>
     </form>
   );
