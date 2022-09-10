@@ -9,9 +9,11 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
-import { useSelector } from 'react-redux';
+import {
+  useGetExpenseCategoriesQuery,
+  useGetExpenseQuery,
+} from 'redux/transaction/transactionOperations';
 
 ChartJS.register(
   CategoryScale,
@@ -32,20 +34,37 @@ export function Diagram() {
     },
   };
 
-  // const labels = ;
+  const expenses = useGetExpenseQuery().currentData?.expenses;
 
-  // const data = {
-  //   labels,
-  //   datasets: [
-  //     {
-  //       label: 'Dataset 1',
-  //       data: labels.map(() =>
-  //         faker.datatype.number({ min: 0, max: Infinity })
-  //       ),
-  //       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-  //     },
-  //   ],
-  // };
+  // const x = expenses?.forEach(e => e.reduce((obj, acc) => obj.total + acc, 0));
+  // .reduce((total, expense) => {
+  //   console.log(expense);
+  //   return total + expense.amount;
+  // });
+  // console.log(x);
+  const x = expenses?.forEach(
+    obj =>
+      (obj.total = obj.expenses?.reduce(
+        (sum, expense) => sum + expense.amount,
+        0
+      ))
+  );
+  console.log(x);
+  // const x = expenses?.forEach(obj => (obj.total = obj.expense.reduce(total, description) => return total + ));
 
-  // return <Bar options={options} data={data} />;
+  const labels = expenses
+    ?.map(({ description }) => description)
+    .filter((el, index, array) => array.indexOf(el) === index);
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        // data: categorySum,
+        backgroundColor: ['blue, tomato, tomato'],
+      },
+    ],
+  };
+
+  return <Bar options={options} data={data} />;
 }
