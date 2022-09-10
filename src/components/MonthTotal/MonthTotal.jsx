@@ -14,6 +14,7 @@ export default function MonthDefault() {
 
   // const cashFlow = useGetPeriodDataQuery(formatDate());
 
+
   // const { incomeTotal } = cashFlow?.currentData?.incomes;
   // const { expenseTotal } = cashFlow?.currentData?.expenses;
 
@@ -29,4 +30,5 @@ export default function MonthDefault() {
   //     </ul>
   //   </>
   // );
+
 }
