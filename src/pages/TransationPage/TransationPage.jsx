@@ -1,5 +1,5 @@
-import s from './HomePage.module.css';
-// import Alkohol from 'assets/svg/alkohol.svg';
+import s from './TransationPage.module.css';
+import Alkohol from 'assets/svg/alkohol.svg';
 import React from 'react';
 import UserForm from 'components/UserForm/UserForm';
 import {
@@ -12,10 +12,8 @@ import {
   useAddExpenseMutation,
   useAddIncomeMutation,
 } from 'redux/transaction/transactionOperations';
-import {
-  /*useGetUserQuery,*/
-  useUpdateBalanceMutation,
-} from 'redux/user/userOperations';
+import /*useGetUserQuery,*/
+'redux/user/userOperations';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 // import { Link } from 'react-router-dom';
@@ -42,19 +40,18 @@ const HomePage = () => {
   console.log('addExpenseData: ', addExpenseData);
   const [addIncome, addIncomeData] = useAddIncomeMutation();
   console.log('addIncomeData: ', addIncomeData);
-  const [updateBalance, updateBalanceData] = useUpdateBalanceMutation();
-  console.log('updateBalanceData: ', updateBalanceData);
 
   return (
     <div className={s.container}>
       <h2>HomePage</h2>
       <div>
         <Balance />
-        {/* <Link> */}
-        {/* Reports <Alkohol size="15px" /> */}
-        {/* </Link> */}
+        <button>
+          Reports
+          {/* <Alkohol size="15px" /> */}
+        </button>
       </div>
-      <UserForm />
+      {/* <UserForm /> */}
       <div className={s.block}>
         <button
           className={s.item}
@@ -90,13 +87,6 @@ const HomePage = () => {
           }
         >
           Add income
-        </button>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() => updateBalance({ newBalance: 120000 })}
-        >
-          update Balance
         </button>
       </div>
     </div>
