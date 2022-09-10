@@ -6,9 +6,9 @@
   letter-spacing: 0.02em;
   text-align: center;
 }
-/* .balance {
-
-} */
+.balance {
+  font-weight: 500;
+}
 .wrap {
   display: flex;
   width: 100%;
