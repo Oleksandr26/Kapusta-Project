@@ -1,5 +1,5 @@
 import s from './TransationPage.module.css';
-import Alkohol from 'assets/svg/alkohol.svg';
+import { ReactComponent as BarChart } from 'assets/svg/bar_chart.svg';
 import React from 'react';
 import UserForm from 'components/UserForm/UserForm';
 import {
@@ -16,7 +16,7 @@ import /*useGetUserQuery,*/
 'redux/user/userOperations';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
-import Dashboard from "../../components/Dashboard/Dashboard";
+import Dashboard from '../../components/Dashboard/Dashboard';
 // import { Link } from 'react-router-dom';
 
 const HomePage = () => {
@@ -44,15 +44,18 @@ const HomePage = () => {
 
   return (
     <div className={s.container}>
-      <h2>HomePage</h2>
-      <div>
-        <Balance />
-        <button>
-          Reports
-          {/* <Alkohol size="15px" /> */}
+      <h2>TransationPage</h2>
+
+      <div className={s.wrap}>
+        <button type="button" className={s.reportsBtn}>
+          <span className={s.reports}>Reports</span>
+          <BarChart size="45px" className={s.icon} />
         </button>
+        <Balance />
       </div>
-      <Dashboard/>
+
+      <Dashboard />
+
       {/* <UserForm /> */}
       <div className={s.block}>
         <button
