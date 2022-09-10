@@ -42,14 +42,14 @@ export function Diagram() {
   //   return total + expense.amount;
   // });
   // console.log(x);
-  const x = expenses?.forEach(
-    obj =>
-      (obj.total = obj.expenses?.reduce(
-        (sum, expense) => sum + expense.amount,
-        0
-      ))
-  );
-  console.log(x);
+  // const x = expenses?.forEach(
+  //   obj =>
+  //     (obj.total = obj.expenses?.reduce(
+  //       (sum, expense) => sum + expense.amount,
+  //       0
+  //     ))
+  // );
+  // console.log(x);
   // const x = expenses?.forEach(obj => (obj.total = obj.expense.reduce(total, description) => return total + ));
 
   const labels = expenses

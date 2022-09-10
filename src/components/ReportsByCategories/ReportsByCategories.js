@@ -1,26 +1,35 @@
-import { useUpdateBalanceMutation } from 'redux/user/userOperations';
+// import { useUpdateBalanceMutation } from 'redux/user/userOperations';
 import s from './ReportsByCategories.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 import sprite from 'assets/svg/sprite.svg';
 import { useSelector } from 'react-redux';
+// useGetIncomeCategoriesQuery,
 import {
-  useGetIncomeCategoriesQuery,
   useGetExpenseCategoriesQuery,
+  useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 
 const ReportsByCategories = () => {
   const isLogin = useSelector(store => store.auth.accessToken);
-  //   const {data: incomeCategories } = useGetIncomeCategoriesQuery({skip: isLogin,});
 
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: isLogin,
   });
+  const { data = [] } = useGetExpenseQuery({ skip: isLogin });
+  const { expenses = [] } = data;
 
-  const elements = expenseCategories?.map(name => {
+  const result = expenseCategories?.map(item => ({
+    name: item,
+    amount: expenses?.reduce((acc, cost) => {
+      return item === cost.category ? acc + cost.amount : acc;
+    }, 0),
+  }));
+
+  const elements = result?.map(({ name, amount }) => {
     const iconPath = sprite + `#${name}`;
     return (
       <li className={s.item} key={nanoid()}>
-        <p className={s.info}>123123</p>
+        <p className={s.info}>{amount.toFixed(2)}</p>
         <svg className={s.icon} width="56px" height="56px">
           <use href={iconPath}></use>
         </svg>
@@ -28,7 +37,6 @@ const ReportsByCategories = () => {
       </li>
     );
   });
-
   return (
     <>
       <h3 className={s.title}>Expenses</h3>
