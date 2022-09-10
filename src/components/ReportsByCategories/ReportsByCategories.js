@@ -21,8 +21,8 @@ const ReportsByCategories = () => {
     return (
       <li className={s.item} key={nanoid()}>
         <p className={s.info}>123123</p>
-        <svg width="59px">
-          <use className={s.icon} href={iconPath}></use>
+        <svg className={s.icon} width="56px" height="56px">
+          <use href={iconPath}></use>
         </svg>
         <p className={s.info}>{name}</p>
       </li>
@@ -30,10 +30,10 @@ const ReportsByCategories = () => {
   });
 
   return (
-    <div className={s.container}>
+    <>
       <h3 className={s.title}>Expenses</h3>
       <ul className={s.list}>{elements}</ul>
-    </div>
+    </>
   );
 };
 
