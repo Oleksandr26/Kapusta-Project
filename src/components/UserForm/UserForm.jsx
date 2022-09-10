@@ -1,36 +1,39 @@
 import s from './UserForm.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { login, register,  } from 'redux/auth/auth-operations';
+import { useState } from 'react'
 
 const UserForm = () => {
   const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] =useState('');
 
-  const submitData = event => {
-    event.preventDefault();
-    const { email, password } = event.target.elements;
-    const newUser = {
-      email: email.value,
-      password: password.value,
-    };
-  //   console.log(event.target);
-  //   if (event.target.elements.login) {
-  //     dispatch(login(newUser));
-  //     return
-  //   }
-  //   dispatch(register(newUser));
-  dispatch(register(newUser));
+const handleChange = (e) => {
+  const value = e.currentTarget.value
+  const name = e.currentTarget.name
+
+  switch(name) {
+    case'email': 
+    setEmail(value);
+    break
+    case'password':
+    setPassword(value);
+    break
+    default: 
+    return;
   }
+}
 
   return (
-    <form className={s.form} onSubmit={submitData}>
+    <form className={s.form} >
       <label className={s.label}>
         <span className={s.label__text}>Email</span>
         <input
           className={s.input}
           type="email"
-          // value={contact.name}
-          // onChange={saveData}
+          value={email}
+          onChange={handleChange}
           name="email"
           required
         />
@@ -40,16 +43,16 @@ const UserForm = () => {
         <input
           className={s.input}
           type="password"
-          // value={contact.number}
-          // onChange={saveData}
+          value={password}
+          onChange={handleChange}
           name="password"
           required
         />
       </label>
-      <button className={s.button} type="submit" name='login'>
+      <button className={s.button} type="submit" name='login' onClick={(e) => {e.preventDefault(); dispatch(login({email, password})); setEmail('')}}>
        Login
       </button>
-      <button className={s.button} type="submit" name='register'>
+      <button className={s.button} type="submit" name='register' onClick={(e) => {e.preventDefault(); dispatch(register({email, password})); setPassword('')}} >
         Register
       </button>
     </form>
