@@ -32,30 +32,6 @@
   border-radius: 0px 22px 22px 0px;
 }
 
-.modal {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 288px;
-  height: 163px;
-  padding: 40px 30px;
-  color: #ffffff;
-  background: linear-gradient(117.84deg, #1d346a 2.84%, #031634 67.28%);
-  border-radius: 30px;
-  z-index: 10;
-}
-.closeModal {
-  display: none;
-}
-.partOfModal {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.text {
-  margin-top: 20px;
-}
-
 @media screen and (min-width: 768px) {
   .container {
     display: flex;
