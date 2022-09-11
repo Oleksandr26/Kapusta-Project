@@ -1,33 +1,29 @@
-// import s from './Dashboard.module.css';
-import Button from '@mui/material/Button';
-import { Income } from './Income/Income';
-import { Expenses } from './Expenses/Expenses';
-import { useState } from 'react';
+import s from './Dashboard.module.css';
+import { ExpensesAndIncome } from './ExpensesAndIncome/ExpensesAndIncome';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import Balance from 'components/Balance/Balance';
 
 const Dashboard = () => {
-  const [showExpenses, setShowExpenses] = useState(false);
-  const [showIncome, setShowIncome] = useState(false);
-
-  const getExpensesStatistics = () => {
-    setShowExpenses(true);
-    setShowIncome(false);
-  };
-
-  const getIncomeStatistics = () => {
-    setShowIncome(true);
-    setShowExpenses(false);
-  };
-
   return (
-    <div>
-      <Button variant="text" onClick={getExpensesStatistics}>
+    <div className={s.container}>
+      <NavLink className={s.link} to="/expenses">
         Expenses
-      </Button>
-      <Button variant="text" onClick={getIncomeStatistics}>
+      </NavLink>
+      <NavLink className={s.link} to="/income">
         Income
-      </Button>
-      {showExpenses ? <Expenses /> : null}
-      {showIncome ? <Income /> : null}
+      </NavLink>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Balance />
+            </>
+          }
+        ></Route>
+        <Route path="expenses" element={<ExpensesAndIncome />} />
+        <Route path="income" element={<ExpensesAndIncome />} />
+      </Routes>
     </div>
   );
 };

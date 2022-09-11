@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <PersistGate loading={null} persistor={persistor}> */}
-      <BrowserRouter /*basename="/Kapusta_Team-Project/"*/>
+      <BrowserRouter basename="/Kapusta_Team-Project/">
         <App />
       </BrowserRouter>
       {/* </PersistGate> */}
@@ -21,34 +21,32 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 const arr = [
   {
-    description: "Подарок",
+    description: 'Подарок',
     total: 300,
   },
   {
-    description: "Подарок",
+    description: 'Подарок',
     total: 300,
   },
   {
-    description: "Подарок",
+    description: 'Подарок',
     total: 300,
   },
   {
-    description: "Свадьба",
+    description: 'Свадьба',
     total: 300,
   },
   {
-    description: "Свадьба",
+    description: 'Свадьба',
     total: 300,
   },
   {
-    description: "Свадьба",
+    description: 'Свадьба',
     total: 300,
   },
-]
+];
 
-function das (arr) {
-  
-}
+function das(arr) {}
 
 // function sumTotalInCategory (arr) {
 //   return arr.reduce((item, acc) => ({description: item.description, total: item.total + acc.total}))
