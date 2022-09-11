@@ -1,0 +1,36 @@
+.form_wrapper{
+  position: relative;
+  height: 800px;
+}
+.title {
+  width: 183px;
+  margin-left: 20px;
+}
+.phrase {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--second-color);
+  margin-left: 31px;
+  padding-bottom: 50px;
+}
+.backgraund_title {
+  position: relative;
+  background-color: var(--bg-color);
+  padding-top: 86px;
+  min-height: 286px;
+  border-radius: 0px 0px 0px 50%;
+}
+.icon {
+  position: absolute;
+    bottom: 93px;
+    right: 0;
+}
+.Second_icon {
+  position: absolute;
+  margin-left: 35px;
+  bottom: 0;
+}

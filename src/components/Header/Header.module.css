@@ -4,6 +4,24 @@
 .list {
   display: flex;
 }
+.item {
+  list-style-type: none;
+}
 .item:not(:last-child) {
   margin-right: 30px;
+}
+.logo {
+  width: 90px;
+
+}
+.wrapper_logo {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  /* margin-right: auto;
+  margin-left: 20px; */
+}
+.container_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

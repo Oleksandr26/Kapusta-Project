@@ -1,51 +1,76 @@
 import React from 'react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 
-import { useSelector } from 'react-redux';
+import { useGetExpenseQuery } from 'redux/transaction/transactionOperations';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+Chart.register(ChartDataLabels, ...registerables);
 
 export function Diagram() {
   const options = {
     responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          display: false,
+        },
+        grid: {
+          display: true,
+          drawBorder: false,
+        },
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
     plugins: {
       legend: {
-        position: 'top',
+        display: false,
+      },
+      datalabels: {
+        align: 'top',
+        anchor: 'end',
       },
     },
   };
 
-  // const labels = ;
+  const expenses = useGetExpenseQuery().currentData?.expenses;
 
-  // const data = {
-  //   labels,
-  //   datasets: [
-  //     {
-  //       label: 'Dataset 1',
-  //       data: labels.map(() =>
-  //         faker.datatype.number({ min: 0, max: Infinity })
-  //       ),
-  //       backgroundColor: 'rgba(255, 99, 132, 0.5)',
-  //     },
-  //   ],
-  // };
 
-  // return <Bar options={options} data={data} />;
+  const labels = expenses
+    ?.map(({ description }) => description)
+    .filter((el, index, array) => array.indexOf(el) === index);
+
+  function categoryAmount() {
+    const result = new Array(labels?.length).fill(0);
+    for (let i = 0; i < labels?.length; i += 1) {
+      expenses?.reduce((acc, transaction) => {
+        if (transaction.description === labels[i]) {
+          return (result[i] += transaction.amount);
+        }
+        return result[i];
+      }, result[i]);
+    }
+
+    return result;
+  }
+  console.log('ho');
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        labels: categoryAmount(),
+        data: categoryAmount(),
+        backgroundColor: ['#FF751D', '#FFDAC0', '#FFDAC0'],
+        borderRadius: 35,
+      },
+    ],
+  };
+
+  return <Bar options={options} data={data} />;
 }
