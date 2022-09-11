@@ -1,17 +1,32 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import authReducer from './auth/auth-slice';
 import {transactionApi} from "./transaction/transactionOperations";
 import { setupListeners } from '@reduxjs/toolkit/query'
+import {userApi} from "./user/userOperations";
 
-const middleware = [...getDefaultMiddleware(), transactionApi.middleware]
+const middleware = [...getDefaultMiddleware(), transactionApi.middleware, userApi.middleware]
+
+const persistConfig = {
+  key: 'tokens',
+  storage,
+  whitelist: ['accessToken', 'refreshToken', 'email', "sid"]
+}
+
+const persistedReducer = persistReducer(persistConfig, authReducer)
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
+    auth: persistedReducer,
     [transactionApi.reducerPath]: transactionApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+
   },
   middleware,
 });
+
+export const persistor = persistStore(store);
 
 
 setupListeners(store.dispatch);
