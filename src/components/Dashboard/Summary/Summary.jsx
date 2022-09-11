@@ -6,7 +6,7 @@ const Summary = () => {
   const [showIncome, setShowIncome] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
 
-  const {data: incomeStats, /*isLoading: icomeIsLoading, error: incomeError*/} = useGetIncomeQuery({skip: showIncome});
+  const {data: incomeStats, /*isLoading: incomeIsLoading, error: incomeError*/} = useGetIncomeQuery({skip: showIncome});
   const {data: expenseStats, /*isLoading: expenseIsLoading, error: expenseError*/} = useGetExpenseQuery({skip: showExpenses});
 
   const fetchData = (e) => {
@@ -47,7 +47,7 @@ const Summary = () => {
         <button name="expensesBtn" className={`${s.button} ${showExpenses && s.activeBtn}`} onClick={fetchData}>EXPENSES</button>
         <button name="incomeBtn" className={`${s.button} ${showIncome && s.activeBtn}`} onClick={fetchData}>INCOME</button>
       </div>
-      {(incomeStats || expenseStats) && getMonthArray().filter(month => typeof month[1] === 'number').map(month => (
+      {expenseStats && getMonthArray().filter(month => typeof month[1] === 'number').map(month => (
         <div key={month[0]} className={s.month}>
           <span className={s.text}>{month[0]}</span>
           <span className={s.text}>{month[1]}</span>

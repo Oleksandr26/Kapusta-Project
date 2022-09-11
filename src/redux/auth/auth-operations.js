@@ -1,61 +1,78 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import {createAsyncThunk} from '@reduxjs/toolkit';
 import * as api from 'helpers/auth';
-import { toast } from 'react-toastify';
-import {setRefreshToken, setToken} from "helpers/auth";
 
-export const register = createAsyncThunk(
-  'auth/register',
-  async (data, thunkAPI) => {
+export const handleRegister = createAsyncThunk(
+  'auth/registration',
+  async (data, {rejectWithValue}) => {
     try {
-      const result = await api.register(data);
-      return result;
+      return await api.registration(data);
     } catch (error) {
-      toast.error(`Sorry, Register failed. Try again.`);
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   }
 );
 
-export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
+export const handleLogin = createAsyncThunk(
+  'auth/login',
+  async (data, {rejectWithValue}) => {
   try {
-    const result = await api.login(data);
-    return result;
+    return await api.login(data);
   } catch (error) {
-    toast.error(`Sorry, login failed. Check email and password. Try again.`);
-    return thunkAPI.rejectWithValue(error.message);
+    return rejectWithValue(error);
   }
 });
 
-export const logout = createAsyncThunk(
+export const handleLogout = createAsyncThunk(
   'auth/logout',
-  async ( thunkAPI) => {
+  async (_, {rejectWithValue}) => {
     try {
-      const result = await api.logout();
-      return result.data;
+      return api.logout();
     } catch (error) {
-      toast.error(`Sorry, logout failed. Try again.`);
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error);
     }
   }
 );
 
-export const newSession = createAsyncThunk(
-  'auth/current-user',
-  async (_, thunkAPI) => {
+export const getCurrentUser = createAsyncThunk(
+  'auth/currentUser',
+  async (_, {getState, rejectWithValue}) => {
     try {
-      const { accessToken, refreshToken, sid } = thunkAPI.getState().auth;
-      setRefreshToken(refreshToken)
-      const result = await api.getNewSession({sid});
-      setToken(accessToken)
-      toast.info('Hello, you are already signed in');
-      return result;
+      const token = getState().auth.accessToken;
+
+      api.setToken(token)
+      return await api.currentUser();
+
     } catch (error) {
-      return thunkAPI.rejectWithValue(
-        error,
-        toast.error(
-          'Sorry, request failed. May be you have problems with network or token timed out '
-        )
-      );
+      return rejectWithValue(error);
+    }
+  }
+)
+
+export const handleUpdateUserBalance = createAsyncThunk(
+  'user/updateUserBalance',
+  async (amount,{rejectWithValue}) => {
+    try {
+      return await api.userBalance({newBalance: amount})
+    } catch (error){
+      rejectWithValue(error)
+    }
+  }
+)
+
+export const initNewSession = createAsyncThunk(
+  'auth/newSession',
+  async (_, {getState, rejectWithValue}) => {
+    try {
+      const {accessToken, refreshToken, sid} = getState().auth;
+
+      api.setRefreshToken(refreshToken)
+      const result = await api.newSession({sid});
+      api.setToken(accessToken)
+
+      return result;
+
+    } catch (error) {
+      return rejectWithValue(error);
     }
   },
 );

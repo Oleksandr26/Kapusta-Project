@@ -1,7 +1,7 @@
 import s from './UserForm.module.css';
 
 import { useDispatch } from 'react-redux';
-import { login, register } from 'redux/auth/auth-operations';
+import { handleLogin, handleRegister } from 'redux/auth/auth-operations';
 import { useState } from 'react';
 
 const UserForm = () => {
@@ -63,7 +63,7 @@ const UserForm = () => {
           name="login"
           onClick={e => {
             e.preventDefault();
-            dispatch(login({ email, password }));
+            dispatch(handleLogin({ email, password }));
             setEmail('');
           }}
         >
@@ -75,7 +75,7 @@ const UserForm = () => {
           name="register"
           onClick={e => {
             e.preventDefault();
-            dispatch(register({ email, password }));
+            dispatch(handleRegister({ email, password }));
             setPassword('');
           }}
         >

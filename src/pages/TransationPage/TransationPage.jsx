@@ -10,8 +10,8 @@ import {
   useAddExpenseMutation,
   useAddIncomeMutation,
 } from 'redux/transaction/transactionOperations';
-import /*useGetUserQuery,*/
-'redux/user/userOperations';
+// import /*useGetUserQuery,*/
+// 'redux/user/userOperations';
 
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';

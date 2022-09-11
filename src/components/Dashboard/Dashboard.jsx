@@ -21,15 +21,15 @@ const Dashboard = () => {
       <NavLink className={s.link} to="/income">
         Income
       </NavLink>
+      <NavLink className={s.link} to="/summary">
+        Summary
+      </NavLink>
       <Routes>
         <Route path="/" element={<Balance />} />
         <Route path="expenses" element={<ExpensesAndIncome />} />
         <Route path="income" element={<ExpensesAndIncome />} />
+        <Route path="summary" element={<Summary />} />
       </Routes>
-      <Button variant="text" onClick={getSummaryStatistics}>
-        Summary
-      </Button>
-      {showSummary ? <Summary /> : null}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const instance = axios.create({
   baseURL: 'https://kapusta-backend.goit.global',
 });
@@ -17,10 +18,8 @@ export const setRefreshToken = (refreshToken = '') => {
   instance.defaults.headers.authorization = '';
 };
 
-export const register = async data => {
-  console.log('data: ', data);
-
-  const result = await instance.post('/auth/register', data);
+export const registration = async body => {
+  const result = await instance.post('/auth/register', body);
   setToken(result.data.accessToken);
   return result.data;
 };
@@ -37,14 +36,19 @@ export const logout = async () => {
   return result.data;
 };
 
-export const getNewSession = async sid => {
-  try {
-    const result = await instance.post('/auth/refresh', sid);
-    return result.data;
-  } catch (error) {
-    setToken('');
-    throw error;
-  }
+export const currentUser = async () => {
+  const result = await instance.get('/user');
+  return result.data;
+}
+
+export const userBalance = async (body) => {
+  const result = await instance.patch('/user/balance', body);
+  return result.data;
+}
+
+export const newSession = async sid => {
+  const result = await instance.post('/auth/refresh', sid);
+  return result.data;
 };
 
 export default instance;
