@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, logout, register, refresh } from './auth-operations';
+import { login, logout, register, newSession } from './auth-operations';
 
 const initialState = {
   userData: {},
-  token: '',
+  email: '',
   loading: false,
   error: null,
   accessToken: '',
@@ -15,20 +15,6 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    // -------------------getCurrentUser------------------------------
-    // [getCurrentUser.pending]: store => {
-    //   store.loading = true;
-    //   store.error = null;
-    // },
-    // [getCurrentUser.fulfilled]: (store, { payload }) => {
-    //   store.user = { ...payload };
-    //   store.loading = false;
-    // },
-    // [getCurrentUser.rejected]: (store, { payload }) => {
-    //   store.loading = false;
-    //   store.error = payload;
-    // },
-
     // -------------------register------------------------------
 
     [register.pending]: store => {
@@ -53,8 +39,11 @@ const authSlice = createSlice({
     },
     [login.fulfilled]: (store, { payload }) => {
       store.userData = { ...payload.userData };
+      store.email = payload.userData.email;
       store.accessToken = payload.accessToken;
       store.loading = false;
+      store.sid = payload.sid;
+      store.refreshToken = payload.refreshToken;
     },
     [login.rejected]: (store, { payload }) => {
       store.loading = false;
@@ -62,19 +51,20 @@ const authSlice = createSlice({
     },
 
     // -------------------refresh------------------------------
-    // [refresh.pending]: store => {
-    //   store.loading = true;
-    //   store.error = null;
-    // },
-    // [refresh.fulfilled]: (store, { payload }) => {
-    //   store.userData = { ...payload.userData };
-    //   store.token = payload.token;
-    //   store.loading = false;
-    // },
-    // [refresh.rejected]: (store, { payload }) => {
-    //   store.loading = false;
-    //   store.error = payload;
-    // },
+    [newSession.pending]: store => {
+      store.loading = true;
+      store.error = null;
+    },
+    [newSession.fulfilled]: (store, { payload }) => {
+      store.accessToken = payload.newAccessToken;
+      store.refreshToken = payload.newRefreshToken;
+      store.sid = payload.newSid;
+      store.loading = false;
+    },
+    [newSession.rejected]: (store, { payload }) => {
+      store.loading = false;
+      store.error = payload;
+    },
 
     // -------------------logout------------------------------
     [logout.pending]: store => {

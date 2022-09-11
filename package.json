@@ -12,6 +12,8 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "chart.js": "^3.9.1",
+    "chartjs-plugin-datalabels": "^2.1.0",
     "dotenv": "^16.0.2",
     "modern-normalize": "^1.1.0",
     "prop-types": "^15.8.1",
