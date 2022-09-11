@@ -7,27 +7,15 @@ import ExpenseByCategories from 'components/ExpenseByCategories/ExpenseByCategor
 import { Diagram } from 'components/Diagram/Diagram';
 import IncomeByCategories from 'components/IncomeByCategories/IncomeByCategories';
 import ReportsDate from 'components/ReportsDate/ReportsDate';
-
+import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 const ReportPage = () => {
-  const formatDate = () => {
-    let d = new Date();
-    let month = (d.getMonth() + 1).toString();
-    let year = d.getFullYear();
-    if (month.length < 2) {
-      month = '0' + month;
-    }
-    const result = [year, month].join('-');
-    console.log('result: ', typeof result);
-    return result;
-  };
-
-  const [date, setDate] = useState(() => formatDate());
-  console.log('date: ', date);
-
+  const [date, setDate] = useState(() => new Date());
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <button className={s.item}> ---Back to Main menu--- </button>
+        <button className={s.btn}>
+          <BackArrow className={s.icon} /> Main page
+        </button>
         <div className={s.item}>
           <Balance />
         </div>
@@ -41,8 +29,8 @@ const ReportPage = () => {
       </div>
 
       <div>
-        <IncomeByCategories />
-        <ExpenseByCategories />
+        <IncomeByCategories date={date} />
+        <ExpenseByCategories date={date} />
       </div>
 
       <div>

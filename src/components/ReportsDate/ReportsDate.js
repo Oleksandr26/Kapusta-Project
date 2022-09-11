@@ -1,16 +1,46 @@
 import s from './ReportsDate.module.css';
-import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
 
-export default function ReportsDate({ date }) {
-  const realDate = Date.parse(date);
-  console.log('realDate: ', realDate);
-  const test = new Date(realDate);
-  console.log('test: ', test);
+import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
+import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
+
+export default function ReportsDate({ date, setDate }) {
+  const userReportsDate = date.toLocaleString('en', {
+    year: 'numeric',
+    month: 'long',
+  });
+
+  const plusMonth = date => {
+    const plusMonth = date.setMonth(date.getMonth() + 1);
+    const newStoreDate = new Date(plusMonth);
+    setDate(newStoreDate);
+  };
+
+  const minusMonth = date => {
+    const minusMonth = date.setMonth(date.getMonth() - 1);
+    const newStoreDate = new Date(minusMonth);
+    setDate(newStoreDate);
+  };
 
   return (
-    <div>
-      <p className={s.text}>Current period</p>
-      <p> {realDate}</p>
+    <div className={s.container}>
+      <p className={s.text}>Current period:</p>
+      <div className={s.block}>
+        <button
+          type="button"
+          className={s.backbtn}
+          onClick={() => minusMonth(date)}
+        >
+          <LeftArrow className={s.icon} />
+        </button>
+        <p className={s.date}> {userReportsDate}</p>
+        <button
+          type="button"
+          className={s.nextbtn}
+          onClick={() => plusMonth(date)}
+        >
+          <RigthArrow className={s.icon} />
+        </button>
+      </div>
     </div>
   );
 }
