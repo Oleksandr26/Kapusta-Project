@@ -11,11 +11,6 @@ import {newSession} from "../redux/auth/auth-operations";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
-import AuthPage from 'pages/AuthPage/AuthPage';
-
-import { Container, Box } from '@mui/system';
-
-
 
 export const App = () => {
   const refreshToken = useSelector(state => state.auth.refreshToken);
@@ -36,7 +31,7 @@ export const App = () => {
 
       <Container maxWidth="xl">
         <Box xl={{ height: '100vh' }}>
-          
+
           <TransationPage />
           <ReportsPage />
         </Box>
