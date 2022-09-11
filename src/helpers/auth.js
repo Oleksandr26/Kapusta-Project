@@ -31,8 +31,8 @@ export const login = async data => {
   return result.data;
 };
 
-export const logout = async data => {
-  const result = await instance.post('/auth/logout', data);
+export const logout = async () => {
+  const result = await instance.post('/auth/logout');
   setToken('');
   return result.data;
 };
