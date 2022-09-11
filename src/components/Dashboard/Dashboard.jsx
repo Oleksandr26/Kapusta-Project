@@ -1,9 +1,8 @@
 // import s from './Dashboard.module.css';
 import Button from '@mui/material/Button';
-import { Income } from './Income/Income';
 import { Expenses } from './Expenses/Expenses';
 import { useState } from 'react';
-import Summary from "./Summary/Summary";
+import Summary from './Summary/Summary';
 
 const Dashboard = () => {
   const [showExpenses, setShowExpenses] = useState(false);
@@ -14,7 +13,6 @@ const Dashboard = () => {
     setShowExpenses(true);
     setShowIncome(false);
     setShowSummary(false);
-
   };
 
   const getIncomeStatistics = () => {
@@ -24,7 +22,7 @@ const Dashboard = () => {
   };
 
   const getSummaryStatistics = () => {
-    setShowSummary(true)
+    setShowSummary(true);
     setShowIncome(false);
     setShowExpenses(false);
   };
@@ -41,8 +39,7 @@ const Dashboard = () => {
         Summary
       </Button>
       {showExpenses ? <Expenses /> : null}
-      {showIncome ? <Income /> : null}
-      {showSummary ? <Summary/> : null}
+      {showSummary ? <Summary /> : null}
     </div>
   );
 };
