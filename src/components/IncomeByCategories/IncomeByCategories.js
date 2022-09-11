@@ -7,9 +7,8 @@ import {
   useGetIncomeQuery,
 } from 'redux/transaction/transactionOperations';
 
-const IncomeByCategories = () => {
+const IncomeByCategories = ({ dateTransactionFilter }) => {
   const isLogin = useSelector(store => store.auth.accessToken);
-
   const { data: incomeCategories } = useGetIncomeCategoriesQuery({
     skip: isLogin,
   });
@@ -17,24 +16,29 @@ const IncomeByCategories = () => {
   const { incomes = [] } = data;
 
   const result = incomeCategories?.map(item => ({
-    name: item,
-    amount: incomes?.reduce((acc, cost) => {
+    categoryName: item,
+    amount: dateTransactionFilter(incomes).reduce((acc, cost) => {
       return item === cost.category ? acc + cost.amount : acc;
     }, 0),
   }));
 
-  const elements = result?.map(({ name, amount }) => {
-    const iconPath = sprite + `#${name}`;
+  const elements = result?.map(({ categoryName, amount }) => {
+    const iconPath = sprite + `#${categoryName}`;
+    const amountNormalizer = amount
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, '$& ');
+
     return (
       <li className={s.item} key={nanoid()}>
-        <p className={s.info}>{amount.toFixed(2)}</p>
+        <p className={s.info}>{amountNormalizer}</p>
         <svg className={s.icon} width="56px" height="56px">
           <use href={iconPath}></use>
         </svg>
-        <p className={s.info}>{name}</p>
+        <p className={s.info}>{categoryName}</p>
       </li>
     );
   });
+
   return (
     <>
       <h3 className={s.title}>Incomes</h3>

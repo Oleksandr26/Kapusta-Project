@@ -20,12 +20,12 @@
   background-color: transparent;
   border: none;
 }
-.backbtn {
+.leftBtn {
   composes: btn;
   left: -20px;
   top: 0;
 }
-.nextbtn {
+.rightBtn {
   composes: btn;
   right: -20px;
   top: 0;
