@@ -1,15 +1,13 @@
-// import { useUpdateBalanceMutation } from 'redux/user/userOperations';
-import s from './ReportsByCategories.module.css';
+import s from './ExpenseByCategories.module.css';
 import { nanoid } from '@reduxjs/toolkit';
 import sprite from 'assets/svg/sprite.svg';
 import { useSelector } from 'react-redux';
-// useGetIncomeCategoriesQuery,
 import {
   useGetExpenseCategoriesQuery,
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 
-const ReportsByCategories = () => {
+const ExpenseByCategories = () => {
   const isLogin = useSelector(store => store.auth.accessToken);
 
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
@@ -45,4 +43,4 @@ const ReportsByCategories = () => {
   );
 };
 
-export default ReportsByCategories;
+export default ExpenseByCategories;

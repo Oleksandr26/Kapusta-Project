@@ -1,13 +1,21 @@
+import Modal from 'components/Modal/Modal';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useUpdateBalanceMutation } from 'redux/user/userOperations';
 import s from './Balance.module.css';
 
 const Balance = () => {
-  // const userTransactions = useSelector(
-  //   state => state.auth.userData.transactions
-  // );
+  const [modalActive, setModalActive] = useState(true);
+  // useEffect(() => {
+
+  // }, []);
+
+  let newBalance = useSelector(state => {
+    return state.auth.userData.balance;
+  });
+
   const [updateBalance, updateBalanceData] = useUpdateBalanceMutation();
-  console.log('updateBalanceData: ', updateBalanceData);
-  let newBalance = 120000;
+
   return (
     <div className={s.container}>
       <span className={s.balance}>Balance:</span>
@@ -21,6 +29,10 @@ const Balance = () => {
         >
           CONFIRM
         </button>
+        <button type="button" onClick={() => setModalActive(true)}>
+          open modal
+        </button>
+        <Modal active={modalActive} setActive={setModalActive} />
       </div>
     </div>
   );

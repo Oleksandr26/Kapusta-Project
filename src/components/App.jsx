@@ -7,11 +7,14 @@ import AuthPage from 'pages/AuthPage/AuthPage';
 
 import { Container, Box } from '@mui/system';
 
+
 export const App = () => {
   return (
     <div>
       <Header />
+
       <AuthPage />
+
       <Container maxWidth="xl">
         <Box xl={{ height: '100vh' }}>
           
