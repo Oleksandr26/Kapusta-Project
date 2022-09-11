@@ -6,8 +6,8 @@ const Summary = () => {
   const [showIncome, setShowIncome] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
 
-  const {data: incomeStats, isLoading: icomeIsLoading, error: incomeError} = useGetIncomeQuery({skip: showIncome});
-  const {data: expenseStats, isLoading: expenseIsLoading, error: expenseError} = useGetExpenseQuery({skip: showExpenses});
+  const {data: incomeStats, /*isLoading: icomeIsLoading, error: incomeError*/} = useGetIncomeQuery({skip: showIncome});
+  const {data: expenseStats, /*isLoading: expenseIsLoading, error: expenseError*/} = useGetExpenseQuery({skip: showExpenses});
 
   const fetchData = (e) => {
     const name = e.currentTarget.name;

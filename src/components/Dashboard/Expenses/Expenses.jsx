@@ -1,15 +1,14 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {useAddExpenseMutation, useGetExpenseCategoriesQuery} from 'redux/transaction/transactionOperations';
+import { useGetExpenseCategoriesQuery} from 'redux/transaction/transactionOperations';
 import s from './Expenses.module.css';
 
 export const Expenses = () => {
   const token = useSelector(state => state.auth.accessToken);
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+  const [category, /*setCategory*/] = useState('');
   const [price, setPrice] = useState('');
-  const [addExpense, addExpenseData] = useAddExpenseMutation();
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: token,
   });
