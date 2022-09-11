@@ -1,5 +1,5 @@
 import s from './ReportsDate.module.css';
-import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
+// import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
 
 export default function ReportsDate({ date }) {
   const realDate = Date.parse(date);
