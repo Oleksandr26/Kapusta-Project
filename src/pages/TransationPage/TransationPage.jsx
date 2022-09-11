@@ -1,7 +1,5 @@
 import s from './TransationPage.module.css';
 import { ReactComponent as BarChart } from 'assets/svg/bar_chart.svg';
-import React, { useState } from 'react';
-import UserForm from 'components/UserForm/UserForm';
 import {
   /*useGetIncomeCategoriesQuery,
   useGetExpenseCategoriesQuery,
