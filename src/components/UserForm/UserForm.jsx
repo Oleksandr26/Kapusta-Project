@@ -1,5 +1,5 @@
 import s from './UserForm.module.css';
-
+import { signInWithGoogle } from '../../Firebase/app';
 import { useDispatch } from 'react-redux';
 import { login, register } from 'redux/auth/auth-operations';
 import { useState } from 'react';
@@ -28,6 +28,7 @@ const UserForm = () => {
   return (
     <div className={` ${s.backgraund}`}>
       <p className={s.text}>You can log in with your Google Account:</p>
+      <button className={s.auth_button} onClick={signInWithGoogle}>Google</button>
       <p className={s.text}>
         Or log in using an email and password, after registering:
       </p>
