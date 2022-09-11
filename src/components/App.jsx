@@ -3,24 +3,26 @@ import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
 import TransationPage from 'pages/TransationPage/TransationPage';
 import ReportsPage from 'pages/ReportsPage/ReportsPage';
-
 import Dashboard from './Dashboard/Dashboard';
 import AuthPage from 'pages/AuthPage/AuthPage';
 import {Container, Box} from '@mui/system';
-import {newSession} from "../redux/auth/auth-operations";
+import {getCurrentUser} from "../redux/auth/auth-operations";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
 
+
+
 export const App = () => {
-  const refreshToken = useSelector(state => state.auth.refreshToken);
+  const currentUser = useSelector(state => state.auth.currentUser);
+  const accessToken = useSelector(state => state.auth.accessToken);
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if(refreshToken){
-      dispatch(newSession())
+    if(!currentUser && accessToken){
+      dispatch(getCurrentUser())
     }
-  }, [dispatch])
+  }, [dispatch, currentUser, accessToken])
 
 
   return (
