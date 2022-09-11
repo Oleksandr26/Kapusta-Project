@@ -17,7 +17,6 @@ import /*useGetUserQuery,*/
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import Dashboard from "../../components/Dashboard/Dashboard";
-import Summary from "../../components/Dashboard/Summary/Summary";
 // import { Link } from 'react-router-dom';
 
 const HomePage = () => {
