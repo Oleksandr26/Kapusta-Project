@@ -1,0 +1,42 @@
+.expenses {
+  border: 2px solid tomato;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input{
+  width: 280px;
+  border: 2px solid #FFFFFF;
+}
+
+.select{
+  width: 280px;
+  border: 2px solid #FFFFFF;
+}
+
+.price{
+  width: 183px;
+  
+  border: 2px solid #FFFFFF;
+  border-radius: 22px;
+}
+
+.btn{
+  padding: 12px 35px;
+  font-weight: 700;
+font-size: 12px;
+line-height: 1.17;
+  color:#52555F;
+  background: #F5F6FB;
+box-shadow: 1px 2px 5px rgba(170, 178, 197, 0.4);
+border-radius: 16px;
+}
+
+.btn:hover{
+  color:#FFFFFF;
+   background-color: #FF751D;
+}
