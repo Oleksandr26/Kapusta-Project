@@ -11,6 +11,25 @@
 .item:not(:last-child) {
   margin-right: 30px;
 }
+.btn {
+  display: flex;
+  padding: 0;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  width: 100px;
+  color: var(--third-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+}
+
+.icon {
+  width: 32px;
+  height: 24px;
+}
 
 @media screen and (max-width: 767px) {
   .container {

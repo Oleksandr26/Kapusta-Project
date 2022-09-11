@@ -7,7 +7,7 @@ import {
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 
-const ExpenseByCategories = () => {
+const ExpenseByCategories = ({ dateTransactionFilter }) => {
   const isLogin = useSelector(store => store.auth.accessToken);
 
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
@@ -18,16 +18,19 @@ const ExpenseByCategories = () => {
 
   const result = expenseCategories?.map(item => ({
     name: item,
-    amount: expenses?.reduce((acc, cost) => {
-      return item === cost.category ? acc + cost.amount : acc;
+    amount: dateTransactionFilter(expenses)?.reduce((acc, transaction) => {
+      return item === transaction.category ? acc + transaction.amount : acc;
     }, 0),
   }));
 
   const elements = result?.map(({ name, amount }) => {
     const iconPath = sprite + `#${name}`;
+    const amountNormalizer = amount
+      .toFixed(2)
+      .replace(/\d(?=(\d{3})+\.)/g, '$& ');
     return (
       <li className={s.item} key={nanoid()}>
-        <p className={s.info}>{amount.toFixed(2)}</p>
+        <p className={s.info}>{amountNormalizer}</p>
         <svg className={s.icon} width="56px" height="56px">
           <use href={iconPath}></use>
         </svg>

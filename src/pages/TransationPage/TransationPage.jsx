@@ -52,7 +52,7 @@ const HomePage = () => {
           onClick={() => <Navigate to="/report" />}
         >
           <span className={s.reports}>Reports</span>
-          <BarChart size="45px" className={s.icon} />
+          <BarChart className={s.icon} />
         </button>
         <Balance />
       </div>

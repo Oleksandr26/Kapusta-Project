@@ -35,11 +35,10 @@ const Balance = () => {
         >
           CONFIRM
         </button>
-        {/* <button type="button" onClick={() => setModalActive(true)}>
-          open modal
-        </button> */}
+
         {modalActive && (
           <Modal
+            className={s.modal}
             handleToggle={handleToggle}
             active={modalActive}
             setActive={setModalActive}

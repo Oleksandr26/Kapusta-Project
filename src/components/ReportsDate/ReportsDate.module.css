@@ -1,0 +1,51 @@
+.container {
+  text-align: center;
+}
+.block {
+  width: 128px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  position: absolute;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+.leftBtn {
+  composes: btn;
+  left: -20px;
+  top: 0;
+}
+.rightBtn {
+  composes: btn;
+  right: -20px;
+  top: 0;
+}
+.text {
+  color: var(--third-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+.date {
+  color: var(--main-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+}
+.icon {
+  width: 6px;
+  height: 14px;
+}

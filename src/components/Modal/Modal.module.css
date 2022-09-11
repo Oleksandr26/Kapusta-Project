@@ -1,7 +1,8 @@
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 50px;
+  left: -40px;
+
   width: 288px;
   height: 163px;
   padding: 40px 30px;
@@ -11,15 +12,18 @@
   z-index: 10;
   transform: scale(0) 100ms;
   pointer-events: none;
+  /* background-image: url('assets/poligon.svg'); */
 }
-.modal.active {
+.active {
+  composes: modal;
   transform: scale(1);
   pointer-events: all;
 }
 .partOfModal {
   position: absolute;
-  top: 0;
-  left: 0;
+  fill: #1d346a;
+  top: -19px;
+  left: 65px;
 }
 .text {
   margin-top: 20px;
