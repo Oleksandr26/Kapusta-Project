@@ -26,54 +26,64 @@ const UserForm = () => {
   };
 
   return (
-    <form className={s.form}>
-      <label className={s.label}>
-        <span className={s.label__text}>Email</span>
-        <input
-          className={s.input}
-          type="email"
-          value={email}
-          onChange={handleChange}
-          name="email"
-          required
-        />
-      </label>
-      <label className={s.label}>
-        <span className={s.label__text}>Password</span>
-        <input
-          className={s.input}
-          type="password"
-          value={password}
-          onChange={handleChange}
-          name="password"
-          required
-        />
-      </label>
-      <button
-        className={s.button}
-        type="submit"
-        name="login"
-        onClick={e => {
-          e.preventDefault();
-          dispatch(login({ email, password }));
-          setEmail('');
-        }}
-      >
-        Login
-      </button>
-      <button
-        className={s.button}
-        type="submit"
-        name="register"
-        onClick={e => {
-          e.preventDefault();
-          dispatch(register({ email, password }));
-          setPassword('');
-        }}
-      >
-        Register
-      </button>
-    </form>
+    <div className={` ${s.backgraund}`}>
+      <p className={s.text}>You can log in with your Google Account:</p>
+      <p className={s.text}>
+        Or log in using an email and password, after registering:
+      </p>
+      <form className={s.form}>
+        <label className={s.label}>
+          <span className={s.label_text}>Email:</span>
+          <input
+            className={s.input}
+            placeholder='your@email.com'
+            type="email"
+            value={email}
+            onChange={handleChange}
+            name="email"
+            required
+          />
+        </label>
+        <label className={s.label}>
+          <span className={s.label_text}>Password:</span>
+          <input
+            className={s.input}
+            placeholder='Password'
+            type="password"
+            value={password}
+            onChange={handleChange}
+            name="password"
+            required
+          />
+        </label>
+        <div className={s.wrapper_button}>
+        <button
+          className={s.button}
+          type="submit"
+          name="login"
+          onClick={e => {
+            e.preventDefault();
+            dispatch(login({ email, password }));
+            setEmail('');
+          }}
+        >
+          Login
+        </button>
+        <button
+          className={s.button}
+          type="submit"
+          name="register"
+          onClick={e => {
+            e.preventDefault();
+            dispatch(register({ email, password }));
+            setPassword('');
+          }}
+        >
+          Register
+        </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
