@@ -13,12 +13,14 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-const userApi = createApi({
+export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery,
+  tagTypes: ['User'],
   endpoints: builder => ({
     getUser: builder.query({
       query: () => '',
+      providesTags: ['User'],
     }),
     updateBalance: builder.mutation({
       query: body => ({
@@ -26,6 +28,7 @@ const userApi = createApi({
         method: 'PATCH',
         body,
       }),
+      invalidatesTags: ['User'],
     }),
   }),
 });

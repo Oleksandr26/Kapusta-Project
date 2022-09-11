@@ -16,31 +16,38 @@ const baseQuery = fetchBaseQuery({
 export const transactionApi = createApi({
   reducerPath: 'transactionApi',
   baseQuery,
+  tagTypes: ['Transactions'],
   endpoints: builder => ({
     getIncomeCategories: builder.query({
       query: () => `/income-categories`,
+      providesTags: ['Transactions'],
     }),
 
     getExpenseCategories: builder.query({
       query: () => `/expense-categories`,
+      providesTags: ['Transactions'],
     }),
 
     getPeriodData: builder.query({
       query: data => `/period-data?date=${data}`,
+      providesTags: ['Transactions'],
     }),
 
     getIncome: builder.query({
       query: () => `/income`,
+      providesTags: ['Transactions'],
     }),
 
     getExpense: builder.query({
       query: () => `/expense`,
+      providesTags: ['Transactions'],
     }),
 
     deleteTransaction: builder.mutation({
       query: id => ({
         url: `${id}`,
         method: 'DELETE',
+        invalidatesTags: ['Transactions'],
       }),
     }),
 
@@ -50,6 +57,7 @@ export const transactionApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Transactions'],
     }),
 
     addIncome: builder.mutation({
@@ -58,6 +66,7 @@ export const transactionApi = createApi({
         method: 'POST',
         body,
       }),
+      invalidatesTags: ['Transactions'],
     }),
   }),
 });

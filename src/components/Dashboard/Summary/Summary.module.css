@@ -1,0 +1,75 @@
+.summary {
+}
+
+
+.month {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 10px 25px;
+
+  background-color: #F5F6FB;
+}
+
+.month:not(:last-child){
+  margin-bottom: 5px;
+}
+
+.month:last-child {
+  border-radius: 0 0 35px 0;
+}
+
+.title{
+  margin-bottom: 0;
+  padding: 10px 25px;
+
+  border-radius: 35px 35px 0 0;
+
+  background-color: #F5F6FB;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.266;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.text {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.266;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #52555F;
+}
+
+.buttonWrapper {
+  margin-bottom: 5px;
+}
+
+.button {
+  width: 50%;
+  padding: 5px 0;
+
+  background-color: #F5F6FB;
+  border: none;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.266;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+  transition: background-color 150ms linear 0ms, color 150ms linear 0ms;
+}
+
+.button:hover {
+  background-color: #FF751D;
+  color: white;
+}
+
+.activeBtn {
+  background-color: #FF751D;
+  color: white;
+}

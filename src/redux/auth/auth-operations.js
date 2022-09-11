@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'helpers/auth';
 import { toast } from 'react-toastify';
+import {setRefreshToken, setToken} from "helpers/auth";
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -38,12 +39,14 @@ export const logout = createAsyncThunk(
   }
 );
 
-export const getCurrentUser = createAsyncThunk(
+export const newSession = createAsyncThunk(
   'auth/current-user',
   async (_, thunkAPI) => {
     try {
-      const { auth } = thunkAPI.getState();
-      const result = await api.getCurrentUser(auth.token);
+      const { accessToken, refreshToken, sid } = thunkAPI.getState().auth;
+      setRefreshToken(refreshToken)
+      const result = await api.getNewSession({sid});
+      setToken(accessToken)
       toast.info('Hello, you are already signed in');
       return result;
     } catch (error) {
@@ -55,10 +58,4 @@ export const getCurrentUser = createAsyncThunk(
       );
     }
   },
-  {
-    condition: (_, thunkAPI) => {
-      const { auth } = thunkAPI.getState();
-      if (!auth.token) return false;
-    },
-  }
 );
