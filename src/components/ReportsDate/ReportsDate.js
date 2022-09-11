@@ -27,7 +27,7 @@ export default function ReportsDate({ date, setDate }) {
       <div className={s.block}>
         <button
           type="button"
-          className={s.backbtn}
+          className={s.leftBtn}
           onClick={() => minusMonth(date)}
         >
           <LeftArrow className={s.icon} />
@@ -35,7 +35,7 @@ export default function ReportsDate({ date, setDate }) {
         <p className={s.date}> {userReportsDate}</p>
         <button
           type="button"
-          className={s.nextbtn}
+          className={s.rightBtn}
           onClick={() => plusMonth(date)}
         >
           <RigthArrow className={s.icon} />

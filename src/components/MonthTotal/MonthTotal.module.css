@@ -38,13 +38,13 @@
 }
 
 .extense {
-  color: red;
+  color: var(--expense-color);
   margin-left: 15px;
   letter-spacing: 0.04em;
 }
 
 .income {
-  color: green;
+  color: var(--income-color);
   margin-left: 15px;
   letter-spacing: 0.04em;
 }
