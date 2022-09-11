@@ -11,10 +11,10 @@ export const App = () => {
   return (
     <div>
       <Header />
-
+      <AuthPage />
       <Container maxWidth="xl">
         <Box xl={{ height: '100vh' }}>
-          <AuthPage />
+          
           <TransationPage />
           <ReportsPage />
         </Box>

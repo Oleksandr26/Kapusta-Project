@@ -1,7 +1,87 @@
+.backgraund {
+  background-color: #ffffff;
+  box-shadow: 5px 10px 20px rgba(170, 178, 197, 0.4);
+  border-radius: 30px;
+  padding: 40px 20px;
+  margin: 0 auto;
+  max-width: 280px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  transform: translate(-50%);
+}
 .form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .button {
-    width: 300px;
+  width: 300px;
+}
+.text {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: var(--second-color);
+  text-align: center;
+  max-width: 222px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+.label_text {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+.input {
+  width: 240px;
+  height: 52px;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--bg-color);
+}
+.input::placeholder {
+  padding-left: 18px;
+}
+.wrapper_button {
+  display: flex;
+  margin-top: 40px;
+}
+.button {
+  width: 116px;
+  height: 44px;
+  border: none;
+  border-radius: 16px;
+  background-color: var(--accent-color);
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.button:not(:last-child) {
+  margin-right: 8px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 480px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+    padding: 32px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
 }
