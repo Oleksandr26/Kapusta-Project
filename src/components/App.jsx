@@ -11,6 +11,7 @@ import {newSession} from "../redux/auth/auth-operations";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
+
 export const App = () => {
   const refreshToken = useSelector(state => state.auth.refreshToken);
   const dispatch = useDispatch()
