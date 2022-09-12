@@ -11,7 +11,8 @@ import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 
 const ReportPage = () => {
   const [date, setDate] = useState(() => new Date());
-
+  const [category, setCategory] = useState(null);
+  console.log(category);
   // --- В normalizedStateDate Преобразуем дату со state в формат для сравнения с фортатом даты транзакции которая приходит с сервера----
   const normalizedStoreDate = date.toLocaleString('en', {
     year: 'numeric',
@@ -51,12 +52,23 @@ const ReportPage = () => {
       </div>
 
       <div>
-        <IncomeByCategories dateTransactionFilter={dateTransactionFilter} />
-        <ExpenseByCategories dateTransactionFilter={dateTransactionFilter} />
+        <IncomeByCategories
+          dateTransactionFilter={dateTransactionFilter}
+          setCategory={setCategory}
+          category={category}
+        />
+        <ExpenseByCategories
+          dateTransactionFilter={dateTransactionFilter}
+          setCategory={setCategory}
+          category={category}
+        />
       </div>
 
       <div>
-        <Diagram dateTransactionFilter={dateTransactionFilter} />
+        <Diagram
+          dateTransactionFilter={dateTransactionFilter}
+          category={category}
+        />
       </div>
     </div>
   );
