@@ -124,14 +124,8 @@ const authSlice = createSlice({
       store.loading = false;
       store.error = payload.message;
     },
-<<<<<<< Updated upstream
   },
 });
 
-=======
-  }});
-
-
 export const { updateBalance } = authSlice.actions;
->>>>>>> Stashed changes
 export default authSlice.reducer;
