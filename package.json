@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@moeindana/google-oauth": "^0.1.5",
     "@mui/material": "^5.10.4",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.3",

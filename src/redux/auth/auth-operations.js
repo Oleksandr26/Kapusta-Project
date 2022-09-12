@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'helpers/auth';
 import { toast } from 'react-toastify';
 import {setRefreshToken, setToken} from "helpers/auth";
+// import UserMenu from '../../components/Header/UserMenu/UserMenu';
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -11,10 +12,26 @@ export const register = createAsyncThunk(
       return result;
     } catch (error) {
       toast.error(`Sorry, Register failed. Try again.`);
+      // if (error.message === 'Request failed with status code 409'){
+        
+      // }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+// export const registerGoogle = createAsyncThunk(
+//   'auth/google',
+//   async (thunkAPI) => {
+//     try {
+//      const res = await api.authGoogle()
+//       return res
+//     }
+//     catch (error) {
+//       thunkAPI.rejectWithValue(error);
+//     }
+//   }
+// )
 
 export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
   try {

@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://kapusta-backend.goit.global',
@@ -18,12 +19,18 @@ export const setRefreshToken = (refreshToken = '') => {
 };
 
 export const register = async data => {
-  console.log('data: ', data);
+   console.log('data: ', data);
 
   const result = await instance.post('/auth/register', data);
   setToken(result.data.accessToken);
   return result.data;
 };
+
+// export const authGoogle = async () => {
+//   const result = await instance.get('/auth/google');
+//   setToken(result.data.accessToken);
+//   return result.data;
+// };
 
 export const login = async data => {
   const result = await instance.post('/auth/login', data);

@@ -1,13 +1,16 @@
-import s from './UserForm.module.css';
-import { signInWithGoogle } from '../../Firebase/app';
+// import { signInWithGoogle } from '../../Firebase/app';
 import { useDispatch } from 'react-redux';
-import { login, register } from 'redux/auth/auth-operations';
+import { login, register, registerGoogle } from 'redux/auth/auth-operations';
+import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import s from './UserForm.module.css';
 
 const UserForm = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
 
   const handleChange = e => {
     const value = e.currentTarget.value;
@@ -25,10 +28,27 @@ const UserForm = () => {
     }
   };
 
+   const handleCallbackResponse = (response) => {
+        console.log('token id:::' + response.creden);
+    }
+
+    useEffect(() => {
+        google.accounts.id.initialize({
+            client_id: '576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com',
+            callback: handleCallbackResponse
+        });
+
+        // google.accounts.id
+    }, []);
+
+ 
   return (
     <div className={` ${s.backgraund}`}>
       <p className={s.text}>You can log in with your Google Account:</p>
-      <button className={s.auth_button} onClick={signInWithGoogle}>Google</button>
+      <button className={s.auth_button} onClick={handleCallbackResponse}>
+        <GoogleIcon className={s.googleIcon} />
+        <span className={s.span}>Google</span>
+      </button>
       <p className={s.text}>
         Or log in using an email and password, after registering:
       </p>
@@ -37,7 +57,7 @@ const UserForm = () => {
           <span className={s.label_text}>Email:</span>
           <input
             className={s.input}
-            placeholder='your@email.com'
+            placeholder="your@email.com"
             type="email"
             value={email}
             onChange={handleChange}
@@ -49,7 +69,7 @@ const UserForm = () => {
           <span className={s.label_text}>Password:</span>
           <input
             className={s.input}
-            placeholder='Password'
+            placeholder="Password"
             type="password"
             value={password}
             onChange={handleChange}
@@ -58,30 +78,30 @@ const UserForm = () => {
           />
         </label>
         <div className={s.wrapper_button}>
-        <button
-          className={s.button}
-          type="submit"
-          name="login"
-          onClick={e => {
-            e.preventDefault();
-            dispatch(login({ email, password }));
-            setEmail('');
-          }}
-        >
-          Login
-        </button>
-        <button
-          className={s.button}
-          type="submit"
-          name="register"
-          onClick={e => {
-            e.preventDefault();
-            dispatch(register({ email, password }));
-            setPassword('');
-          }}
-        >
-          Register
-        </button>
+          <button
+            className={s.button}
+            type="submit"
+            name="login"
+            onClick={e => {
+              e.preventDefault();
+              dispatch(login({ email, password }));
+              setEmail('');
+            }}
+          >
+            Login
+          </button>
+          <button
+            className={s.button}
+            type="submit"
+            name="register"
+            onClick={e => {
+              e.preventDefault();
+              dispatch(register({ email, password }));
+              setPassword('');
+            }}
+          >
+            Register
+          </button>
         </div>
       </form>
     </div>

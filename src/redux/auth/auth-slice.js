@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, logout, register, newSession } from './auth-operations';
+import { login, logout, register, newSession, registerGoogle } from './auth-operations';
 
 const initialState = {
   userData: {},
@@ -25,11 +25,19 @@ const authSlice = createSlice({
       store.userData = { ...payload.userData };
       store.token = payload.token;
       store.loading = false;
+      console.log(payload);
     },
     [register.rejected]: (store, { payload }) => {
+      // console.log(payload);
       store.loading = false;
       store.error = payload;
     },
+    // -----------------auth/google----------------------------
+
+    // [registerGoogle.fulfilled]: (store, {payload}) => {
+    //   store.loading = false;
+    //   console.log(payload);
+    // },
 
     // -------------------login------------------------------
 
