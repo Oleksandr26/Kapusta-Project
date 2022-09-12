@@ -9,8 +9,6 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import DiagramConfig from './DiagramConfig&Data';
 import { handleChosenCategoryUniqueLabels } from './DiagramLogic';
 
-import { lightGreen } from '@mui/material/colors';
-
 Chart.register(ChartDataLabels, ...registerables);
 
 export function Diagram({ dateTransactionFilter, category }) {
