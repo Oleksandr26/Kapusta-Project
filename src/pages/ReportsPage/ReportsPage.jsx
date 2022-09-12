@@ -1,6 +1,6 @@
 import s from './ReportsPage.module.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
 import ExpenseByCategories from 'components/ExpenseByCategories/ExpenseByCategories';
