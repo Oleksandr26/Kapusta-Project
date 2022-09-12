@@ -8,8 +8,6 @@ import {
 } from 'redux/transaction/transactionOperations';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-import { lightGreen } from '@mui/material/colors';
-
 Chart.register(ChartDataLabels, ...registerables);
 
 export function Diagram({ dateTransactionFilter, category }) {
