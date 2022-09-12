@@ -1,12 +1,13 @@
 // import { signInWithGoogle } from '../../Firebase/app';
 import { useDispatch } from 'react-redux';
-import { handleLogin, handleRegistration, handleAuthGoogle } from 'redux/auth/auth-operations';
-import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
+import {
+  handleLogin,
+  handleRegistration /*handleAuthGoogle*/,
+} from 'redux/auth/auth-operations';
+// import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import s from './UserForm.module.css';
-
-const google = window.google;
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -29,12 +30,7 @@ const UserForm = () => {
     }
   };
 
-   const handleCallbackResponse = () => {
-
-    }
-
-    useEffect(() => {
-    });
+  useEffect(() => {});
 
   return (
     <div className={` ${s.backgraund}`}>
@@ -50,7 +46,7 @@ const UserForm = () => {
         <GoogleIcon className={s.googleIcon} />
         <span className={s.span}>Google</span>
       </button> */}
-      <div id="signInDiv" ></div>
+      <div id="signInDiv"></div>
       <p className={s.text}>
         Or log in using an email and password, after registering:
       </p>

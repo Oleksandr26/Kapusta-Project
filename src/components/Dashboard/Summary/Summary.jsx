@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {useGetIncomeQuery, useGetExpenseQuery} from 'redux/transaction/transactionOperations';
 import s from './Summary.module.css';
-import {useDispatch} from "react-redux";
+// import {useDispatch} from "react-redux";
 
 const Summary = () => {
   const [showIncome, setShowIncome] = useState(false);
