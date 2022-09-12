@@ -53,7 +53,11 @@ export function Diagram({ dateTransactionFilter, category }) {
   const expenses = useGetExpenseQuery().currentData?.expenses;
   const incomes = useGetIncomeQuery().currentData?.incomes;
 
-  const MONTH_CASHFLOW = [...incomes, ...expenses];
+  const MONTH_CASHFLOW = [];
+
+  if (incomes !== undefined && incomes !== undefined) {
+    MONTH_CASHFLOW.push(...incomes, ...expenses);
+  }
 
   const chosenCategoryUniqueLabels = MONTH_CASHFLOW?.filter(
     item => item.category === category
