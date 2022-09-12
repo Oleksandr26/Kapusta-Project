@@ -51,10 +51,7 @@ const IncomeByCategories = ({
   });
 
   return (
-    <>
-      <h3 className={s.title}>Incomes</h3>
       <ul className={s.list}>{elements}</ul>
-    </>
   );
 };
 

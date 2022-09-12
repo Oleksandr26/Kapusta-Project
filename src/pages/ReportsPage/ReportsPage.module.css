@@ -57,3 +57,53 @@
     width: 1200px;
   }
 }
+.title {
+  margin: 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.17;
+  letter-spacing: 0.02em;
+}
+.block {
+  margin: 0 auto;
+  width: 128px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrows {
+  position: absolute;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+}
+.leftArrow {
+  composes: arrows;
+  left: -21px;
+  top: -1px;
+}
+.rightArrow {
+  composes: arrows;
+  right: -21px;
+  top: -1px;
+}
+
+.date {
+  color: var(--main-color);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+}
+.iconArrow {
+  width: 7px;
+  height: 16px;
+}
