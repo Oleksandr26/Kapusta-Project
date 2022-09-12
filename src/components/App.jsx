@@ -1,5 +1,6 @@
 import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
+
 import PagesRoutes from 'PagesRoutes/PagesRoutes';
 import { getCurrentUser } from '../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +23,7 @@ export const App = () => {
   return (
     <div>
       <Header />
+
       <PagesRoutes />
 
       <ToastContainer
