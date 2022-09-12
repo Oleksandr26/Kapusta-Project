@@ -4,10 +4,12 @@ import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
 
 export default function ReportsDate({ date, setDate }) {
-  const userReportsDate = date.toLocaleString('en', {
-    year: 'numeric',
-    month: 'long',
-  });
+  const userReportsDate = date
+    .toLocaleString('en', {
+      year: 'numeric',
+      month: 'long',
+    })
+    .toUpperCase();
 
   const plusMonth = date => {
     const plusMonth = date.setMonth(date.getMonth() + 1);

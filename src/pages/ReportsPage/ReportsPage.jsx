@@ -1,5 +1,6 @@
 import s from './ReportsPage.module.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
@@ -36,9 +37,10 @@ const ReportPage = () => {
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <button className={s.btn}>
+        <Link className={s.btn} to="/transactions">
           <BackArrow className={s.icon} /> Main page
-        </button>
+        </Link>
+
         <div className={s.item}>
           <Balance />
         </div>
@@ -64,11 +66,16 @@ const ReportPage = () => {
         />
       </div>
 
+<<<<<<< Updated upstream
       <div className={s.chart_container}>
         <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}
         />
+=======
+      <div>
+        <Diagram dateTransactionFilter={dateTransactionFilter} category={category} />
+>>>>>>> Stashed changes
       </div>
     </div>
   );
