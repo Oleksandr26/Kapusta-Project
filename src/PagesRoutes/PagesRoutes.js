@@ -3,8 +3,8 @@ import { lazy, Suspense } from 'react';
 
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
-import { Container, Box } from '@mui/system';
-import Balance from 'components/Balance/Balance';
+
+// import Balance from 'components/Balance/Balance';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
 import Summary from 'components/Dashboard/Summary/Summary';
 // import Spinner from 'components/Spinner/Spinner';
