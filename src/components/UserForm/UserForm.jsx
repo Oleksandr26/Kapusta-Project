@@ -29,21 +29,11 @@ const UserForm = () => {
     }
   };
 
-   const handleCallbackResponse = (response) => {
-        console.log('token id:::' + response.credential);
-        // dispatch(handleAuthGoogle())
+   const handleCallbackResponse = () => {
+
     }
 
     useEffect(() => {
-        google.accounts.id.initialize({
-            client_id: '576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com',
-            callback: handleCallbackResponse
-        });
-
-        google.accounts.id.renderButton(
-          document.getElementById("signInDiv"),
-          {theme: "outline", size: "large"}
-        )
     });
 
   return (

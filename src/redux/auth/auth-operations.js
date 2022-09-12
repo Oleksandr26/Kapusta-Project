@@ -14,9 +14,9 @@ export const handleRegistration = createAsyncThunk(
 
 export const handleAuthGoogle = createAsyncThunk(
   'auth/google',
-  async (data, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      return await api.authGoogle(data);
+      return await api.authGoogle();
     } catch ({ response }) {
       return rejectWithValue(response.data);
     }
