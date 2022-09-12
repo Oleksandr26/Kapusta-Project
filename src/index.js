@@ -6,6 +6,8 @@ import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {store, persistor} from './redux/store';
+import instance from "./helpers/auth";
+import {initNewSession} from "./redux/auth/auth-operations";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,4 +19,20 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </PersistGate>
     </Provider>
   </React.StrictMode>
+);
+
+const {dispatch} = store;
+const ERROR_MESSAGE = "Invalid session";
+instance.interceptors.response.use(
+  response => {
+    console.log(response)
+    return response;
+  },
+  (error) => {
+    console.log(error)
+    if(error.response.data.message === ERROR_MESSAGE){
+      dispatch(initNewSession())
+    }
+    return Promise.reject(error);
+  }
 );

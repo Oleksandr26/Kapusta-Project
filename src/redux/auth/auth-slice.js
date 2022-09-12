@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 import {
   handleLogin,
   handleLogout,
-  handleRegister,
+  handleRegistration,
   initNewSession,
   getCurrentUser,
   handleUpdateUserBalance
@@ -25,18 +25,18 @@ const authSlice = createSlice({
 
     // -------------------register------------------------------
 
-    [handleRegister.pending]: store => {
+    [handleRegistration.pending]: store => {
       store.loading = true;
       store.error = null;
     },
-    [handleRegister.fulfilled]: (store, {payload}) => {
+    [handleRegistration.fulfilled]: (store, {payload}) => {
       store.userData = {...payload.userData};
       store.token = payload.token;
       store.loading = false;
     },
-    [handleRegister.rejected]: (store, {payload}) => {
+    [handleRegistration.rejected]: (store, {payload}) => {
       store.loading = false;
-      store.error = payload;
+      store.error = payload.message;
     },
 
     // -------------------login------------------------------
@@ -55,7 +55,7 @@ const authSlice = createSlice({
     },
     [handleLogin.rejected]: (store, {payload}) => {
       store.loading = false;
-      store.error = payload;
+      store.error = payload.message;
     },
 
     // -------------------logout------------------------------
@@ -70,6 +70,7 @@ const authSlice = createSlice({
     },
 
 // -------------------currentUser----------------------------------
+
     [getCurrentUser.pending]: (store) => {
       store.loading = true;
       store.error = null;
@@ -84,6 +85,7 @@ const authSlice = createSlice({
     },
 
     // -------------------updateBalance----------------------------------
+
     [handleUpdateUserBalance.pending]: (store) => {
       store.loading = true;
       store.error = null;
@@ -95,23 +97,24 @@ const authSlice = createSlice({
       store.loading = false;
       store.error = payload.message;
     },
-  },
+    // -------------------refresh------------------------------
 
-  // -------------------refresh------------------------------
-  [initNewSession.pending]: store => {
-    store.loading = true;
-    store.error = null;
-  },
-  [initNewSession.fulfilled]: (store, {payload}) => {
-    store.accessToken = payload.newAccessToken;
-    store.refreshToken = payload.newRefreshToken;
-    store.sid = payload.newSid;
-    store.loading = false;
-  },
-  [initNewSession.rejected]: (store, {payload}) => {
-    store.loading = false;
-    store.error = payload.message;
-  },
-});
+    [initNewSession.pending]: store => {
+      store.loading = true;
+      store.error = null;
+    },
+    [initNewSession.fulfilled]: (state, {payload}) => {
+      state.accessToken = payload.newAccessToken;
+      state.refreshToken = payload.newRefreshToken;
+      state.sid = payload.newSid;
+      state.loading = false;
+    },
+    [initNewSession.rejected]: (store, {payload}) => {
+      store.loading = false;
+      store.error = payload.message;
+    },
+  }});
+
+
 
 export default authSlice.reducer;

@@ -29,8 +29,6 @@ export const store = configureStore({
   reducer: {
     auth: persistedReducer,
     [transactionApi.reducerPath]: transactionApi.reducer,
-    // [userApi.reducerPath]: userApi.reducer,
-
   },
   middleware,
 });
