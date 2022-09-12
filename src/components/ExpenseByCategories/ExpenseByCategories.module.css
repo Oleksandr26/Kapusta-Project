@@ -1,12 +1,11 @@
-
 .list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 280px;
-  margin: 0 auto;
 }
-
+.link {
+  color: var(--main-color);
+}
 .item {
   width: calc(100% / 3);
   display: flex;
@@ -28,9 +27,16 @@
 @media screen and (min-width: 768px) {
   .list {
     width: 623px;
+    margin-right: -5px;
   }
   .item {
     width: calc((100% - 30px) / 6);
+  }
+  .item:not(:last-child) {
+    margin-right: 5px;
+  }
+  .item:nth-child(6) {
+    margin-right: 0;
   }
 }
 .info {
@@ -43,7 +49,11 @@
   margin: 0;
 }
 .icon {
-  fill: #071f41;
+  color: var(--accent-color);
   width: 56px;
   margin: 5px 0 0 0;
 }
+
+/* .activeLink {
+  color: var(--accentColor);
+} */
