@@ -2,7 +2,10 @@ import React from 'react';
 import { Chart, registerables } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import { useGetExpenseQuery } from 'redux/transaction/transactionOperations';
+import {
+  useGetExpenseQuery,
+  useGetIncomeQuery,
+} from 'redux/transaction/transactionOperations';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { lightGreen } from '@mui/material/colors';
@@ -11,7 +14,10 @@ Chart.register(ChartDataLabels, ...registerables);
 
 export function Diagram({ dateTransactionFilter, category }) {
   const options = {
-    responsive: false,
+    layout: {
+      padding: 25,
+    },
+    responsive: true,
     maintainAspectRatio: false,
     scales: {
       y: {
@@ -45,9 +51,13 @@ export function Diagram({ dateTransactionFilter, category }) {
   };
 
   const expenses = useGetExpenseQuery().currentData?.expenses;
+  const incomes = useGetIncomeQuery().currentData?.incomes;
 
-  const chosenCategoryUniqueLabels = expenses
-    ?.filter(item => item.category === category)
+  const MONTH_CASHFLOW = [...incomes, ...expenses];
+
+  const chosenCategoryUniqueLabels = MONTH_CASHFLOW?.filter(
+    item => item.category === category
+  )
     ?.map(({ description }) => description)
     .filter((el, index, array) => array.indexOf(el) === index);
 
@@ -61,15 +71,19 @@ export function Diagram({ dateTransactionFilter, category }) {
   const diagramForSelectedMonth = chosenCategoryUniqueLabels
     ?.map(item => ({
       descriptionName: item,
-      amount: dateTransactionFilter(expenses).reduce((acc, transaction) => {
-        return item === transaction.description
-          ? acc + transaction.amount
-          : acc;
-      }, 0),
+      amount: dateTransactionFilter(MONTH_CASHFLOW).reduce(
+        (acc, transaction) => {
+          return item === transaction.description
+            ? acc + transaction.amount
+            : acc;
+        },
+        0
+      ),
     }))
     .sort(
       (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
-    );
+    )
+    .filter(el => el.amount !== 0);
 
   const labels = diagramForSelectedMonth?.map(
     ({ descriptionName }) => descriptionName
@@ -81,6 +95,7 @@ export function Diagram({ dateTransactionFilter, category }) {
     return parts.join('.') + ' ' + 'грн';
   });
   console.log('hi');
+
   const data = {
     labels,
     datasets: [
@@ -89,7 +104,7 @@ export function Diagram({ dateTransactionFilter, category }) {
         backgroundColor: ['#FF751D', '#FFDAC0', '#FFDAC0'],
         borderRadius: 35,
         parsedData: parsedData,
-        barThickness: 18,
+        barThickness: 38,
       },
     ],
   };
