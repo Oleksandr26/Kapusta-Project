@@ -64,7 +64,7 @@ const ReportPage = () => {
         />
       </div>
 
-      <div>
+      <div className={s.chart_container}>
         <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}

@@ -31,6 +31,16 @@
   height: 24px;
 }
 
+.chart_container {
+  height: 422px;
+  padding: 0 138px;
+  padding-top: 20px;
+
+  background: #ffffff;
+  box-shadow: 0px 10px 60px rgba(170, 178, 197, 0.2);
+  border-radius: 30px;
+}
+
 @media screen and (max-width: 767px) {
   .container {
     max-width: 480px;
