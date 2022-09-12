@@ -16,8 +16,8 @@ export const ExpensesAndIncome = () => {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
-  const [addExpense, addExpenseData] = useAddExpenseMutation();
-  const [addIncome, addIncomeData] = useAddIncomeMutation();
+  const [addExpense] = useAddExpenseMutation();
+  const [addIncome] = useAddIncomeMutation();
   const location = useLocation();
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: token,

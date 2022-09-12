@@ -1,13 +1,11 @@
 import {useState} from "react";
 import {useGetIncomeQuery, useGetExpenseQuery} from 'redux/transaction/transactionOperations';
 import s from './Summary.module.css';
-import {initNewSession} from "../../../redux/auth/auth-operations";
-import {useDispatch} from "react-redux";
+// import {useDispatch} from "react-redux";
 
 const Summary = () => {
   const [showIncome, setShowIncome] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
-  const dispatch = useDispatch()
 
   const {data: incomeStats, /*isLoading: incomeIsLoading, error: incomeError*/} = useGetIncomeQuery({skip: showIncome});
   const {data: expenseStats, /*isLoading: expenseIsLoading, error: expenseError*/} = useGetExpenseQuery({skip: showExpenses});

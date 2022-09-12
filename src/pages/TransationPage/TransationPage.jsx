@@ -32,10 +32,10 @@ const HomePage = () => {
   // const {data, isLoading, error} = useGetExpenseQuery();
   // const { data, isLoading, error } = useGetUserQuery();
 
-  const [deleteTransaction, deleteTransationData] =
+  const [deleteTransaction] =
     useDeleteTransactionMutation();
-  const [addExpense, addExpenseData] = useAddExpenseMutation();
-  const [addIncome, addIncomeData] = useAddIncomeMutation();
+  const [addExpense] = useAddExpenseMutation();
+  const [addIncome] = useAddIncomeMutation();
 
   return (
     <div className={s.container}>

@@ -1,4 +1,4 @@
-.form_wrapper{
+.form_wrapper {
   position: relative;
   height: 800px;
 }
@@ -26,11 +26,55 @@
 }
 .icon {
   position: absolute;
-    bottom: 93px;
-    right: 0;
+  bottom: 93px;
+  right: 0;
 }
 .Second_icon {
   position: absolute;
   margin-left: 35px;
   bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+.phrase {
+    margin-left: 225px;
+    padding-bottom: 345px;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.18em;
+  }
+  .title {
+    width: 300px;
+    margin-left: 170px;
+    height: 77px;
+  }
+  .backgraund_title {
+    padding-top: 80px;
+    border-radius: 0px 0px 0px 25%;
+    background-image: url(../../assets/png/fon.png);
+    background-size: 1234px 300px;
+    background-repeat: no-repeat;
+    background-position: 0px 20px;
+
+  }
+  .icon {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+  .title {
+    width: 377px;
+    margin-left: 230px;
+    height: 120px;
+  }
 }

@@ -3,6 +3,7 @@ import {
   handleLogin,
   handleLogout,
   handleRegistration,
+  handleAuthGoogle,
   initNewSession,
   getCurrentUser,
   handleUpdateUserBalance
@@ -33,10 +34,17 @@ const authSlice = createSlice({
       store.userData = {...payload.userData};
       store.token = payload.token;
       store.loading = false;
+      console.log(payload);
     },
     [handleRegistration.rejected]: (store, {payload}) => {
       store.loading = false;
       store.error = payload.message;
+    },
+    // -----------------auth/google----------------------------
+
+    [handleAuthGoogle.fulfilled]: (store, {payload}) => {
+      store.loading = false;
+      console.log(payload);
     },
 
     // -------------------login------------------------------
