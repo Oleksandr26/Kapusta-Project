@@ -16,6 +16,11 @@
   margin-top: 8px;
   /* background-color: #f5f6fb; */
 }
+@media screen and (min-width: 768px) {
+  .wrap {
+    margin-top: 0;
+  }
+}
 
 .amount {
   color: var(--main-color);

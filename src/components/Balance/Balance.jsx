@@ -1,9 +1,9 @@
+// import { TransactionDetailsMobile } from 'components/Dashboard/TransactionDetails/TransactionsDetailsMobile/TransactionsDetailsMobile';
 import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {handleUpdateUserBalance} from "../../redux/auth/auth-operations";
+import { useDispatch, useSelector } from 'react-redux';
+import { handleUpdateUserBalance } from '../../redux/auth/auth-operations';
 import s from './Balance.module.css';
-
 
 const Balance = () => {
   const [modalActive, setModalActive] = useState(false);
@@ -13,6 +13,7 @@ const Balance = () => {
   useEffect(() => {
     if (userBalance === 0) {
       setModalActive(true);
+      return;
     }
   }, [userBalance]);
 
@@ -43,6 +44,7 @@ const Balance = () => {
           />
         )}
       </div>
+      {/* <TransactionDetailsMobile /> */}
     </div>
   );
 };

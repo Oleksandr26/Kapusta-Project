@@ -1,19 +1,17 @@
 import 'modern-normalize/modern-normalize.css';
-// import { Routes, Route } from 'react-router-dom';
 import Header from 'components/Header/Header';
-import TransationPage from 'pages/TransationPage/TransationPage';
-import ReportsPage from 'pages/ReportsPage/ReportsPage';
-import Dashboard from './Dashboard/Dashboard';
-import AuthPage from 'pages/AuthPage/AuthPage';
-import { Container, Box } from '@mui/system';
+
+import PagesRoutes from 'PagesRoutes/PagesRoutes';
 import { getCurrentUser } from '../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { getAccessToken, getUser } from 'redux/auth/auth-selector';
+import { ToastContainer, Zoom } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
-  const currentUser = useSelector(state => state.auth.currentUser);
-  const accessToken = useSelector(state => state.auth.accessToken);
-
+  const currentUser = useSelector(getUser);
+  const accessToken = useSelector(getAccessToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,14 +24,15 @@ export const App = () => {
     <div>
       <Header />
 
-      <AuthPage />
+      <PagesRoutes />
 
-      <Container maxWidth="xl">
-        <Box xl={{ height: '100vh' }}>
-          <TransationPage />
-          <ReportsPage />
-        </Box>
-      </Container>
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar
+        position="top-center"
+        theme="colored"
+        transition={Zoom}
+      />
     </div>
   );
 };

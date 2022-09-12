@@ -50,12 +50,7 @@ const ExpenseByCategories = ({
       </li>
     );
   });
-  return (
-    <>
-      <h3 className={s.title}>Expenses</h3>
-      <ul className={s.list}>{elements}</ul>
-    </>
-  );
+  return <ul className={s.list}>{elements}</ul>;
 };
 
 export default ExpenseByCategories;

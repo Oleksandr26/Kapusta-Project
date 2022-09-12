@@ -1,3 +1,4 @@
+import { async } from '@firebase/util';
 import axios from 'axios';
 
 const instance = axios.create({
@@ -20,6 +21,12 @@ export const setRefreshToken = (refreshToken = '') => {
 
 export const registration = async body => {
   const result = await instance.post('/auth/register', body);
+  setToken(result.data.accessToken);
+  return result.data;
+};
+
+export const authGoogle = async () => {
+  const result = await instance.get('/auth/google');
   setToken(result.data.accessToken);
   return result.data;
 };
