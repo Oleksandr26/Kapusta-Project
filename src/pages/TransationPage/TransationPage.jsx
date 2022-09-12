@@ -35,11 +35,8 @@ const HomePage = () => {
 
   const [deleteTransaction, deleteTransationData] =
     useDeleteTransactionMutation();
-  console.log('deleteTransationData: ', deleteTransationData);
   const [addExpense, addExpenseData] = useAddExpenseMutation();
-  console.log('addExpenseData: ', addExpenseData);
   const [addIncome, addIncomeData] = useAddIncomeMutation();
-  console.log('addIncomeData: ', addIncomeData);
 
   return (
     <div className={s.container}>

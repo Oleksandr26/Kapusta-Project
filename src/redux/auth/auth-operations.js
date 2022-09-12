@@ -1,13 +1,13 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import * as api from 'helpers/auth';
 
-export const handleRegister = createAsyncThunk(
+export const handleRegistration = createAsyncThunk(
   'auth/registration',
   async (data, {rejectWithValue}) => {
     try {
       return await api.registration(data);
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch ({response}) {
+      return rejectWithValue(response.data);
     }
   }
 );
@@ -17,8 +17,8 @@ export const handleLogin = createAsyncThunk(
   async (data, {rejectWithValue}) => {
   try {
     return await api.login(data);
-  } catch (error) {
-    return rejectWithValue(error);
+  } catch ({response}) {
+    return rejectWithValue(response.data);
   }
 });
 
@@ -27,8 +27,8 @@ export const handleLogout = createAsyncThunk(
   async (_, {rejectWithValue}) => {
     try {
       return api.logout();
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch ({response}) {
+      return rejectWithValue(response.data);
     }
   }
 );
@@ -42,8 +42,8 @@ export const getCurrentUser = createAsyncThunk(
       api.setToken(token)
       return await api.currentUser();
 
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch ({response}) {
+      return rejectWithValue(response.data);
     }
   }
 )
@@ -53,8 +53,8 @@ export const handleUpdateUserBalance = createAsyncThunk(
   async (amount,{rejectWithValue}) => {
     try {
       return await api.userBalance({newBalance: amount})
-    } catch (error){
-      rejectWithValue(error)
+    } catch ({response}) {
+      return rejectWithValue(response.data);
     }
   }
 )
@@ -71,8 +71,8 @@ export const initNewSession = createAsyncThunk(
 
       return result;
 
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch ({response}) {
+      return rejectWithValue(response.data);
     }
   },
 );
