@@ -25,11 +25,11 @@ export const registration = async body => {
   return result.data;
 };
 
-// export const authGoogle = async () => {
-//   const result = await instance.get('/auth/google');
-//   setToken(result.data.accessToken);
-//   return result.data;
-// };
+export const authGoogle = async () => {
+  const result = await instance.get('/auth/google');
+  setToken(result.data.accessToken);
+  return result.data;
+};
 
 export const login = async data => {
   const result = await instance.post('/auth/login', data);
