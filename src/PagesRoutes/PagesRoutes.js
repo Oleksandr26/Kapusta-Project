@@ -7,7 +7,9 @@ import { Container, Box } from '@mui/system';
 // import Spinner from 'components/Spinner/Spinner';
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
-const TransationPage = lazy(() => import('pages/TransationPage/TransationPage'));
+const TransationPage = lazy(() =>
+  import('pages/TransationPage/TransationPage')
+);
 const ReportsPage = lazy(() => import('pages/ReportsPage/ReportsPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
@@ -23,6 +25,7 @@ const PagesRoutes = () => {
 
             <Route element={<PrivateRoute />}>
               <Route path="/transactions" element={<TransationPage />} />
+              <Route path="/reports" element={<ReportsPage />} />
               <Route path="/reports" element={<ReportsPage />} />
             </Route>
 

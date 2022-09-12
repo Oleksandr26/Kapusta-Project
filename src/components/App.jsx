@@ -4,26 +4,13 @@ import PagesRoutes from 'PagesRoutes/PagesRoutes';
 import { getCurrentUser } from '../redux/auth/auth-operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
+import { getAccessToken, getUser } from 'redux/auth/auth-selector';
 import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
-
-import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-import PublicRoute from 'components/PublicRoute/PublicRoute';
-import { Container, Box } from '@mui/system';
-// import Spinner from 'components/Spinner/Spinner';
-
-const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
-const TransationPage = lazy(() => import('pages/TransationPage/TransationPage'));
-const ReportsPage = lazy(() => import('pages/ReportsPage/ReportsPage'));
-const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
-
 export const App = () => {
-  const currentUser = useSelector(state => state.auth.currentUser);
-  const accessToken = useSelector(state => state.auth.accessToken);
+  const currentUser = useSelector(getUser);
+  const accessToken = useSelector(getAccessToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
