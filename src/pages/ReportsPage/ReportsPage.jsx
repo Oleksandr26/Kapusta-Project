@@ -66,16 +66,11 @@ const ReportPage = () => {
         />
       </div>
 
-<<<<<<< Updated upstream
       <div className={s.chart_container}>
         <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}
         />
-=======
-      <div>
-        <Diagram dateTransactionFilter={dateTransactionFilter} category={category} />
->>>>>>> Stashed changes
       </div>
     </div>
   );
