@@ -1,5 +1,6 @@
 import s from './ReportsPage.module.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
@@ -11,6 +12,7 @@ import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 
 const ReportPage = () => {
   const [date, setDate] = useState(() => new Date());
+  const [category, setCategory] = useState(null);
 
   // --- В normalizedStateDate Преобразуем дату со state в формат для сравнения с фортатом даты транзакции которая приходит с сервера----
   const normalizedStoreDate = date.toLocaleString('en', {
@@ -35,9 +37,10 @@ const ReportPage = () => {
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <button className={s.btn}>
+        <Link className={s.btn} to="/transactions">
           <BackArrow className={s.icon} /> Main page
-        </button>
+        </Link>
+
         <div className={s.item}>
           <Balance />
         </div>
@@ -51,12 +54,23 @@ const ReportPage = () => {
       </div>
 
       <div>
-        <IncomeByCategories dateTransactionFilter={dateTransactionFilter} />
-        <ExpenseByCategories dateTransactionFilter={dateTransactionFilter} />
+        <IncomeByCategories
+          dateTransactionFilter={dateTransactionFilter}
+          setCategory={setCategory}
+          category={category}
+        />
+        <ExpenseByCategories
+          dateTransactionFilter={dateTransactionFilter}
+          setCategory={setCategory}
+          category={category}
+        />
       </div>
 
-      <div>
-        <Diagram dateTransactionFilter={dateTransactionFilter} />
+      <div className={s.chart_container}>
+        <Diagram
+          dateTransactionFilter={dateTransactionFilter}
+          category={category}
+        />
       </div>
     </div>
   );

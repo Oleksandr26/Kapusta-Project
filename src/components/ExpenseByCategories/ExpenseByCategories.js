@@ -7,7 +7,11 @@ import {
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 
-const ExpenseByCategories = ({ dateTransactionFilter }) => {
+const ExpenseByCategories = ({
+  dateTransactionFilter,
+  setCategory,
+  category,
+}) => {
   const isLogin = useSelector(store => store.auth.accessToken);
 
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
@@ -28,8 +32,16 @@ const ExpenseByCategories = ({ dateTransactionFilter }) => {
     const amountNormalizer = amount
       .toFixed(2)
       .replace(/\d(?=(\d{3})+\.)/g, '$& ');
+
+    const handleSetCategory = () => {
+      if (category === name) {
+        return;
+      }
+      setCategory(name);
+    };
+
     return (
-      <li className={s.item} key={nanoid()}>
+      <li className={s.item} key={nanoid()} onClick={handleSetCategory}>
         <p className={s.info}>{amountNormalizer}</p>
         <svg className={s.icon} width="56px" height="56px">
           <use href={iconPath}></use>

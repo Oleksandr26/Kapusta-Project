@@ -78,6 +78,7 @@ const UserForm = () => {
           />
         </label>
         <div className={s.wrapper_button}>
+<<<<<<< HEAD
           <button
             className={s.button}
             type="submit"
@@ -102,6 +103,32 @@ const UserForm = () => {
           >
             Register
           </button>
+=======
+        <button
+          className={s.button}
+          type="submit"
+          name="login"
+          onClick={e => {
+            e.preventDefault();
+            dispatch(handleLogin({ email, password }));
+            setEmail('');
+          }}
+        >
+          Login
+        </button>
+        <button
+          className={s.button}
+          type="submit"
+          name="register"
+          onClick={e => {
+            e.preventDefault();
+            dispatch(handleRegistration({ email, password }));
+            setPassword('');
+          }}
+        >
+          Register
+        </button>
+>>>>>>> c066cf6232957f558db2c1b9e1e6238903acd42c
         </div>
       </form>
     </div>

@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from 'redux/auth/auth-operations';
+import { handleLogout } from 'redux/auth/auth-operations';
 import { ReactComponent as LogOut } from '../../../assets/svg/logout.svg';
 import s from './UserMenu.module.css';
 
 const UserMenu = () => {
-  const email = useSelector(state => state.auth.email);
+  const email = useSelector(state => state.auth.userData.email);
   const dispatch = useDispatch();
   const exit = () => {
-    dispatch(logout());
+    dispatch(handleLogout());
   };
 
   // const googleUser = localStorage.getItem('email');

@@ -22,6 +22,7 @@
   margin-bottom: 40px;
   background-color: transparent;
   border: none;
+  color: var(--second-color);
 }
 
 .reports {

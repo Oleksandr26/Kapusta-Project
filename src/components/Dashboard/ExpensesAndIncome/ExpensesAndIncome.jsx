@@ -42,7 +42,7 @@ export const ExpensesAndIncome = () => {
     }
   };
 
-  const handleSunbimt = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     addExpense({
       description: description,
@@ -105,7 +105,7 @@ export const ExpensesAndIncome = () => {
           onChange={handleChange}
         />
         <div>
-          <Button className={s.btn} type="submit" onClick={handleSunbimt}>
+          <Button className={s.btn} type="submit" onClick={handleSubmit}>
             Input
           </Button>
           <Button className={s.btn} type="button" onClick={handleReset}>
