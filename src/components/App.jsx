@@ -1,5 +1,6 @@
 import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
+
 import PagesRoutes from 'PagesRoutes/PagesRoutes';
 import {getCurrentUser, handleAuthGoogle} from '../redux/auth/auth-operations';
 import {useDispatch, useSelector} from 'react-redux';
@@ -21,6 +22,7 @@ export const App = () => {
 
   return (
     <div>
+
       <div>
         <button onClick={() => {
           dispatch(handleAuthGoogle())
@@ -28,6 +30,7 @@ export const App = () => {
       </div>
       <Header/>
       <PagesRoutes/>
+
 
       <ToastContainer
         autoClose={2000}
