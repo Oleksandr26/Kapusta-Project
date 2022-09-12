@@ -1,0 +1,91 @@
+.tableContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.mobileTableDiv {
+    margin-bottom: 12px;
+}
+
+.title {
+    margin-bottom: -5px;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+
+    letter-spacing: 0.04em;
+
+    color: var(--text-color-four);
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--bg-modal-two-colour);
+    width: 282px;
+
+    justify-content: space-between;
+}
+
+.divTextFlex {
+    display: flex;
+}
+
+.divTextFlex__text {
+    font-size: 12px;
+    line-height: 1.12;
+    letter-spacing: 0.04em;
+
+    color: var(--text-color-four);
+}
+
+.divTextFlex__text:first-child {
+    margin-right: 20px;
+}
+
+.divSumAndButtonFlex {
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.divSumAndButtonFlex__sum {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+
+    letter-spacing: 0.04em;
+
+    color: green;
+
+    margin-right: 20px;
+}
+
+.btnDelete {
+    width: 28px;
+    height: 28px;
+    border-radius: 50px;
+
+    border: none;
+    background: none;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 250ms linear;
+}
+
+.btnDelete:hover,
+.btnDelete:focus {
+    background: var(--accent-color);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 768px) {
+    .tableContainer {
+        display: none;
+    }
+}
