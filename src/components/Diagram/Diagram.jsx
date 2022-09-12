@@ -55,7 +55,7 @@ export function Diagram({ dateTransactionFilter, category }) {
 
   const MONTH_CASHFLOW = [];
 
-  if (incomes !== undefined && incomes !== undefined) {
+  if (incomes !== undefined && expenses !== undefined) {
     MONTH_CASHFLOW.push(...incomes, ...expenses);
   }
 
