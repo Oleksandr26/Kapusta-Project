@@ -6,6 +6,7 @@ import {
   useGetExpenseCategoriesQuery,
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
+import { NavLink } from 'react-router-dom';
 
 const ExpenseByCategories = ({
   dateTransactionFilter,
@@ -39,14 +40,24 @@ const ExpenseByCategories = ({
       }
       setCategory(name);
     };
+    const getLinkClassName = props => {
+      const { isActive } = props;
+      return isActive ? s.activeLink : s.link;
+    };
 
     return (
-      <li className={s.item} key={nanoid()} onClick={handleSetCategory}>
-        <p className={s.info}>{amountNormalizer}</p>
-        <svg className={s.icon} width="56px" height="56px">
-          <use href={iconPath}></use>
-        </svg>
-        <p className={s.info}>{name}</p>
+      <li className={s.item} key={nanoid()}>
+        <NavLink
+          to={name}
+          className={getLinkClassName}
+          onClick={handleSetCategory}
+        >
+          <p className={s.info}>{amountNormalizer}</p>
+          <svg className={s.icon} width="56px" height="56px">
+            <use href={iconPath}></use>
+          </svg>
+          <p className={s.info}>{name}</p>
+        </NavLink>
       </li>
     );
   });
