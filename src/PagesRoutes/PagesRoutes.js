@@ -19,27 +19,23 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 const PagesRoutes = () => {
   return (
     <Suspense>
-      <Container maxWidth="xl">
-        <Box xl={{ height: '100vh' }}>
-          <Routes>
-            <Route element={<PublicRoute />}>
-              <Route path="/" element={<AuthPage />} />
-            </Route>
+      <Routes>
+        <Route element={<PublicRoute />}>
+          <Route path="/" element={<AuthPage />} />
+        </Route>
 
-            <Route element={<PrivateRoute />}>
-              <Route path="/transactions" element={<TransationPage />}>
-                <Route path="expenses" element={<ExpensesAndIncome />} />
-                <Route path="income" element={<ExpensesAndIncome />} />
-                <Route path="summary" element={<Summary />} />
-              </Route>
+        <Route element={<PrivateRoute />}>
+          <Route path="/transactions" element={<TransationPage />}>
+            <Route path="expenses" element={<ExpensesAndIncome />} />
+            <Route path="income" element={<ExpensesAndIncome />} />
+            <Route path="summary" element={<Summary />} />
+          </Route>
 
-              <Route path="/reports" element={<ReportsPage />} />
-            </Route>
+          <Route path="/reports" element={<ReportsPage />} />
+        </Route>
 
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Box>
-      </Container>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </Suspense>
   );
 };
