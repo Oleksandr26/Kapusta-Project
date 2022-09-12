@@ -1,3 +1,4 @@
+// import { TransactionDetailsMobile } from 'components/Dashboard/TransactionDetails/TransactionsDetailsMobile/TransactionsDetailsMobile';
 import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,6 +44,7 @@ const Balance = () => {
           />
         )}
       </div>
+      {/* <TransactionDetailsMobile /> */}
     </div>
   );
 };

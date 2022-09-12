@@ -4,10 +4,12 @@ import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
   useAddExpenseMutation,
+  useAddIncomeMutation,
   useGetExpenseCategoriesQuery,
   useGetIncomeCategoriesQuery,
 } from 'redux/transaction/transactionOperations';
 import s from './ExpensesAndIncome.module.css';
+import { TransactionDetails } from '../TransactionDetails/TransactionDetails';
 
 export const ExpensesAndIncome = () => {
   const token = useSelector(state => state.auth.accessToken);
@@ -15,6 +17,7 @@ export const ExpensesAndIncome = () => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const [addExpense, addExpenseData] = useAddExpenseMutation();
+  const [addIncome, addIncomeData] = useAddIncomeMutation();
   const location = useLocation();
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: token,
@@ -44,12 +47,19 @@ export const ExpensesAndIncome = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addExpense({
-      description: description,
-      amount: price,
-      date: currentDate,
-      category: category,
-    });
+    location.pathname === '/expenses'
+      ? addExpense({
+          description: description,
+          amount: price,
+          date: currentDate,
+          category: category,
+        })
+      : addIncome({
+          description: description,
+          amount: price,
+          date: currentDate,
+          category: category,
+        });
     setDescription('');
     setCategory('');
     setPrice('');
@@ -113,6 +123,7 @@ export const ExpensesAndIncome = () => {
           </Button>
         </div>
       </form>
+      <TransactionDetails />
     </div>
   );
 };
