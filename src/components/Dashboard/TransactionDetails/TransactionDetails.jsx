@@ -9,18 +9,17 @@ import s from './TransactionDetails.module.css';
 
 export const TransactionDetails = () => {
   const location = useLocation();
-  const [deleteTransaction, deleteTransationData] =
-    useDeleteTransactionMutation();
+  const [deleteTransaction] = useDeleteTransactionMutation();
   const token = useSelector(state => state.auth.accessToken);
-  // const getIncome = useGetIncomeQuery({
-  //   skip: token,
-  // });
-  // const incomeArr = [...getIncome.data.incomes].reverse();
+  const getIncome = useGetIncomeQuery({
+    skip: token,
+  });
+  const incomeArr = [...getIncome.data.incomes].reverse();
 
-  // const getExpense = useGetExpenseQuery({
-  //   skip: token,
-  // });
-  // const expenceArr = [...getExpense.data.expenses].reverse();
+  const getExpense = useGetExpenseQuery({
+    skip: token,
+  });
+  const expenceArr = [...getExpense.data.expenses].reverse();
 
   return (
     <div className={s.scrollTable}>
@@ -39,7 +38,7 @@ export const TransactionDetails = () => {
       <div className={s.scrollTableBody}>
         <table>
           <tbody>
-            {/* {location.pathname === '/expenses'
+            {location.pathname === '/expenses'
               ? expenceArr.map(item => (
                   <tr className={s.tableBodyTR} key={item._id}>
                     <td className={s.tableBodyDate}>{item.date}</td>
@@ -77,7 +76,7 @@ export const TransactionDetails = () => {
                       </button>
                     </td>
                   </tr>
-                ))} */}
+                ))}
           </tbody>
         </table>
       </div>
