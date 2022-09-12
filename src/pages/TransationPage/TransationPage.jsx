@@ -15,8 +15,7 @@ import {
 
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import { Navigate } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   // const [expense, setExpense] = useState({
@@ -33,8 +32,7 @@ const HomePage = () => {
   // const {data, isLoading, error} = useGetExpenseQuery();
   // const { data, isLoading, error } = useGetUserQuery();
 
-  const [deleteTransaction, deleteTransationData] =
-    useDeleteTransactionMutation();
+  const [deleteTransaction, deleteTransationData] = useDeleteTransactionMutation();
   const [addExpense, addExpenseData] = useAddExpenseMutation();
   const [addIncome, addIncomeData] = useAddIncomeMutation();
 
@@ -43,14 +41,10 @@ const HomePage = () => {
       <h2>TransationPage</h2>
 
       <div className={s.wrap}>
-        <button
-          type="button"
-          className={s.reportsBtn}
-          onClick={() => <Navigate to="/report" />}
-        >
+        <Link className={s.reportsBtn} to="/reports">
           <span className={s.reports}>Reports</span>
           <BarChart className={s.icon} />
-        </button>
+        </Link>
         <Balance />
       </div>
 
@@ -58,11 +52,7 @@ const HomePage = () => {
 
       {/* <UserForm /> */}
       <div className={s.block}>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() => deleteTransaction()}
-        >
+        <button className={s.item} type="button" onClick={() => deleteTransaction()}>
           detele transaction
         </button>
         <button
