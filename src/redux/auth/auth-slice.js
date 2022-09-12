@@ -22,6 +22,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    updateBalance: (state, {payload: {newBalance}}) => {
+      state.userData.balance = newBalance;
+    }
+  },
   extraReducers: {
     // -------------------register------------------------------
 
@@ -119,7 +124,14 @@ const authSlice = createSlice({
       store.loading = false;
       store.error = payload.message;
     },
+<<<<<<< Updated upstream
   },
 });
 
+=======
+  }});
+
+
+export const { updateBalance } = authSlice.actions;
+>>>>>>> Stashed changes
 export default authSlice.reducer;
