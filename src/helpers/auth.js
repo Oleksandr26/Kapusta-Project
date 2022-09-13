@@ -25,7 +25,11 @@ export const registration = async body => {
 };
 
 export const authGoogle = async () => {
-  const result = await instance.get('/auth/google');
+  const result = await instance.get('/auth/google', {
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
   setToken(result.data.accessToken);
   return result.data;
 };

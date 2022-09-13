@@ -16,30 +16,31 @@ import {
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { Link, Outlet } from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import {useEffect} from "react";
+import {updateBalance} from "../../redux/auth/auth-slice";
 
 const HomePage = () => {
-  // const [expense, setExpense] = useState({
-  //   description: 'Income description',
-  //   amount: 100,
-  //   date: '2020-12-31',
-  //   category: 'Доп. доход',
-  // });
-  // const { data, isLoading, error } = useGetIncomeCategoriesQuery();
-  // const {data, isLoading, error} = useGetExpenseCategoriesQuery();
-  // const {data, isLoading, error} = useGetPeriodDataQuery('2022-06');
-  // const { data, isLoading, error } = useGetIncomeQuery();
-  // console.log('data: ', data);
-  // const {data, isLoading, error} = useGetExpenseQuery();
-  // const { data, isLoading, error } = useGetUserQuery();
+  const dispatch = useDispatch();
+  const [deleteTransaction] = useDeleteTransactionMutation();
+  const [addExpense, addExpenseResult] = useAddExpenseMutation();
+  const [addIncome, addIncomeResult] = useAddIncomeMutation();
 
-  const [deleteTransaction] =
-    useDeleteTransactionMutation();
-  const [addExpense] = useAddExpenseMutation();
-  const [addIncome] = useAddIncomeMutation();
+  useEffect(() => {
+    if(addIncomeResult.isSuccess){
+      dispatch(updateBalance(addIncomeResult.data))
+    }
+  }, [dispatch, addIncomeResult])
+
+  useEffect(() => {
+    if(addExpenseResult.isSuccess){
+      dispatch(updateBalance(addExpenseResult.data))
+    }
+  }, [dispatch, addExpenseResult])
 
   return (
     <div className={s.container}>
-      <h2>TransationPage</h2>
+      <h2>TransactionPage</h2>
 
       <div className={s.wrap}>
         <Link className={s.reportsBtn} to="/reports">
@@ -51,7 +52,6 @@ const HomePage = () => {
 
       <Dashboard />
 
-      {/* <UserForm /> */}
       <div className={s.block}>
         <button
           className={s.item}

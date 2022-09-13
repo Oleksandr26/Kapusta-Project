@@ -22,7 +22,6 @@ export const App = () => {
 
   return (
     <div>
-
       <div>
         <button onClick={() => {
           dispatch(handleAuthGoogle())
