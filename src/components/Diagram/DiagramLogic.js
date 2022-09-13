@@ -9,11 +9,13 @@ export const newDiagramHeight = (diagramForSelectedMonth, canvasTag) => {
   let newHeight = '';
   let startedHeight = 60;
   const totalBars = diagramForSelectedMonth.length;
-  if (totalBars > 1) {
+  if (totalBars > 1 && window.innerHeight) {
     newHeight = (totalBars - 1) * 40 + startedHeight;
     canvasTag.style.height = newHeight + 'px';
-  } else if (totalBars === 1) {
+  } else if (totalBars === 1 && window.innerHeight) {
     canvasTag.style.height = 60 + 'px';
+  } else {
+    return;
   }
 };
 
