@@ -4,10 +4,8 @@ import { lazy, Suspense } from 'react';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import PublicRoute from 'components/PublicRoute/PublicRoute';
 
-// import Balance from 'components/Balance/Balance';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
 import Summary from 'components/Dashboard/Summary/Summary';
-import { Diagram } from 'components/Diagram/Diagram';
 // import Spinner from 'components/Spinner/Spinner';
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
