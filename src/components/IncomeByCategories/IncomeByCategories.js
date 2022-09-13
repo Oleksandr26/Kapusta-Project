@@ -1,6 +1,6 @@
 import s from './IncomeByCategories.module.css';
 import { nanoid } from '@reduxjs/toolkit';
-import sprite from 'assets/svg/sprite.svg';
+import sprite from 'assets/svg/icons.svg';
 import { useSelector } from 'react-redux';
 import {
   useGetIncomeCategoriesQuery,
