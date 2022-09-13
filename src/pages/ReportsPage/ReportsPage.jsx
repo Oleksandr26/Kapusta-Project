@@ -1,6 +1,6 @@
 import s from './ReportsPage.module.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
@@ -9,8 +9,12 @@ import { Diagram } from 'components/Diagram/Diagram';
 import IncomeByCategories from 'components/IncomeByCategories/IncomeByCategories';
 import ReportsDate from 'components/ReportsDate/ReportsDate';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
+import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
+import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
 
 const ReportPage = () => {
+  const [reportsType, setReportsType] = useState(false);
+
   const [date, setDate] = useState(() => new Date());
   const [category, setCategory] = useState(null);
 
@@ -34,13 +38,16 @@ const ReportPage = () => {
       return normalizedStoreDate === normalizedTransactionDate;
     });
 
+  const changeReportsVision = () => {
+    setReportsType(!reportsType);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.header}>
         <Link className={s.btn} to="/transactions">
-          <BackArrow className={s.icon} /> Main page
+          <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
         </Link>
-
         <div className={s.item}>
           <Balance />
         </div>
@@ -48,25 +55,43 @@ const ReportPage = () => {
           <ReportsDate date={date} setDate={setDate} />
         </div>
       </div>
+      <MonthTotal date={date} />
+      <div className={s.block}>
+        <div className={s.types}>
+          <button
+            type="button"
+            className={s.leftArrow}
+            onClick={() => changeReportsVision()}
+          >
+            <LeftArrow className={s.iconArrow} />
+          </button>
+          <p className={s.title}>{reportsType ? 'Income' : 'Expenses'} </p>
+          <button
+            type="button"
+            className={s.rightArrow}
+            onClick={() => changeReportsVision()}
+          >
+            <RigthArrow className={s.iconArrow} />
+          </button>
+        </div>
 
-      <div>
-        <MonthTotal date={date} />
+        {reportsType ? (
+          <IncomeByCategories
+            dateTransactionFilter={dateTransactionFilter}
+            setCategory={setCategory}
+            category={category}
+          />
+        ) : (
+          <ExpenseByCategories
+            dateTransactionFilter={dateTransactionFilter}
+            setCategory={setCategory}
+            category={category}
+          />
+        )}
       </div>
+      <div className={s.chart_container} id="flexible">
+        <Outlet />
 
-      <div>
-        <IncomeByCategories
-          dateTransactionFilter={dateTransactionFilter}
-          setCategory={setCategory}
-          category={category}
-        />
-        <ExpenseByCategories
-          dateTransactionFilter={dateTransactionFilter}
-          setCategory={setCategory}
-          category={category}
-        />
-      </div>
-
-      <div className={s.chart_container}>
         <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {App} from 'components/App';
+import { App } from 'components/App';
 import './index.css';
 import {BrowserRouter} from 'react-router-dom';
 import {Provider} from 'react-redux';
@@ -24,17 +24,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-const {dispatch} = store;
-const ERROR_MESSAGE = "Invalid session";
+const { dispatch } = store;
+const ERROR_MESSAGE = 'Invalid session';
 instance.interceptors.response.use(
   response => {
     // console.log(response)
     return response;
   },
-  (error) => {
-    console.log(error)
-    if(error.response.data.message === ERROR_MESSAGE){
-      dispatch(initNewSession())
+  error => {
+    console.log(error);
+    if (error.response.data.message === ERROR_MESSAGE) {
+      dispatch(initNewSession());
     }
     return Promise.reject(error);
   }

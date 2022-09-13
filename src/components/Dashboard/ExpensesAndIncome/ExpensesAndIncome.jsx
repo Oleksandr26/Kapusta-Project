@@ -10,14 +10,15 @@ import {
 } from 'redux/transaction/transactionOperations';
 import s from './ExpensesAndIncome.module.css';
 import { TransactionDetails } from '../TransactionDetails/TransactionDetails';
+import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 
 export const ExpensesAndIncome = () => {
   const token = useSelector(state => state.auth.accessToken);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
-  const [addExpense, addExpenseData] = useAddExpenseMutation();
-  const [addIncome, addIncomeData] = useAddIncomeMutation();
+  const [addExpense] = useAddExpenseMutation();
+  const [addIncome] = useAddIncomeMutation();
   const location = useLocation();
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: token,
@@ -47,7 +48,7 @@ export const ExpensesAndIncome = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    location.pathname === '/expenses'
+    location.pathname === '/transactions/expenses'
       ? addExpense({
           description: description,
           amount: price,
@@ -73,7 +74,14 @@ export const ExpensesAndIncome = () => {
 
   return (
     <div className={s.expenses}>
-      <NavLink to="/">back</NavLink>
+      <NavLink to="/">
+        <BackArrow
+          style={{
+            width: '32',
+            height: '24',
+          }}
+        />
+      </NavLink>
       <form className={s.form}>
         <input
           className={s.input}
@@ -93,7 +101,7 @@ export const ExpensesAndIncome = () => {
           onChange={handleChange}
         >
           <option defaultValue>Product category</option>
-          {location.pathname === '/expenses'
+          {location.pathname === '/transactions/expenses'
             ? expenseCategories &&
               expenseCategories.map(item => (
                 <option value={item} key={item}>

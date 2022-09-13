@@ -25,15 +25,15 @@ export default function MonthTotalStatistics({ date }) {
     ' грн.';
 
   return (
-    <>
-      <ul className={s.list}>
-        <li className={s.item}>
-          Expenses: <span className={s.extense}>{expenseNormalizer}</span>
-        </li>
-        <li className={s.item}>
-          Income: <span className={s.income}>{incomeNormalizer}</span>
-        </li>
-      </ul>
-    </>
+    <ul className={s.list}>
+      <li className={s.item}>
+        <p className={s.text}> Expenses: </p>
+        <span className={s.extense}>{expenseNormalizer}</span>
+      </li>
+      <li className={s.item}>
+        <p className={s.text}>Income:</p>
+        <span className={s.income}>{incomeNormalizer}</span>
+      </li>
+    </ul>
   );
 }

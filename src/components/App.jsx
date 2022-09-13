@@ -1,11 +1,12 @@
 import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
+
 import PagesRoutes from 'PagesRoutes/PagesRoutes';
-import { getCurrentUser } from '../redux/auth/auth-operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getAccessToken, getUser } from 'redux/auth/auth-selector';
-import { ToastContainer, Zoom } from 'react-toastify';
+import {getCurrentUser, handleAuthGoogle} from '../redux/auth/auth-operations';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect} from 'react';
+import {getAccessToken, getUser} from 'redux/auth/auth-selector';
+import {ToastContainer, Zoom} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
@@ -21,8 +22,14 @@ export const App = () => {
 
   return (
     <div>
-      <Header />
-      <PagesRoutes />
+      <div>
+        <button onClick={() => {
+          dispatch(handleAuthGoogle())
+        }}>Google Sign-in</button>
+      </div>
+      <Header/>
+      <PagesRoutes/>
+
 
       <ToastContainer
         autoClose={2000}
