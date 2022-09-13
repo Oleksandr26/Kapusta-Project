@@ -43,9 +43,9 @@
   border: none;
   border-radius: 30px;
   background-color: var(--bg-color);
-}
-.input::placeholder {
   padding-left: 18px;
+  outline-color: var(--third-color);
+  color: var(--third-color);
 }
 .wrapper_button {
   display: flex;
@@ -68,6 +68,12 @@
 .button:not(:last-child) {
   margin-right: 8px;
 }
+.button:hover,
+.button:focus {
+  color: var(--accent-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+}
 .auth_button {
   background-color: var(--bg-color);
   border-radius: 26px;
@@ -80,6 +86,10 @@
   margin: 0 auto;
   margin-top: 16px;
   margin-bottom: 32px;
+}
+.auth_button:hover,
+.auth_button:focus {
+  border: 1px solid var(--accent-color);
 }
 .googleIcon {
   width: 18px;
@@ -102,11 +112,33 @@
     width: 768px;
   }
   .backgraund {
-    
+    min-width: 426px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 261px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .input {
+    width: 260px;
+  }
+  .button {
+    width: 122px;
+  }
+  .text {
+    max-width: 248px;
+    text-align: start;
   }
 }
 @media screen and (min-width: 1200px) {
   .container {
     width: 1200px;
+  }
+  .backgraund {
+    top: 117px;
+    right: 91px;
+    left: none;
+    transform: none;
   }
 }

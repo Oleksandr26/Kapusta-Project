@@ -34,15 +34,28 @@
   margin-left: 35px;
   bottom: 0;
 }
+.duble_icon {
+  position: absolute;
+  margin-left: 197px;
+  bottom: 115px;
+  z-index: -1;
+  transform: scale(-1, 1);
+}
 
 @media screen and (max-width: 767px) {
   .container {
     max-width: 480px;
   }
+  .duble_icon {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
-.phrase {
+  .form_wrapper {
+    height: 968px;
+  }
+  .phrase {
     margin-left: 225px;
     padding-bottom: 345px;
     font-size: 16px;
@@ -58,13 +71,16 @@
     padding-top: 80px;
     border-radius: 0px 0px 0px 25%;
     background-image: url(../../assets/png/fon.png);
-    background-size: 1234px 300px;
+    background-size: 1334px 232px;
     background-repeat: no-repeat;
     background-position: 0px 20px;
-
   }
   .icon {
     display: none;
+  }
+  .Second_icon {
+    margin-left: 103px;
+    bottom: 90px;
   }
 }
 
@@ -74,7 +90,17 @@
   }
   .title {
     width: 377px;
-    margin-left: 230px;
+    margin-left: 229px;
     height: 120px;
+  }
+  .form_wrapper {
+    height: 794px;
+  }
+  .backgraund_title {
+    padding-top: 308px;
+  }
+  .phrase {
+    margin-left: 301px;
+    padding-bottom: 98px;
   }
 }

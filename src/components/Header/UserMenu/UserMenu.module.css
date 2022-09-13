@@ -15,10 +15,55 @@
   align-items: center;
 }
 .nav {
-  /* margin-right: 20px; */
   display: flex;
   align-items: center;
 }
 .icon_logOut {
   width: 16px;
+}
+.full_name {
+  margin-right: 20px;
+  padding: 8px 20px 8px 0px;
+  border-right: 1px solid var(--bg-color);
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+}
+.exit {
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  color: #52555f;
+  cursor: pointer;
+}
+.exit:hover,
+.exit:focus {
+  color: var(--accent-color);
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-width: 480px;
+  }
+  .full_name {
+    display: none;
+  }
+  .exit {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .nav {
+    margin-right: 32px;
+  }
+  .icon_logOut {
+    display: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
 }
