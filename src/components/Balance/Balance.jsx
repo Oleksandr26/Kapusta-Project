@@ -2,20 +2,22 @@
 import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { handleUpdateUserBalance } from '../../redux/auth/auth-operations';
 import s from './Balance.module.css';
 
 const Balance = () => {
-  const [modalActive, setModalActive] = useState(false);
-  const userBalance = useSelector(state => state.auth.userData.balance);
   const dispatch = useDispatch();
-
+  const userBalance = useSelector(state => state.auth.userData.balance);
+  const [modalActive, setModalActive] = useState(false);
+  const transactions = useSelector(state => state.auth.userData.transactions);
+  const { pathname } = useLocation();
   useEffect(() => {
-    if (userBalance === 0) {
+    if (pathname === '/transactions' && transactions.length === 0) {
       setModalActive(true);
       return;
     }
-  }, [userBalance]);
+  }, [pathname, transactions]);
 
   const handleToggle = () => {
     setModalActive(!modalActive);
