@@ -1,12 +1,9 @@
-// import { signInWithGoogle } from '../../Firebase/app';
 import { useDispatch } from 'react-redux';
-import { handleLogin, handleRegistration, handleAuthGoogle } from 'redux/auth/auth-operations';
+import { handleLogin, handleRegistration } from 'redux/auth/auth-operations';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
 import { useState } from 'react';
-import { useEffect } from 'react';
+// import { GoogleLogin } from '@moeindana/google-oauth';
 import s from './UserForm.module.css';
-
-const google = window.google;
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -29,38 +26,28 @@ const UserForm = () => {
     }
   };
 
-   const handleCallbackResponse = (response) => {
-        console.log('token id:::' + response.credential);
-        // dispatch(handleAuthGoogle())
-    }
-
-    useEffect(() => {
-        google.accounts.id.initialize({
-            client_id: '576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com',
-            callback: handleCallbackResponse
-        });
-
-        google.accounts.id.renderButton(
-          document.getElementById("signInDiv"),
-          {theme: "outline", size: "large"}
-        )
-    });
+  // <GoogleLogin
+  // onSuccess={response => {
+  //   console.log(response);
+  // }}
+  // onError={() => {
+  //   console.log('Login Failed');
+  // }}/>
 
   return (
     <div className={` ${s.backgraund}`}>
       <p className={s.text}>You can log in with your Google Account:</p>
-      {/* <button
+      {/* <GoogleLogin /> */}
+      <button
         className={s.auth_button}
         onClick={e => {
           e.preventDefault();
-          dispatch(handleAuthGoogle());
           setEmail('');
         }}
       >
         <GoogleIcon className={s.googleIcon} />
         <span className={s.span}>Google</span>
-      </button> */}
-      <div id="signInDiv" ></div>
+      </button>
       <p className={s.text}>
         Or log in using an email and password, after registering:
       </p>

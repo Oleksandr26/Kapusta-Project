@@ -34,7 +34,7 @@ const authSlice = createSlice({
       store.userData = {...payload.userData};
       store.token = payload.token;
       store.loading = false;
-      console.log(payload);
+      // console.log(payload);
     },
     [handleRegistration.rejected]: (store, {payload}) => {
       store.loading = false;

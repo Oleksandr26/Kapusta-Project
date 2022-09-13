@@ -36,6 +36,7 @@ export const handleLogin = createAsyncThunk(
 export const handleLogout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
+    
     try {
       return api.logout();
     } catch ({ response }) {
