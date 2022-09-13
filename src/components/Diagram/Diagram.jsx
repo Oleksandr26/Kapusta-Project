@@ -11,22 +11,29 @@ import {
   handleChosenCategoryUniqueLabels,
   newDiagramHeight,
 } from './DiagramLogic';
+import { useParams } from 'react-router-dom';
 
 Chart.register(ChartDataLabels, ...registerables);
 
-export function Diagram({ dateTransactionFilter, category }) {
+export function Diagram({ dateTransactionFilter }) {
+  const { categoryId } = useParams();
+  console.log('categoryId: ', categoryId);
+
   const expenses = useGetExpenseQuery().currentData?.expenses;
   const incomes = useGetIncomeQuery().currentData?.incomes;
   const MONTH_CASHFLOW = [];
+
   const canvasTag = document.querySelector('canvas');
 
   if (incomes !== undefined && expenses !== undefined) {
     MONTH_CASHFLOW.push(...incomes, ...expenses);
   }
+  const categoryObject = MONTH_CASHFLOW.filter(item => item._id === categoryId);
+  console.log('categoryObject: ', categoryObject);
 
   const chosenCategoryUniqueLabels = handleChosenCategoryUniqueLabels(
     MONTH_CASHFLOW,
-    category
+    categoryObject[0]?.category
   );
 
   const diagramForSelectedMonth = chosenCategoryUniqueLabels
@@ -45,6 +52,7 @@ export function Diagram({ dateTransactionFilter, category }) {
       (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
     )
     .filter(el => el.amount !== 0);
+  console.log('diagramForSelectedMonth: ', diagramForSelectedMonth);
 
   const labels = diagramForSelectedMonth?.map(
     ({ descriptionName }) => descriptionName

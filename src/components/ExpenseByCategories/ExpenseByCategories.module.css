@@ -5,6 +5,8 @@
 }
 
 .item {
+  position: relative;
+  z-index: 10;
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
@@ -50,46 +52,19 @@
 .link {
   color: var(--icons-color);
 }
-.activeLink {
-  color: var(--accent-color);
-}
-/* .link:hover {
-  color: var(--accent-color);
-} */
-
-.icon {
-  fill: currentColor;
-}
-/* .icon.activeLink {
-  fill: var(--icons-color);
-} */
-
 .iconBackground {
+  position: absolute;
+  z-index: 0;
+  left: 0;
   fill: #f5f6fb;
 }
-.iconBackground.activeLink {
+.icon {
+  fill: var(--icons-color);
+}
+
+.activeLink .icon {
+  fill: var(--accent-color);
+}
+.activeLink .iconBackground {
   fill: var(--second-accent-color);
 }
-
-/* .divIMAGE {
-  color: #071f41;
-}
-
-.activeLinkIMAGE {
-  color: var(--accent-color);
-}
-.linkIMAGE {
-  fill: currentColor;
-}
-
-.divBACK {
-  color: 
-}
-.activeLinkBack {
-  color: var(--second-accent-color);
-}
-.linkBACK {
-  fill: currentColor;
-  width: 56px;
-  margin: 5px 0 0 0;
-} */

@@ -1,6 +1,6 @@
 import s from './ReportsPage.module.css';
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
@@ -11,8 +11,15 @@ import ReportsDate from 'components/ReportsDate/ReportsDate';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect } from 'react';
 
 const ReportPage = () => {
+  // const test = useSelector(store => {
+  //   console.log('store: ', store);
+  //   return store;
+  // });
+  // console.log('test: ', test);
   const [reportsType, setReportsType] = useState(false);
 
   const [date, setDate] = useState(() => new Date());
@@ -90,12 +97,14 @@ const ReportPage = () => {
         )}
       </div>
       <div className={s.chart_container} id="flexible">
-        <Outlet />
+        <Routes>
+          <Route path=":categoryId" element={<Diagram />} />
+        </Routes>
 
-        <Diagram
+        {/* <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}
-        />
+        /> */}
       </div>
     </div>
   );

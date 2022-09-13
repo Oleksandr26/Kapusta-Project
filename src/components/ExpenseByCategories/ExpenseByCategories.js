@@ -25,14 +25,20 @@ const ExpenseByCategories = ({
   const { data = [] } = useGetExpenseQuery({ skip: isLogin });
   const { expenses = [] } = data;
 
-  const result = expenseCategories?.map(item => ({
-    name: item,
-    amount: dateTransactionFilter(expenses)?.reduce((acc, transaction) => {
-      return item === transaction.category ? acc + transaction.amount : acc;
-    }, 0),
-  }));
+  const result = expenseCategories?.map(item => {
+    return {
+      name: item,
+      amount: dateTransactionFilter(expenses)?.reduce((acc, transaction) => {
+        return item === transaction.category ? acc + transaction.amount : acc;
+      }, 0),
+      id:
+        dateTransactionFilter(expenses)?.find(
+          expense => expense.category === item
+        )?._id ?? '',
+    };
+  });
 
-  const elements = result?.map(({ name, amount }, index) => {
+  const elements = result?.map(({ name, amount, id }) => {
     const iconPath = sprite + `#${name}`;
     const backgroundPath = backgroundSprite + `#${name}`;
     const amountNormalizer = amount
@@ -45,22 +51,28 @@ const ExpenseByCategories = ({
       }
       setCategory(name);
     };
-
     return (
-      <li className={s.item} key={nanoid()}>
+      <li className={s.item} key={nanoid()} onClick={handleSetCategory}>
         <p className={s.info}>{amountNormalizer}</p>
-        <NavLink
-          to={name}
-          className={getLinkClassName}
-          onClick={handleSetCategory}
-        >
-          <svg className={s.icon} width="56px" height="56px">
-            <use href={iconPath}></use>
-          </svg>
-          <svg className={s.iconBackground} width="56px" height="56px">
-            <use href={backgroundPath}></use>
-          </svg>
-        </NavLink>
+        {id ? (
+          <NavLink to={id} className={getLinkClassName}>
+            <svg className={s.icon} width="56px" height="56px">
+              <use href={iconPath}></use>
+            </svg>
+            <svg className={s.iconBackground} width="56px" height="56px">
+              <use href={backgroundPath}></use>
+            </svg>
+          </NavLink>
+        ) : (
+          <div className={s.link}>
+            <svg className={s.icon} width="56px" height="56px">
+              <use href={iconPath}></use>
+            </svg>
+            <svg className={s.iconBackground} width="56px" height="56px">
+              <use href={backgroundPath}></use>
+            </svg>
+          </div>
+        )}
         <p className={s.info}>{name}</p>
       </li>
     );

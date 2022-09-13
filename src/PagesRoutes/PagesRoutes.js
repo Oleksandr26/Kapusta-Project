@@ -32,9 +32,7 @@ const PagesRoutes = () => {
             <Route path="summary" element={<Summary />} />
           </Route>
 
-          <Route path="/reports" element={<ReportsPage />}>
-            <Route path="/reports/:category" element={<Diagram />} />
-          </Route>
+          <Route path="/reports/*" element={<ReportsPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
