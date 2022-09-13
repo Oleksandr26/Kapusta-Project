@@ -5,6 +5,18 @@ export const handleChosenCategoryUniqueLabels = (arr, category) => {
     .filter((el, index, array) => array.indexOf(el) === index);
 };
 
+export const newDiagramHeight = (diagramForSelectedMonth, canvasTag) => {
+  let newHeight = '';
+  let startedHeight = 60;
+  const totalBars = diagramForSelectedMonth.length;
+  if (totalBars > 1) {
+    newHeight = (totalBars - 1) * 40 + startedHeight;
+    canvasTag.style.height = newHeight + 'px';
+  } else if (totalBars === 1) {
+    canvasTag.style.height = 60 + 'px';
+  }
+};
+
 // const diagramForAllTime = arr => {
 //   arr?.map(item => ({
 //     descriptionName: item,
@@ -22,9 +34,3 @@ export const handleChosenCategoryUniqueLabels = (arr, category) => {
 // }));
 
 // console.log(diagramForAllTime(chosenCategoriesUniqueLabels));
-
-// const chosenCategoriesUniqueLabels = MONTH_CASHFLOW?.filter(
-//   item => item.category === category
-// );
-//   ?.map(({ description }) => description)
-//   .filter((el, index, array) => array.indexOf(el) === index);

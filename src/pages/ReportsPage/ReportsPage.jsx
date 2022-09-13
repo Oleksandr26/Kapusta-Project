@@ -89,7 +89,7 @@ const ReportPage = () => {
           />
         )}
       </div>
-      <div className={s.chart_container}>
+      <div className={s.chart_container} id="flexible">
         <Diagram
           dateTransactionFilter={dateTransactionFilter}
           category={category}
