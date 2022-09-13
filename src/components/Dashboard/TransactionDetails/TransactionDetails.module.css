@@ -3,7 +3,7 @@
     border-spacing: 0px;
 }
 
-.scrollTableBody {
+.scrollBody {
     height: 360px;
     overflow-x: hidden;
 }
@@ -47,16 +47,22 @@
 
 .tableTheadCategory {
     height: 40px;
+    text-align: start;
 }
 
-.tableTheadSum {
+.table__head {border: 2px solid red;
     height: 40px;
+    text-align: center;
 }
 
-.tableTheadDelete {
+.table__delete {
+    width: 40px;
+    height: 40px;
     border-top-right-radius: 16px;
 }
-
+.x{
+    border: 2px solid red;
+}
 /*  */
 /* TABLE BODY */
 
@@ -65,8 +71,7 @@
 
     font-size: 12px;
     line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: var(--text-color-four);
+    /* color: var(--text-color-four); */
 }
 
 .tableBodyEmpty {
@@ -94,7 +99,7 @@
     text-align: center;
 }
 
-.tableBodySum {
+.tableBodySumExpenses {
     height: 40px;
     border-bottom: 2px solid #f5f6fb;
     text-align: center;
@@ -103,12 +108,25 @@
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.04em;
-    color: red;
+    color: var(--negative-sum-color);
+}
+
+.tableBodySumIncome {
+    height: 40px;
+    border-bottom: 2px solid #f5f6fb;
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: var(--positive-sum-color);
 }
 
 .tableBodyDelete {
     height: 40px;
     border-bottom: 2px solid #f5f6fb;
+    border-right: 2px solid #f5f6fb;
     text-align: center;
 }
 
@@ -119,6 +137,7 @@
 
     border: none;
     background: none;
+    background-image: url(../../../assets/svg/garbagebin.svg);
 
     background-position: center;
     background-repeat: no-repeat;
@@ -128,6 +147,7 @@
 .btnDelete:hover,
 .btnDelete:focus {
     background: var(--accent-color);
+    background-image: url(../../../assets/svg/garbagebin.svg);
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -165,7 +185,7 @@
 
     .tableTheadSum {
         width: 108px;
-        text-align: center;
+        text-align: end;
     }
 
     /* TABLE BODY */
@@ -190,7 +210,12 @@
         min-width: 128px;
     }
 
-    .tableBodySum {
+    .tableBodySumExpenses {
+        min-width: 108px;
+        text-align: end;
+    }
+
+    .tableBodySumIncome {
         min-width: 108px;
         text-align: end;
     }
@@ -249,7 +274,12 @@
         width: 198px;
     }
 
-    .tableBodySum {
+    .tableBodySumExpenses {
+        width: 109px;
+        text-align: center;
+    }
+
+    .tableBodySumIncome {
         width: 109px;
         text-align: center;
     }
