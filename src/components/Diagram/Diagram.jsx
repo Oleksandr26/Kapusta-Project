@@ -7,15 +7,18 @@ import {
 } from 'redux/transaction/transactionOperations';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import DiagramConfig from './DiagramConfig&Data';
-import { handleChosenCategoryUniqueLabels } from './DiagramLogic';
+import {
+  handleChosenCategoryUniqueLabels,
+  newDiagramHeight,
+} from './DiagramLogic';
 
 Chart.register(ChartDataLabels, ...registerables);
 
 export function Diagram({ dateTransactionFilter, category }) {
   const expenses = useGetExpenseQuery().currentData?.expenses;
   const incomes = useGetIncomeQuery().currentData?.incomes;
-
   const MONTH_CASHFLOW = [];
+  const canvasTag = document.querySelector('canvas');
 
   if (incomes !== undefined && expenses !== undefined) {
     MONTH_CASHFLOW.push(...incomes, ...expenses);
@@ -81,6 +84,7 @@ export function Diagram({ dateTransactionFilter, category }) {
     ],
   };
 
+  newDiagramHeight(diagramForSelectedMonth, canvasTag);
   return (
     <>
       {window.innerWidth > 768 ? (

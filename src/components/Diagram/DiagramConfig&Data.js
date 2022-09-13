@@ -3,12 +3,12 @@ const DiagramConfig = {
     responsive: true,
     maintainAspectRatio: false,
     layout: {
-      padding: 25,
+      padding: 15,
     },
     scales: {
       y: {
-        beginAtZero: true,
         ticks: {
+          beginAtZero: true,
           display: false,
         },
         grid: {
@@ -17,6 +17,9 @@ const DiagramConfig = {
         },
       },
       x: {
+        ticks: {
+          padding: 0,
+        },
         grid: {
           display: false,
         },
@@ -39,13 +42,11 @@ const DiagramConfig = {
   Mobile: {
     responsive: true,
     maintainAspectRatio: false,
-    categoryPercentage: 0.8,
-    barPercetage: 1,
     indexAxis: 'y',
     layout: {
       padding: {
         top: 15,
-        right: 20,
+        right: 25,
       },
     },
     scales: {
@@ -71,7 +72,6 @@ const DiagramConfig = {
       datalabels: {
         labels: {
           name: {
-            // display: 'auto',
             align: -50,
             anchor: 'start',
             formatter: (_, context) => {
