@@ -11,18 +11,10 @@ import ReportsDate from 'components/ReportsDate/ReportsDate';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
 
 const ReportPage = () => {
-  // const test = useSelector(store => {
-  //   console.log('store: ', store);
-  //   return store;
-  // });
-  // console.log('test: ', test);
+  const [date, setDate] = useState(new Date());
   const [reportsType, setReportsType] = useState(false);
-
-  const [date, setDate] = useState(() => new Date());
   const [category, setCategory] = useState(null);
 
   // --- В normalizedStateDate Преобразуем дату со state в формат для сравнения с фортатом даты транзакции которая приходит с сервера----
@@ -98,7 +90,15 @@ const ReportPage = () => {
       </div>
       <div className={s.chart_container} id="flexible">
         <Routes>
-          <Route path=":categoryId" element={<Diagram />} />
+          <Route
+            path=":categoryId"
+            element={
+              <Diagram
+                dateTransactionFilter={dateTransactionFilter}
+                category={category}
+              />
+            }
+          />
         </Routes>
 
         {/* <Diagram

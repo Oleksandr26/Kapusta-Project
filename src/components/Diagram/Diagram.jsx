@@ -15,10 +15,7 @@ import { useParams } from 'react-router-dom';
 
 Chart.register(ChartDataLabels, ...registerables);
 
-export function Diagram({ dateTransactionFilter }) {
-  const { categoryId } = useParams();
-  console.log('categoryId: ', categoryId);
-
+export function Diagram({ dateTransactionFilter, category }) {
   const expenses = useGetExpenseQuery().currentData?.expenses;
   const incomes = useGetIncomeQuery().currentData?.incomes;
   const MONTH_CASHFLOW = [];
@@ -28,12 +25,10 @@ export function Diagram({ dateTransactionFilter }) {
   if (incomes !== undefined && expenses !== undefined) {
     MONTH_CASHFLOW.push(...incomes, ...expenses);
   }
-  const categoryObject = MONTH_CASHFLOW.filter(item => item._id === categoryId);
-  console.log('categoryObject: ', categoryObject);
 
   const chosenCategoryUniqueLabels = handleChosenCategoryUniqueLabels(
     MONTH_CASHFLOW,
-    categoryObject[0]?.category
+    category
   );
 
   const diagramForSelectedMonth = chosenCategoryUniqueLabels
