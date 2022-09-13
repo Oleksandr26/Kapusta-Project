@@ -2,7 +2,7 @@ import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
 
 import PagesRoutes from 'PagesRoutes/PagesRoutes';
-import {getCurrentUser, handleAuthGoogle} from '../redux/auth/auth-operations';
+import {getCurrentUser} from '../redux/auth/auth-operations';
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
 import {getAccessToken, getUser} from 'redux/auth/auth-selector';
@@ -22,11 +22,6 @@ export const App = () => {
 
   return (
     <div>
-      <div>
-        <button onClick={() => {
-          dispatch(handleAuthGoogle())
-        }}>Google Sign-in</button>
-      </div>
       <Header/>
       <PagesRoutes/>
 
