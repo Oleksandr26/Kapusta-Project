@@ -20,23 +20,23 @@ const IncomeByCategories = ({
   const { incomes = [] } = data;
 
   const result = incomeCategories?.map(item => ({
-    categoryName: item,
+    name: item,
     amount: dateTransactionFilter(incomes).reduce((acc, cost) => {
       return item === cost.category ? acc + cost.amount : acc;
     }, 0),
   }));
 
-  const elements = result?.map(({ categoryName, amount }) => {
-    const iconPath = sprite + `#${categoryName}`;
+  const elements = result?.map(({ name, amount }) => {
+    const iconPath = sprite + `#${name}`;
     const amountNormalizer = amount
       .toFixed(2)
       .replace(/\d(?=(\d{3})+\.)/g, '$& ');
 
     const handleSetCategory = () => {
-      if (category === categoryName) {
+      if (category === name) {
         return;
       }
-      setCategory(categoryName);
+      setCategory(name);
     };
 
     return (
@@ -45,14 +45,12 @@ const IncomeByCategories = ({
         <svg className={s.icon} width="56px" height="56px">
           <use href={iconPath}></use>
         </svg>
-        <p className={s.info}>{categoryName}</p>
+        <p className={s.info}>{name}</p>
       </li>
     );
   });
 
-  return (
-      <ul className={s.list}>{elements}</ul>
-  );
+  return <ul className={s.list}>{elements}</ul>;
 };
 
 export default IncomeByCategories;
