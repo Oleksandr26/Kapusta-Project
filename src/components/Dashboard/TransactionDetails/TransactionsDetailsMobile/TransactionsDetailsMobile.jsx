@@ -9,6 +9,7 @@ export const TransactionDetailsMobile = () => {
   const getUserTransaction = useSelector(
     state => state.auth.userData.transactions
   );
+  console.log('getUserTransaction: ', getUserTransaction);
 
   const [deleteTransaction] = useDeleteTransactionMutation();
 

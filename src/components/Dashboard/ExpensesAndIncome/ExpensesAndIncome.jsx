@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button } from './Button';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -68,7 +68,8 @@ export const ExpensesAndIncome = () => {
     setPrice('');
   };
 
-  const handleReset = () => {
+  const handleReset = e => {
+    e.preventDefault();
     setDescription('');
     setCategory('');
     setPrice('');
@@ -125,12 +126,12 @@ export const ExpensesAndIncome = () => {
           onChange={handleChange}
         />
         <div>
-          <Button className={s.btn} type="submit" onClick={handleSubmit}>
-            Input
-          </Button>
-          <Button className={s.btn} type="button" onClick={handleReset}>
-            Clear
-          </Button>
+          <Button
+            className={s.btn}
+            type="submit"
+            onClickSubmit={handleSubmit}
+            onClickReset={handleReset}
+          ></Button>
         </div>
       </form>
       <TransactionDetails />
