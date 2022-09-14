@@ -20,12 +20,12 @@ export const ButtonTransactions = () => {
   return (
     <ul className={s.wrapper_nav}>
       <li className={s.item}>
-        <NavLink className={getLinkClassName} to="expenses">
+        <NavLink className={getLinkClassName} to="/transactions/expenses">
           Expenses
         </NavLink>
       </li>
       <li className={s.item}>
-        <NavLink className={getLinkClassName} to="incomes">
+        <NavLink className={getLinkClassName} to="/transactions/incomes">
           Income
         </NavLink>
       </li>

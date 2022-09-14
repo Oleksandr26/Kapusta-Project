@@ -48,7 +48,7 @@ const ReportPage = () => {
       <div className={s.container}></div>
       <div className={s.main}>
         <div className={s.header}>
-          <Link className={s.btn} to="/transactions">
+          <Link className={s.btn} to="/transactions/expenses">
             <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
           </Link>
           <div className={s.item}>

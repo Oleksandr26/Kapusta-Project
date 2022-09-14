@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   useGetIncomeQuery,
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 import s from './Summary.module.css';
-// import {useDispatch} from "react-redux";
 
-const Summary = () => {
+const Summary = ({ params }) => {
+  const checkType = Object.values(params)[0];
   const [showIncome, setShowIncome] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
 
@@ -17,30 +17,21 @@ const Summary = () => {
     data: expenseStats /*isLoading: expenseIsLoading, error: expenseError*/,
   } = useGetExpenseQuery({ skip: showExpenses });
 
-  const fetchData = e => {
-    const name = e.currentTarget.name;
-
-    switch (name) {
-      case 'expensesBtn':
-        setShowExpenses(true);
-        setShowIncome(false);
-        break;
-
-      case 'incomeBtn':
-        setShowIncome(true);
-        setShowExpenses(false);
-        break;
-
-      default:
-        return;
+  useEffect(() => {
+    if (checkType === 'expenses') {
+      setShowExpenses(true);
+      setShowIncome(false);
+      return;
     }
-  };
+    if (checkType === 'incomes') {
+      setShowIncome(true);
+      setShowExpenses(false);
+    }
+  }, [checkType]);
 
   const getMonthArray = () => {
     if (showIncome) {
-      console.log('showIncome: ', showIncome);
       const objectToArray = Object.entries(incomeStats.monthsStats);
-      console.log('objectToArray: ', objectToArray);
       return objectToArray.map(ent => Object.assign({}, ent));
     }
 
@@ -53,22 +44,6 @@ const Summary = () => {
   return (
     <div className={s.summary}>
       <h2 className={s.title}>SUMMARY</h2>
-      <div className={s.buttonWrapper}>
-        <button
-          name="expensesBtn"
-          className={`${s.button} ${showExpenses && s.activeBtn}`}
-          onClick={fetchData}
-        >
-          EXPENSES
-        </button>
-        <button
-          name="incomeBtn"
-          className={`${s.button} ${showIncome && s.activeBtn}`}
-          onClick={fetchData}
-        >
-          INCOME
-        </button>
-      </div>
       {expenseStats &&
         getMonthArray()
           .filter(month => typeof month[1] === 'number')
