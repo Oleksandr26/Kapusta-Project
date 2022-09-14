@@ -1,6 +1,7 @@
 // import { TransactionDetailsMobile } from 'components/Dashboard/TransactionDetails/TransactionsDetailsMobile/TransactionsDetailsMobile';
 import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
+import { InfinitySpin } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
@@ -46,7 +47,7 @@ const Balance = ({ dateReports, dateTransactions }) => {
     }
     return [year, month].join('-');
   };
-  const { currentData } = useGetPeriodDataQuery(formatDate(date));
+  const { currentData, isFetching } = useGetPeriodDataQuery(formatDate(date));
 
   const monthlyBalance =
     currentData?.incomes.incomeTotal - currentData?.expenses.expenseTotal;
@@ -62,7 +63,16 @@ const Balance = ({ dateReports, dateTransactions }) => {
       <span className={s.balance}>Balance:</span>
 
       <div className={s.wrap}>
-        <div className={s.amount}>{balanceNormalizer}</div>
+        <div className={s.amount}>
+          {isFetching ? (
+            <div className={s.spinner}>
+              <InfinitySpin width="80" color="#3f51b5" />
+            </div>
+          ) : (
+            <>{balanceNormalizer}</>
+          )}
+        </div>
+
         <button
           className={s.confirmBtn}
           type="button"
@@ -70,7 +80,6 @@ const Balance = ({ dateReports, dateTransactions }) => {
         >
           CONFIRM
         </button>
-
         {modalActive && (
           <Modal
             className={s.modal}
