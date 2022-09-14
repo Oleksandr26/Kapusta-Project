@@ -1,12 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import * as api from 'helpers/auth';
 
 export const handleRegistration = createAsyncThunk(
   'auth/registration',
   async (data, { rejectWithValue }) => {
     try {
-      return await api.registration(data);
+      const register = await api.registration(data);
+      toast.success("Your registration is successful! Please log in.")
+      return register 
     } catch ({ response }) {
+      toast.warn("Your account is already registered")
       return rejectWithValue(response.data);
     }
   }

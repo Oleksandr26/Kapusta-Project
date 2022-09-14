@@ -85,6 +85,7 @@ const UserForm = () => {
               e.preventDefault();
               dispatch(handleLogin({ email, password }));
               setEmail('');
+              setPassword('');
             }}
           >
             Login
@@ -96,6 +97,7 @@ const UserForm = () => {
             onClick={e => {
               e.preventDefault();
               dispatch(handleRegistration({ email, password }));
+              setEmail('');
               setPassword('');
             }}
           >
