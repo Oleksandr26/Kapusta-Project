@@ -8,7 +8,6 @@ import s from './UserMenu.module.css';
 const UserMenu = () => {
   const [modal, setModal] = useState(null);
   const email = useSelector(state => state.auth.userData.email);
-  console.log(email);
 
   const closeModal = data => {
     setModal(data);

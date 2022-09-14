@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button } from './Button';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -11,6 +11,7 @@ import {
 import s from './ExpensesAndIncome.module.css';
 import { TransactionDetails } from '../TransactionDetails/TransactionDetails';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
+import { ReactComponent as Calculator } from 'assets/svg/calculator.svg';
 
 export const ExpensesAndIncome = () => {
   const token = useSelector(state => state.auth.accessToken);
@@ -48,25 +49,28 @@ export const ExpensesAndIncome = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    location.pathname === '/transactions/expenses'
-      ? addExpense({
-          description: description,
-          amount: price,
-          date: currentDate,
-          category: category,
-        })
-      : addIncome({
-          description: description,
-          amount: price,
-          date: currentDate,
-          category: category,
-        });
+    if (location.pathname === '/transactions/expenses') {
+      addExpense({
+        description: description,
+        amount: price,
+        date: currentDate,
+        category: category,
+      });
+    } else {
+      addIncome({
+        description: description,
+        amount: price,
+        date: currentDate,
+        category: category,
+      });
+    }
     setDescription('');
     setCategory('');
     setPrice('');
   };
 
-  const handleReset = () => {
+  const handleReset = e => {
+    e.preventDefault();
     setDescription('');
     setCategory('');
     setPrice('');
@@ -89,7 +93,7 @@ export const ExpensesAndIncome = () => {
           value={description}
           type="text"
           onChange={handleChange}
-          placeholder="Product description"
+          placeholder="Product description" 
         />
         <select
           className={s.select}
@@ -115,6 +119,7 @@ export const ExpensesAndIncome = () => {
                 </option>
               ))}
         </select>
+        <div className={s.wrapper_input_cal}>
         <input
           className={s.price}
           name="price"
@@ -122,13 +127,17 @@ export const ExpensesAndIncome = () => {
           placeholder="00.00 UAH"
           onChange={handleChange}
         />
+        <div className={s.background_icon}>
+        <Calculator className={s.icon_cal} />
+        </div>
+        </div>
         <div>
-          <Button className={s.btn} type="submit" onClick={handleSubmit}>
-            Input
-          </Button>
-          <Button className={s.btn} type="button" onClick={handleReset}>
-            Clear
-          </Button>
+          <Button
+            className={s.btn}
+            type="submit"
+            onClickSubmit={handleSubmit}
+            onClickReset={handleReset}
+          ></Button>
         </div>
       </form>
       <TransactionDetails />

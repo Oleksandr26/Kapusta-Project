@@ -25,7 +25,7 @@ export const App = () => {
       <PagesRoutes />
 
       <ToastContainer
-        autoClose={2000}
+        autoClose={3000}
         hideProgressBar
         position="top-center"
         theme="colored"

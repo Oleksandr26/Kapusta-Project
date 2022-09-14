@@ -16,9 +16,9 @@ import {
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { Link, Outlet } from 'react-router-dom';
-import {useDispatch} from "react-redux";
-import {useEffect} from "react";
-import {updateBalance} from "../../redux/auth/auth-slice";
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { updateBalance } from '../../redux/auth/auth-slice';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -27,16 +27,16 @@ const HomePage = () => {
   const [addIncome, addIncomeResult] = useAddIncomeMutation();
 
   useEffect(() => {
-    if(addIncomeResult.isSuccess){
-      dispatch(updateBalance(addIncomeResult.data))
+    if (addIncomeResult.isSuccess) {
+      dispatch(updateBalance(addIncomeResult.data));
     }
-  }, [dispatch, addIncomeResult])
+  }, [dispatch, addIncomeResult]);
 
   useEffect(() => {
-    if(addExpenseResult.isSuccess){
-      dispatch(updateBalance(addExpenseResult.data))
+    if (addExpenseResult.isSuccess) {
+      dispatch(updateBalance(addExpenseResult.data));
     }
-  }, [dispatch, addExpenseResult])
+  }, [dispatch, addExpenseResult]);
 
   return (
     <div className={s.container}>
@@ -52,43 +52,6 @@ const HomePage = () => {
 
       <Dashboard />
 
-      <div className={s.block}>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() => deleteTransaction()}
-        >
-          detele transaction
-        </button>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() =>
-            addExpense({
-              description: 'test5555',
-              amount: 1500,
-              date: '2022-09-04',
-              category: 'Спорт и хобби',
-            })
-          }
-        >
-          add expense
-        </button>
-        <button
-          className={s.item}
-          type="button"
-          onClick={() =>
-            addIncome({
-              description: 'test123',
-              amount: 22000,
-              date: '2022-09-11',
-              category: 'Доп. доход',
-            })
-          }
-        >
-          Add income
-        </button>
-      </div>
       <Outlet />
     </div>
   );
