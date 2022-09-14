@@ -50,39 +50,47 @@ export const TransactionDetails = () => {
     }
   };
 
+  const summStyle =
+    location.pathname === '/transactions/expenses' ? 's.plus' : 's.minus';
+
   return (
-    <div className={s.scrollTable}>
-      <ButtonTransactions />
-      <table className={s.x}>
-        <thead className={s.tableHead}>
-          <tr>
-            {/* <th className={s.tableTheadEmpty}></th> */}
-            <th className={`${s.table__head} ${s.table_head_left}`}>DATE</th>
-            <th className={s.table__head}>DESCRIPTION</th>
-            <th className={s.table__head}>CATEGORY</th>
-            <th className={s.table__head}>SUM</th>
-            <th className={s.table__delete}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {reportArr.map(item => (
-            <tr className={s.tableBodyTR} key={item._id}>
-              {/* <td className={s.tableTheadEmpty}></td> */}
-              <td className={s.table__body}>{item.date}</td>
-              <td className={s.table__body}>{item.description}</td>
-              <td className={s.table__body}>{item.category}</td>
-              <td className={s.table__body}>{normalize(item.amount)}</td>
-              <td className={s.table__body}>
-                <button
-                  onClick={() => handleDeleteTransaction(item._id)}
-                  type="button"
-                  className={s.btnDelete}
-                ></button>
-              </td>
+    <div className={s.container}>
+      <div className={s.scrollTable}>
+        <table>
+          <thead className={s.tableHead}>
+            <tr>
+              <th className={s.table__head__empty}></th>
+              <th className={s.table__head__date}>DATE</th>
+              <th className={s.table__head__text}>DESCRIPTION</th>
+              <th className={s.table__head__category}>CATEGORY</th>
+              <th className={s.table__head__sum}>SUM</th>
+              <th className={s.table__head__delete}></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+        </table>
+        <div className={s.scrollTableBody}>
+          <table>
+            <tbody>
+              {reportArr.map(item => (
+                <tr className={s.body} key={item._id}>
+                  <td className={s.body__empty}></td>
+                  <td className={s.body__date}>{item.date}</td>
+                  <td className={s.body__description}>{item.description}</td>
+                  <td className={s.body__category}>{item.category}</td>
+                  <td className={summStyle}>{normalize(item.amount)}</td>
+                  <td className={s.body__delete}>
+                    <button
+                      onClick={() => handleDeleteTransaction(item._id)}
+                      type="button"
+                      className={s.btnDelete}
+                    ></button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
