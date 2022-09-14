@@ -56,20 +56,20 @@ const ExpenseByCategories = ({
         <p className={s.info}>{amountNormalizer}</p>
         {id ? (
           <NavLink to={id} className={getLinkClassName}>
-            <svg className={s.icon} width="56px" height="56px">
-              <use href={iconPath}></use>
-            </svg>
             <svg className={s.iconBackground} width="56px" height="56px">
               <use href={backgroundPath}></use>
+            </svg>
+            <svg className={s.icon} width="56px" height="56px">
+              <use href={iconPath}></use>
             </svg>
           </NavLink>
         ) : (
           <div className={s.link}>
-            <svg className={s.icon} width="56px" height="56px">
-              <use href={iconPath}></use>
-            </svg>
             <svg className={s.iconBackground} width="56px" height="56px">
               <use href={backgroundPath}></use>
+            </svg>
+            <svg className={s.icon} width="56px" height="56px">
+              <use href={iconPath}></use>
             </svg>
           </div>
         )}

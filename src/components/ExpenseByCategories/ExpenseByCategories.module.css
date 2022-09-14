@@ -6,12 +6,12 @@
 
 .item {
   position: relative;
-  z-index: 10;
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
+  background-color: transparent;
 }
 @media screen and (max-width: 767px) {
   .item {
@@ -53,13 +53,15 @@
   color: var(--icons-color);
 }
 .iconBackground {
-  position: absolute;
-  z-index: 0;
   left: 0;
   fill: #f5f6fb;
+
+  margin-top: 5px;
 }
 .icon {
   fill: var(--icons-color);
+  position: absolute;
+  left: 22px;
 }
 
 .activeLink .icon {
