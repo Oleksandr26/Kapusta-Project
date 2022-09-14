@@ -1,5 +1,6 @@
 import s from './ExpenseByCategories.module.css';
 import { nanoid } from '@reduxjs/toolkit';
+import { InfinitySpin } from 'react-loader-spinner';
 import sprite from 'assets/svg/icons.svg';
 import backgroundSprite from 'assets/svg/symbols.svg';
 import { useSelector } from 'react-redux';
@@ -9,9 +10,7 @@ import {
 } from 'redux/transaction/transactionOperations';
 import { NavLink } from 'react-router-dom';
 
-const getLinkClassName = ({ isActive }) => {
-  return isActive ? s.activeLink : s.link;
-};
+const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 
 const ExpenseByCategories = ({
   dateTransactionFilter,
@@ -22,7 +21,7 @@ const ExpenseByCategories = ({
   const { data: expenseCategories } = useGetExpenseCategoriesQuery({
     skip: isLogin,
   });
-  const { data = [] } = useGetExpenseQuery({ skip: isLogin });
+  const { data = [], isFetching } = useGetExpenseQuery({ skip: isLogin });
   const { expenses = [] } = data;
 
   const result = expenseCategories?.map(item => {
@@ -77,7 +76,17 @@ const ExpenseByCategories = ({
       </li>
     );
   });
-  return <ul className={s.list}>{elements}</ul>;
+  return (
+    <>
+      {isFetching ? (
+        <div className={s.spinner}>
+          <InfinitySpin width="200" color="#3f51b5" />
+        </div>
+      ) : (
+        <ul className={s.list}>{elements}</ul>
+      )}
+    </>
+  );
 };
 
 export default ExpenseByCategories;

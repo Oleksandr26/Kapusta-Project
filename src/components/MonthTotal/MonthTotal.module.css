@@ -22,7 +22,7 @@
   line-height: 1.17;
   letter-spacing: 0.04em;
 }
-.extense {
+.expense {
   composes: total;
   color: var(--expense-color);
 }
@@ -38,6 +38,18 @@
   line-height: 1.17;
   color: var(--second-color);
   margin-bottom: 3px;
+}
+.textLoading {
+  composes: text;
+  margin-bottom: 22px;
+}
+.spinner {
+  position: absolute;
+  left: -25px;
+  top: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .item:last-child::before {
@@ -71,5 +83,15 @@
   .text {
     margin-bottom: 0;
     margin-right: 15px;
+  }
+  .textLoading {
+    text-align: left;
+    width: 175px;
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+  .spinner {
+    top: -9px;
+    left: 65px;
   }
 }

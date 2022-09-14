@@ -1,4 +1,5 @@
 import s from './MonthTotal.module.css';
+import { InfinitySpin } from 'react-loader-spinner';
 import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
 
 export default function MonthTotalStatistics({ date }) {
@@ -10,29 +11,57 @@ export default function MonthTotalStatistics({ date }) {
     }
     return [year, month].join('-');
   };
-  const cashFlow = useGetPeriodDataQuery(formatDate(date));
-  const incomeTotal = cashFlow.currentData?.incomes.incomeTotal;
+  const { currentData, isFetching } = useGetPeriodDataQuery(formatDate(date));
 
-  const expenseTotal = cashFlow.currentData?.expenses.expenseTotal;
+  const incomeTotal = currentData?.incomes.incomeTotal;
+  console.log('incomeTotal: ', incomeTotal);
+  const expenseTotal = currentData?.expenses.expenseTotal;
 
   const expenseNormalizer =
-    '- ' +
-    expenseTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') +
-    ' грн.';
+    expenseTotal === 0
+      ? expenseTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') + ' грн.'
+      : '- ' +
+        expenseTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') +
+        ' грн.';
+
   const incomeNormalizer =
-    '+ ' +
-    incomeTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') +
-    ' грн.';
+    incomeTotal === 0
+      ? incomeTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') + ' грн.'
+      : '+ ' +
+        incomeTotal?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') +
+        ' грн.';
 
   return (
     <ul className={s.list}>
       <li className={s.item}>
-        <p className={s.text}> Expenses: </p>
-        <span className={s.extense}>{expenseNormalizer}</span>
+        {isFetching ? (
+          <>
+            <p className={s.textLoading}>Expense:</p>
+            <div className={s.spinner}>
+              <InfinitySpin width="70" color="#3f51b5" />
+            </div>
+          </>
+        ) : (
+          <>
+            <p className={s.text}>Expense:</p>
+            <span className={s.expense}>{expenseNormalizer}</span>
+          </>
+        )}
       </li>
       <li className={s.item}>
-        <p className={s.text}>Income:</p>
-        <span className={s.income}>{incomeNormalizer}</span>
+        {isFetching ? (
+          <>
+            <p className={s.textLoading}>Income:</p>
+            <div className={s.spinner}>
+              <InfinitySpin width="70" color="#3f51b5" />
+            </div>
+          </>
+        ) : (
+          <>
+            <p className={s.text}>Income:</p>
+            <span className={s.income}>{incomeNormalizer}</span>
+          </>
+        )}
       </li>
     </ul>
   );

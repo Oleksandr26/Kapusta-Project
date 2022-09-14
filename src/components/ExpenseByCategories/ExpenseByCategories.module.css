@@ -2,16 +2,64 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: -20px;
 }
 
 .item {
-  position: relative;
   width: calc(100% / 3);
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
   background-color: transparent;
+}
+
+.info {
+  text-align: center;
+  max-width: 103px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  margin: 0;
+  color: var(--second-color);
+}
+
+.link {
+  color: var(--icons-color);
+}
+.iconBackground {
+  fill: #f5f6fb;
+  margin-top: 12px;
+}
+
+.icon {
+  fill: var(--icons-color);
+  position: absolute;
+  top: 5px;
+  left: 0;
+}
+
+.link:hover .icon {
+  fill: var(--accent-color);
+}
+.link:hover .iconBackground {
+  fill: var(--second-accent-color);
+}
+
+.activeLink .icon {
+  fill: var(--accent-color);
+}
+.activeLink .iconBackground {
+  fill: var(--second-accent-color);
+}
+.spinner {
+  margin-top: 18px;
+  margin-bottom: 134px;
+  margin-left: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width: 767px) {
   .item {
@@ -23,6 +71,12 @@
   .list {
     border-bottom: 1px solid #e0e5eb;
   }
+  .link {
+    position: relative;
+  }
+  .activeLink {
+    position: relative;
+  }
 }
 @media screen and (min-width: 768px) {
   .list {
@@ -30,6 +84,7 @@
     margin-right: -5px;
   }
   .item {
+    position: relative;
     width: calc((100% - 30px) / 6);
   }
   .item:not(:last-child) {
@@ -38,35 +93,8 @@
   .item:nth-child(6) {
     margin-right: 0;
   }
-}
-.info {
-  text-align: center;
-  max-width: 103px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.17;
-  letter-spacing: 0.04em;
-  margin: 0;
-}
-
-.link {
-  color: var(--icons-color);
-}
-.iconBackground {
-  left: 0;
-  fill: #f5f6fb;
-
-  margin-top: 5px;
-}
-.icon {
-  fill: var(--icons-color);
-  position: absolute;
-  left: 22px;
-}
-
-.activeLink .icon {
-  fill: var(--accent-color);
-}
-.activeLink .iconBackground {
-  fill: var(--second-accent-color);
+  .icon {
+    top: 21px;
+    left: 22px;
+  }
 }
