@@ -1,12 +1,11 @@
 import 'modern-normalize/modern-normalize.css';
 import Header from 'components/Header/Header';
-
 import PagesRoutes from 'PagesRoutes/PagesRoutes';
-import {getCurrentUser} from '../redux/auth/auth-operations';
-import {useDispatch, useSelector} from 'react-redux';
-import {useEffect} from 'react';
-import {getAccessToken, getUser} from 'redux/auth/auth-selector';
-import {ToastContainer, Zoom} from 'react-toastify';
+import { getCurrentUser } from '../redux/auth/auth-operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getAccessToken, getUser } from 'redux/auth/auth-selector';
+import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
@@ -22,9 +21,8 @@ export const App = () => {
 
   return (
     <div>
-      <Header/>
-      <PagesRoutes/>
-
+      <Header />
+      <PagesRoutes />
 
       <ToastContainer
         autoClose={3000}
@@ -36,7 +34,3 @@ export const App = () => {
     </div>
   );
 };
-
-// <Container maxWidth="sm">
-//   <Box sx={{bgcolor: '#cfe8fc', height: '100vh'}}/>
-// </Container>;

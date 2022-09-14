@@ -6,7 +6,7 @@ import PublicRoute from 'components/PublicRoute/PublicRoute';
 
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
 import Summary from 'components/Dashboard/Summary/Summary';
-// import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/Spinner/Spinner';
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
 const TransationPage = lazy(() =>
@@ -17,7 +17,7 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 
 const PagesRoutes = () => {
   return (
-    <Suspense>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         <Route element={<PublicRoute />}>
           <Route path="/" element={<AuthPage />} />
