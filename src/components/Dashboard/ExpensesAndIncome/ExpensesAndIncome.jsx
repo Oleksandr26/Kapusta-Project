@@ -94,7 +94,7 @@ export const ExpensesAndIncome = () => {
           value={description}
           type="text"
           onChange={handleChange}
-          placeholder="Product description" 
+          placeholder="Product description"
         />
         <select
           className={s.select}
