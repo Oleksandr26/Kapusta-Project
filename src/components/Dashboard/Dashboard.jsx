@@ -10,10 +10,10 @@ const Dashboard = () => {
   return (
     <div className={s.container}>
       {location.pathname === '/transactions' && (
-        <>
+        <div className={s.wrap}>
           <TransactionDetailsMobile />
           <ButtonTransactions />
-        </>
+        </div>
       )}
       {/* // <ButtonTransactions />
         // <ul className={s.wrapper_nav}>
