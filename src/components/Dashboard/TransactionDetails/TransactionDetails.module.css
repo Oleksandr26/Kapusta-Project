@@ -1,290 +1,307 @@
 .scrollTable table {
-    width: 100%;
-    border-spacing: 0px;
+  width: 100%;
+  border-spacing: 0px;
 }
 
 .scrollBody {
-    height: 360px;
-    overflow-x: hidden;
+  height: 360px;
+  overflow-x: hidden;
 }
 
+.x {
+    border: 2px solid #F5F6FB;
+    border-radius: 30px;
+}
 .scrollTable ::-webkit-scrollbar {
-    width: 6px;
-    height: 130px;
+  width: 6px;
+  height: 130px;
 }
 .scrollTable ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .scrollTable ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: var(--accent-color);
-    border-radius: 5px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
 /*  */
 /* TABLE HEAD */
 
-.tableHead {
-    height: 40px;
-    background: #f5f6fb;
-    border: none;
+.scrollTable {
+  margin: 0 auto;
 }
 
-.tableTheadEmpty {
-    border-top-left-radius: 16px;
-    height: 40px;
+.tableHead {
+  height: 40px;
+  background: #f5f6fb;
+  border: none;
+}
+
+.table_head_left {
+  border-top-left-radius: 16px;
 }
 
 .tableTheadDate {
-    height: 40px;
-    text-align: start;
+  height: 40px;
+  text-align: start;
 }
 
 .tableTheadDescription {
-    height: 40px;
-    text-align: start;
+  height: 40px;
+  text-align: start;
 }
 
 .tableTheadCategory {
-    height: 40px;
-    text-align: start;
+  height: 40px;
+  text-align: start;
 }
 
-.table__head {border: 2px solid red;
-    height: 40px;
-    text-align: center;
+.table__head {
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
 }
 
 .table__delete {
-    width: 40px;
-    height: 40px;
-    border-top-right-radius: 16px;
+  width: 40px;
+  height: 40px;
+  border-top-right-radius: 16px;
 }
-.x{
-    border: 2px solid red;
-}
+
 /*  */
 /* TABLE BODY */
 
-.tableBodyTR {
-    height: 40px;
-
+.table__body {
+    text-align: center;
     font-size: 12px;
-    line-height: 1.17;
-    /* color: var(--text-color-four); */
+    line-height: 14px;
+    letter-spacing: 0.04em;
+    color: #52555F;
+    padding-left: 10px;
+    border-bottom:  2px solid #F5F6FB;
+}
+
+.tableBodyTR {
+  height: 40px;
+  font-size: 12px;
+  line-height: 1.17;
+  /* color: var(--text-color-four); */
 }
 
 .tableBodyEmpty {
-    height: 40px;
+  height: 40px;
 
-    border-bottom: 2px solid #f5f6fb;
-    border-left: 2px solid #f5f6fb;
+  border-bottom: 2px solid #f5f6fb;
+  border-left: 2px solid #f5f6fb;
 }
 
 .tableBodyDate {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: start;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: start;
 }
 
 .tableBodyDescription {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: start;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: start;
 }
 
 .tableBodyCategory {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
 }
 
 .tableBodySumExpenses {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: var(--negative-sum-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--negative-sum-color);
 }
 
 .tableBodySumIncome {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: var(--positive-sum-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--positive-sum-color);
 }
 
 .tableBodyDelete {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    border-right: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  border-right: 2px solid #f5f6fb;
+  text-align: center;
 }
 
 .btnDelete {
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
 
-    border: none;
-    background: none;
-    background-image: url(../../../assets/svg/garbagebin.svg);
+  border: none;
+  background: none;
+  background-image: url(../../../assets/svg/garbagebin.svg);
 
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 250ms linear;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 250ms linear;
 }
 
 .btnDelete:hover,
 .btnDelete:focus {
-    background: var(--accent-color);
-    background-image: url(../../../assets/svg/garbagebin.svg);
-    background-position: center;
-    background-repeat: no-repeat;
+  background: var(--accent-color);
+  background-image: url(../../../assets/svg/garbagebin.svg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /*  */
 /* MEDIA RULES */
 
 @media screen and (max-width: 767px) {
-    .scrollTable {
-        display: none;
-    }
+  .scrollTable {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .scrollTable {
-        width: 624px;
-    }
+  .scrollTable {
+    width: 628px;
+  }
 
-    /* TABLE HEAD */
-    .tableTheadEmpty {
-        width: 20px;
-    }
+  /* TABLE HEAD */
+  /* .tableTheadEmpty {
+    width: 20px;
+  } */
 
-    .tableTheadDate {
-        width: 109px;
-    }
+  .tableTheadDate {
+    width: 109px;
+  }
 
-    .tableTheadDescription {
-        width: 173px;
-    }
+  .tableTheadDescription {
+    width: 173px;
+  }
 
-    .tableTheadCategory {
-        width: 128px;
-    }
+  .tableTheadCategory {
+    width: 128px;
+  }
 
-    .tableTheadSum {
-        width: 108px;
-        text-align: end;
-    }
+  .tableTheadSum {
+    width: 108px;
+    text-align: end;
+  }
 
-    /* TABLE BODY */
+  /* TABLE BODY */
 
-    .tableBodyTR {
-        width: 746px;
-    }
+  .tableBodyTR {
+    width: 746px;
+  }
 
-    .tableBodyEmpty {
-        width: 20px;
-    }
+  .tableBodyEmpty {
+    width: 20px;
+  }
 
-    .tableBodyDate {
-        width: 109px;
-    }
+  .tableBodyDate {
+    width: 109px;
+  }
 
-    .tableBodyDescription {
-        min-width: 173px;
-    }
+  .tableBodyDescription {
+    min-width: 173px;
+  }
 
-    .tableBodyCategory {
-        min-width: 128px;
-    }
+  .tableBodyCategory {
+    min-width: 128px;
+  }
 
-    .tableBodySumExpenses {
-        min-width: 108px;
-        text-align: end;
-    }
+  .tableBodySumExpenses {
+    min-width: 108px;
+    text-align: end;
+  }
 
-    .tableBodySumIncome {
-        min-width: 108px;
-        text-align: end;
-    }
+  .tableBodySumIncome {
+    min-width: 108px;
+    text-align: end;
+  }
 
-    .tableBodyDelete {
-        min-width: 83px;
-    }
+  .tableBodyDelete {
+    min-width: 83px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .scrollTable {
-        width: 746px;
-    }
+  .scrollTable {
+    width: 746px;
+  }
 
-    /* TABLE HEAD */
-    .tableTheadEmpty {
-        width: 28px;
-    }
+  /* TABLE HEAD */
+  .tableTheadEmpty {
+    width: 28px;
+  }
 
-    .tableTheadDate {
-        width: 108px;
-    }
+  .tableTheadDate {
+    width: 108px;
+  }
 
-    .tableTheadDescription {
-        width: 186px;
-    }
+  .tableTheadDescription {
+    width: 186px;
+  }
 
-    .tableTheadCategory {
-        width: 198px;
-    }
+  .tableTheadCategory {
+    width: 198px;
+  }
 
-    .tableTheadSum {
-        width: 109px;
-        text-align: center;
-    }
+  .tableTheadSum {
+    width: 109px;
+    text-align: center;
+  }
 
-    /* TABLE BODY */
+  /* TABLE BODY */
 
-    .tableBodyTR {
-        width: 746px;
-    }
+  .tableBodyTR {
+    width: 746px;
+  }
 
-    .tableBodyEmpty {
-        width: 28px;
-    }
+  .tableBodyEmpty {
+    width: 28px;
+  }
 
-    .tableBodyDate {
-        width: 108px;
-    }
+  .tableBodyDate {
+    width: 108px;
+  }
 
-    .tableBodyDescription {
-        width: 186px;
-    }
+  .tableBodyDescription {
+    width: 186px;
+  }
 
-    .tableBodyCategory {
-        width: 198px;
-    }
+  .tableBodyCategory {
+    width: 198px;
+  }
 
-    .tableBodySumExpenses {
-        width: 109px;
-        text-align: center;
-    }
+  .tableBodySumExpenses {
+    width: 109px;
+    text-align: center;
+  }
 
-    .tableBodySumIncome {
-        width: 109px;
-        text-align: center;
-    }
+  .tableBodySumIncome {
+    width: 109px;
+    text-align: center;
+  }
 
-    .tableBodyDelete {
-        width: 117px;
-    }
+  .tableBodyDelete {
+    width: 117px;
+  }
 }
