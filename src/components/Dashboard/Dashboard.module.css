@@ -1,25 +1,47 @@
-.link {
-  display: inline-block;
-  text-decoration: none;
+.wrapper_nav {
+  display: flex;
+  justify-content: center;
 }
-
-.button {
+.link {
+  padding: 20px 80px;
+  background-color: #F5F6FB;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 138px;
+  max-width: 138px;
   height: 40px;
-  background-color: #f7f8fb;
   color: black;
   font-weight: 700;
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-  border-radius: 15px 15px 0 0;
+  
+  text-decoration: none;
+
 }
 
-.button:hover,
-.button:focus {
+@media screen and (min-width: 768px){
+  .link{
+      border-radius: 15px 15px 0 0;
+  }
+}
+
+.link:hover,
+.link:focus {
   background-color: #ffffff;
   color: var(--accent-color);
+}
+
+.activeLink {
+  composes: link;
+  background-color: #ffffff;
+}
+
+.summ__link{
+  composes: link;
+}
+@media screen and (max-width: 768px) {
+  .summ__link{
+    display: none;
+  }
 }

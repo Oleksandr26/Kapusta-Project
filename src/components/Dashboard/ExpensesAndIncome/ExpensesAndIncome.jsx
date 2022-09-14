@@ -77,19 +77,22 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
     setPrice('');
   };
 
+  const width = window.innerWidth;
+
   return (
     <div className={s.expenses}>
-      <NavLink to="/" className={s.icon_back}>
-        <BackArrow
-          style={{
-            width: '32',
-            height: '24',
-          }}
-        />
-      </NavLink>
+      {width < 768 && (
+        <NavLink to="/" className={s.icon_back}>
+          <BackArrow
+            style={{
+              width: '32',
+              height: '24',
+            }}
+          />
+        </NavLink>
+      )}
       <form className={s.form}>
         <div className={s.blok_input}>
-          <Calendar date={date} setDate={setDate} />
           <input
             className={s.input}
             name="description"

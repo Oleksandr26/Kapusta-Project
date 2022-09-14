@@ -6,7 +6,7 @@ import {
   useGetIncomeQuery,
   useDeleteTransactionMutation,
 } from 'redux/transaction/transactionOperations';
-
+import { ButtonTransactions } from '../ExpensesAndIncome/Button';
 import s from './TransactionDetails.module.css';
 
 export const TransactionDetails = () => {
@@ -52,6 +52,7 @@ export const TransactionDetails = () => {
 
   return (
     <div className={s.scrollTable}>
+      <ButtonTransactions />
       <table className={s.x}>
         <thead className={s.tableHead}>
           <tr>
