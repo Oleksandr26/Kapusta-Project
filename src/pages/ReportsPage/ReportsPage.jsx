@@ -51,7 +51,7 @@ const ReportPage = () => {
             <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
           </Link>
           <div className={s.item}>
-            <Balance />
+            <Balance date={date} />
           </div>
           <div className={s.item}>
             <ReportsDate date={date} setDate={setDate} />
