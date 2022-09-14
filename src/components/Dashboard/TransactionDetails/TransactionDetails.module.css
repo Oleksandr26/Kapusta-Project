@@ -12,6 +12,11 @@
     overflow-x: hidden;
 }
 
+.x {
+  border: 2px solid #f5f6fb;
+  border-radius: 30px;
+}
+
 .scrollTable ::-webkit-scrollbar {
     width: 6px;
     height: 130px;
@@ -66,10 +71,27 @@
 
 .body {
 
+
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.04em;
     color: var(--second-color);
+
+.table__body {
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  padding-left: 10px;
+  border-bottom: 2px solid #f5f6fb;
+}
+
+.tableBodyTR {
+  height: 40px;
+  font-size: 12px;
+  line-height: 1.17;
+
 }
 
 .body__empty {
@@ -232,6 +254,7 @@
 }
 
 @media screen and (min-width: 1280px) {
+
     .scrollTable {
         width: 746px;
     }
@@ -290,4 +313,72 @@
     .body__delete {
         width: 117px;
     }
+
+  .scrollTable {
+    width: 746px;
+  }
+
+  /* TABLE HEAD */
+  .tableTheadEmpty {
+    width: 28px;
+  }
+
+  .tableTheadDate {
+    width: 108px;
+  }
+
+  .tableTheadDescription {
+    width: 186px;
+  }
+
+  .tableTheadCategory {
+    width: 198px;
+  }
+
+  .tableTheadSum {
+    width: 109px;
+    text-align: center;
+  }
+
+  /* TABLE BODY */
+
+  .tableBodyTR {
+    width: 746px;
+  }
+
+  .tableBodyEmpty {
+    width: 28px;
+  }
+
+  .tableBodyDate {
+    width: 108px;
+  }
+
+  .tableBodyDescription {
+    width: 186px;
+  }
+
+  .tableBodyCategory {
+    width: 198px;
+  }
+
+  .tableBodySumExpenses {
+    width: 109px;
+    text-align: center;
+  }
+
+  .tableBodySumIncome {
+    width: 109px;
+    text-align: center;
+  }
+
+  .tableBodyDelete {
+    width: 117px;
+  }
+
+  .wrap {
+    background: url('../../../assets/png/desktopBottomBG.png') no-repeat bottom;
+    background-size: contain;
+  }
+
 }

@@ -59,6 +59,11 @@
   .reportsBtn {
     margin: 0;
   }
+
+  .container {
+    background: url('../../assets/png/tabletBottomBG.png') no-repeat bottom
+      right;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -70,5 +75,10 @@
     position: absolute;
     right: 0;
     top: 10px;
+  }
+
+  .container {
+    background: url('../../assets/png/desktopBottomBG.png') no-repeat bottom;
+    background-size: contain;
   }
 }
