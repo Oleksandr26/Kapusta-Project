@@ -1,15 +1,15 @@
-.container{
+.container {
   display: flex;
   justify-content: center;
 }
 .scrollTable table {
-    width: 100%;
-    border-spacing: 0px;
+  width: 100%;
+  border-spacing: 0px;
 }
 
 .scrollTableBody {
-    height: 360px;
-    overflow-x: hidden;
+  height: 360px;
+  overflow-x: hidden;
 }
 
 .x {
@@ -18,65 +18,63 @@
 }
 
 .scrollTable ::-webkit-scrollbar {
-    width: 6px;
-    height: 130px;
+  width: 6px;
+  height: 130px;
 }
 .scrollTable ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .scrollTable ::-webkit-scrollbar-thumb {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: var(--accent-color);
-    border-radius: 5px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--accent-color);
+  border-radius: 5px;
 }
 
 .tableHead {
-    height: 40px;
-    background: #f5f6fb;
-    border: none;
+  height: 40px;
+  background: #f5f6fb;
+  border: none;
 }
 
 .table__head__empty {
-    border-top-left-radius: 16px;
-    border-left: 2px solid var(--bg-color);
-    height: 40px;
+  border-top-left-radius: 16px;
+  border-left: 2px solid var(--bg-color);
+  height: 40px;
 }
 
-.body__empty{
+.body__empty {
   border-left: 2px solid var(--bg-color);
-    height: 40px;
+  height: 40px;
 }
 
 .table__head__date {
-    height: 40px;
-    text-align: center;
+  height: 40px;
+  text-align: center;
 }
 
 .table__head__text {
-    height: 40px;
-    text-align: center;
+  height: 40px;
+  text-align: center;
 }
 
 .table__head__category {
-    height: 40px;
+  height: 40px;
 }
 
 .table__head__sum {
-    height: 40px;
+  height: 40px;
 }
 
 .table__head__delete {
-    border-top-right-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .body {
-
-
-    font-size: 12px;
-    line-height: 1.17;
-    letter-spacing: 0.04em;
-    color: var(--second-color);
-
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: var(--second-color);
+}
 .table__body {
   text-align: center;
   font-size: 12px;
@@ -91,228 +89,225 @@
   height: 40px;
   font-size: 12px;
   line-height: 1.17;
-
 }
 
 .body__empty {
-    height: 40px;
+  height: 40px;
 
-    border-bottom: 2px solid #f5f6fb;
-    border-left: 2px solid #f5f6fb;
+  border-bottom: 2px solid #f5f6fb;
+  border-left: 2px solid #f5f6fb;
 }
 
 .body__date {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
 }
 
 .body__description {
-    padding: 5px 15px 5px 5px;
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
-    border-bottom: 2px solid #f5f6fb;
+  padding: 5px 15px 5px 5px;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
+  border-bottom: 2px solid #f5f6fb;
 
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    max-width: 172px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-width: 172px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .body__category {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  text-align: center;
 }
 
 .minus {
-    height: 40px;
-    border-bottom: 2px solid var(--second-color);
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid var(--second-color);
+  text-align: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    color: var(--expense-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--expense-color);
 }
 
 .plus {
-    height: 40px;
-    border-bottom: 2px solid var(--second-color);
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid var(--second-color);
+  text-align: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    color: var(--income-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--income-color);
 }
 
 .body__delete {
-    height: 40px;
-    border-bottom: 2px solid #f5f6fb;
-    border-right: 2px solid #f5f6fb;
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid #f5f6fb;
+  border-right: 2px solid #f5f6fb;
+  text-align: center;
 }
 
 .btnDelete {
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
 
-    border: none;
-    background: none;
-    background-image: url(../../../assets/svg/garbagebin.svg);
+  border: none;
+  background: none;
+  background-image: url(../../../assets/svg/garbagebin.svg);
 
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 250ms linear;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 250ms linear;
 }
 
 .btnDelete:hover,
 .btnDelete:focus {
-    background: var(--accent-color);
-    background-image: url(../../../assets/svg/garbagebin.svg);
-    background-position: center;
-    background-repeat: no-repeat;
+  background: var(--accent-color);
+  background-image: url(../../../assets/svg/garbagebin.svg);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 767px) {
-    .scrollTable {
-        display: none;
-    }
+  .scrollTable {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
-    .container {
-        height: 384px;
-    }
-    .scrollTable {
-        width: 624px;
-    }
+  .container {
+    height: 384px;
+  }
+  .scrollTable {
+    width: 624px;
+  }
 
-    .table__head__empty {
-        width: 20px;
-    }
+  .table__head__empty {
+    width: 20px;
+  }
 
-    .table__head__date {
-        width: 109px;
-    }
+  .table__head__date {
+    width: 109px;
+  }
 
-    .table__head__text {
-        width: 173px;
-    }
+  .table__head__text {
+    width: 173px;
+  }
 
-    .table__head__category {
-        width: 128px;
-    }
+  .table__head__category {
+    width: 128px;
+  }
 
-    .table__head__sum {
-        width: 108px;
-        text-align: end;
-    }
+  .table__head__sum {
+    width: 108px;
+    text-align: end;
+  }
 
+  .body {
+    width: 746px;
+  }
 
-    .body {
-        width: 746px;
-    }
+  .body__empty {
+    width: 20px;
+  }
 
-    .body__empty {
-        width: 20px;
-    }
+  .body__date {
+    width: 109px;
+  }
 
-    .body__date {
-        width: 109px;
-    }
+  .body__description {
+    width: 173px;
+  }
 
-    .body__description {
-        width: 173px;
-    }
+  .body__category {
+    min-width: 128px;
+  }
 
-    .body__category {
-        min-width: 128px;
-    }
+  .minus {
+    min-width: 108px;
+    text-align: end;
+  }
 
-    .minus {
-        min-width: 108px;
-        text-align: end;
-    }
+  .plus {
+    min-width: 108px;
+    text-align: end;
+  }
 
-    .plus {
-        min-width: 108px;
-        text-align: end;
-    }
+  .body__delete {
+    min-width: 83px;
+  }
 
-    .body__delete {
-        min-width: 83px;
-    }
-
-    .container {
-        height: 616px;
-    }
+  .container {
+    height: 616px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
+  .scrollTable {
+    width: 746px;
+  }
 
-    .scrollTable {
-        width: 746px;
-    }
+  .table__head__empty {
+    width: 28px;
+  }
 
-    .table__head__empty {
-        width: 28px;
-    }
+  .table__head__date {
+    width: 108px;
+  }
 
-    .table__head__date {
-        width: 108px;
-    }
+  .table__head__text {
+    width: 186px;
+  }
 
-    .table__head__text {
-        width: 186px;
-    }
+  .table__head__category {
+    width: 198px;
+  }
 
-    .table__head__category {
-        width: 198px;
-    }
+  .table__head__sum {
+    width: 109px;
+    text-align: center;
+  }
 
-    .table__head__sum {
-        width: 109px;
-        text-align: center;
-    }
+  .body {
+    width: 746px;
+  }
 
-    .body {
-        width: 746px;
-    }
+  .body__empty {
+    width: 28px;
+  }
 
-    .body__empty {
-        width: 28px;
-    }
+  .body__date {
+    width: 108px;
+  }
 
-    .body__date {
-        width: 108px;
-    }
+  .body__description {
+    width: 186px;
+  }
 
-    .body__description {
-        width: 186px;
-    }
+  .body__category {
+    width: 198px;
+  }
 
-    .body__category {
-        width: 198px;
-    }
+  .minus {
+    width: 109px;
+    text-align: center;
+  }
 
-    .minus {
-        width: 109px;
-        text-align: center;
-    }
+  .plus {
+    width: 109px;
+    text-align: center;
+  }
 
-    .plus {
-        width: 109px;
-        text-align: center;
-    }
-
-    .body__delete {
-        width: 117px;
-    }
+  .body__delete {
+    width: 117px;
+  }
 
   .scrollTable {
     width: 746px;
@@ -376,10 +371,8 @@
     width: 117px;
   }
 
-
   .wrap {
     background: url('../../../assets/png/desktopBottomBG.png') no-repeat bottom;
     background-size: contain;
   }
-
 }
