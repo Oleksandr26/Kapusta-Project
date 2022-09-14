@@ -26,7 +26,6 @@ const HomePage = () => {
   const [addExpenseResult] = useAddExpenseMutation();
   const [addIncomeResult] = useAddIncomeMutation();
   const [date, setDate] = useState(new Date());
-  console.log('date TRANSATION PAGE: ', date);
 
   useEffect(() => {
     if (addIncomeResult.isSuccess) {
