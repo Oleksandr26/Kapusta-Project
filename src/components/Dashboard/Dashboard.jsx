@@ -1,5 +1,5 @@
 import s from './Dashboard.module.css';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { TransactionDetailsMobile } from './TransactionDetails/TransactionsDetailsMobile/TransactionsDetailsMobile';
 import { ButtonTransactions } from './ExpensesAndIncome/Button';
 
@@ -15,24 +15,6 @@ const Dashboard = () => {
           <ButtonTransactions />
         </>
       )}
-      {/* // <ButtonTransactions />
-        // <ul className={s.wrapper_nav}>
-        //   <li className={s.item}>
-        //     <NavLink className={getLinkClassName} to="expenses">
-        //       Expenses
-        //     </NavLink>
-        //   </li>
-        //   <li className={s.item}>
-        //     <NavLink className={getLinkClassName} to="income">
-        //       Income
-        //     </NavLink>
-        //   </li>
-        //   <li className={s.item}>
-        //     <NavLink className={(getLinkClassName, s.summ__link)} to="summary">
-        //       Summary
-        //     </NavLink>
-        //   </li>
-        // </ul> */}
     </div>
   );
 };

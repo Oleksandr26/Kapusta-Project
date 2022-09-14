@@ -81,6 +81,7 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
 
   return (
     <div className={s.expenses}>
+      <Calendar date={date} setDate={setDate} />
       {width < 768 && (
         <NavLink to="/" className={s.icon_back}>
           <BackArrow

@@ -14,7 +14,7 @@ export default function MonthTotalStatistics({ date }) {
   const { currentData, isFetching } = useGetPeriodDataQuery(formatDate(date));
 
   const incomeTotal = currentData?.incomes.incomeTotal;
-  
+
   const expenseTotal = currentData?.expenses.expenseTotal;
 
   const expenseNormalizer =
@@ -36,14 +36,14 @@ export default function MonthTotalStatistics({ date }) {
       <li className={s.item}>
         {isFetching ? (
           <>
-            <p className={s.textLoading}>Expense:</p>
+            <p className={s.textLoading}>Expenses:</p>
             <div className={s.spinner}>
               <InfinitySpin width="70" color="#3f51b5" />
             </div>
           </>
         ) : (
           <>
-            <p className={s.text}>Expense:</p>
+            <p className={s.text}>Expenses:</p>
             <span className={s.expense}>{expenseNormalizer}</span>
           </>
         )}
