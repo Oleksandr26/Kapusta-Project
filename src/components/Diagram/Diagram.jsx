@@ -11,7 +11,6 @@ import {
   handleChosenCategoryUniqueLabels,
   newDiagramHeight,
 } from './DiagramLogic';
-import { useParams } from 'react-router-dom';
 
 Chart.register(ChartDataLabels, ...registerables);
 
@@ -47,7 +46,6 @@ export function Diagram({ dateTransactionFilter, category }) {
       (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
     )
     .filter(el => el.amount !== 0);
-  console.log('diagramForSelectedMonth: ', diagramForSelectedMonth);
 
   const labels = diagramForSelectedMonth?.map(
     ({ descriptionName }) => descriptionName
