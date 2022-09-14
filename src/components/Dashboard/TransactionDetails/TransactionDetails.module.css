@@ -9,8 +9,8 @@
 }
 
 .x {
-    border: 2px solid #F5F6FB;
-    border-radius: 30px;
+  border: 2px solid #f5f6fb;
+  border-radius: 30px;
 }
 .scrollTable ::-webkit-scrollbar {
   width: 6px;
@@ -75,13 +75,13 @@
 /* TABLE BODY */
 
 .table__body {
-    text-align: center;
-    font-size: 12px;
-    line-height: 14px;
-    letter-spacing: 0.04em;
-    color: #52555F;
-    padding-left: 10px;
-    border-bottom:  2px solid #F5F6FB;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  color: #52555f;
+  padding-left: 10px;
+  border-bottom: 2px solid #f5f6fb;
 }
 
 .tableBodyTR {
@@ -303,5 +303,10 @@
 
   .tableBodyDelete {
     width: 117px;
+  }
+
+  .wrap {
+    background: url('../../../assets/png/desktopBottomBG.png') no-repeat bottom;
+    background-size: contain;
   }
 }
