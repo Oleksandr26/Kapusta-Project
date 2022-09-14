@@ -25,13 +25,8 @@ export const ButtonTransactions = () => {
         </NavLink>
       </li>
       <li className={s.item}>
-        <NavLink className={getLinkClassName} to="income">
+        <NavLink className={getLinkClassName} to="incomes">
           Income
-        </NavLink>
-      </li>
-      <li className={s.item}>
-        <NavLink className={(getLinkClassName, s.summ__link)} to="summary">
-          Summary
         </NavLink>
       </li>
     </ul>

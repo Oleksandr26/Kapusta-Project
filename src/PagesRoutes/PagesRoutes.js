@@ -24,12 +24,7 @@ const PagesRoutes = () => {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="/transactions" element={<TransationPage />}>
-            <Route path="expenses" element={<ExpensesAndIncome />} />
-            <Route path="income" element={<ExpensesAndIncome />} />
-            <Route path="summary" element={<Summary />} />
-          </Route>
-
+          <Route path="/transactions/*" element={<TransationPage />} />
           <Route path="/reports/*" element={<ReportsPage />} />
         </Route>
 

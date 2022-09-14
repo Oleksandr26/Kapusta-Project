@@ -4,7 +4,7 @@
 }
 .link {
   padding: 20px 80px;
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,14 +15,13 @@
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-  
-  text-decoration: none;
 
+  text-decoration: none;
 }
 
-@media screen and (min-width: 768px){
-  .link{
-      border-radius: 15px 15px 0 0;
+@media screen and (min-width: 768px) {
+  .link {
+    border-radius: 15px 15px 0 0;
   }
 }
 
@@ -37,11 +36,11 @@
   background-color: #ffffff;
 }
 
-.summ__link{
+/* .summ__link{
   composes: link;
-}
+} */
 @media screen and (max-width: 768px) {
-  .summ__link{
+  .summ__link {
     display: none;
   }
 }
