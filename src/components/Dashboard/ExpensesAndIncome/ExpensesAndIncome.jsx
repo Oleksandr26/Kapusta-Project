@@ -133,7 +133,7 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
                 className={s.price}
                 name="price"
                 value={price}
-                placeholder="00.00 UAH"
+                placeholder="00.00"
                 onChange={handleChange}
               />
               <div className={s.background_icon}>
