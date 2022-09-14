@@ -43,66 +43,69 @@ const ReportPage = () => {
   };
 
   return (
-    <div className={s.container}>
-      <div className={s.header}>
-        <Link className={s.btn} to="/transactions">
-          <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
-        </Link>
-        <div className={s.item}>
-          <Balance />
+    <main className={s.meta}>
+      <div className={s.container}></div>
+      <div className={s.main}>
+        <div className={s.header}>
+          <Link className={s.btn} to="/transactions">
+            <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
+          </Link>
+          <div className={s.item}>
+            <Balance />
+          </div>
+          <div className={s.item}>
+            <ReportsDate date={date} setDate={setDate} />
+          </div>
         </div>
-        <div className={s.item}>
-          <ReportsDate date={date} setDate={setDate} />
-        </div>
-      </div>
-      <MonthTotal date={date} />
-      <div className={s.block}>
-        <div className={s.types}>
-          <button
-            type="button"
-            className={s.leftArrow}
-            onClick={() => changeReportsVision()}
-          >
-            <LeftArrow className={s.iconArrow} />
-          </button>
-          <p className={s.title}>{reportsType ? 'Income' : 'Expenses'} </p>
-          <button
-            type="button"
-            className={s.rightArrow}
-            onClick={() => changeReportsVision()}
-          >
-            <RigthArrow className={s.iconArrow} />
-          </button>
-        </div>
+        <MonthTotal date={date} />
+        <div className={s.block}>
+          <div className={s.types}>
+            <button
+              type="button"
+              className={s.leftArrow}
+              onClick={() => changeReportsVision()}
+            >
+              <LeftArrow className={s.iconArrow} />
+            </button>
+            <p className={s.title}>{reportsType ? 'Income' : 'Expenses'} </p>
+            <button
+              type="button"
+              className={s.rightArrow}
+              onClick={() => changeReportsVision()}
+            >
+              <RigthArrow className={s.iconArrow} />
+            </button>
+          </div>
 
-        {reportsType ? (
-          <IncomeByCategories
-            dateTransactionFilter={dateTransactionFilter}
-            setCategory={setCategory}
-            category={category}
-          />
-        ) : (
-          <ExpenseByCategories
-            dateTransactionFilter={dateTransactionFilter}
-            setCategory={setCategory}
-            category={category}
-          />
-        )}
+          {reportsType ? (
+            <IncomeByCategories
+              dateTransactionFilter={dateTransactionFilter}
+              setCategory={setCategory}
+              category={category}
+            />
+          ) : (
+            <ExpenseByCategories
+              dateTransactionFilter={dateTransactionFilter}
+              setCategory={setCategory}
+              category={category}
+            />
+          )}
+        </div>
+        <div className={s.chart_container} id="flexible">
+          <Routes>
+            <Route
+              path=":categoryId"
+              element={
+                <Diagram
+                  dateTransactionFilter={dateTransactionFilter}
+                  category={category}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </div>
-      <div className={s.chart_container} id="flexible">
-        <Routes>
-          <Route
-            path=":categoryId"
-            element={
-              <Diagram
-                dateTransactionFilter={dateTransactionFilter}
-                category={category}
-              />
-            }
-          />
-        </Routes>
-      </div>
-    </div>
+    </main>
   );
 };
 
