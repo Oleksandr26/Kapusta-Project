@@ -7,7 +7,13 @@ const PublicRoute = () => {
   const accessToken = useSelector(getAccessToken);
   return (
     <>
-      {currentUser && accessToken ? (
+      {currentUser && accessToken && window.innerWidth > 767 ? (
+        <Navigate to="/transactions/expenses" />
+      ) : (
+        <Outlet />
+      )}
+
+      {currentUser && accessToken && window.innerWidth < 768 ? (
         <Navigate to="/transactions" />
       ) : (
         <Outlet />

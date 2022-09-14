@@ -72,10 +72,7 @@
   .main {
     width: 768px;
   }
-  .meta {
-    background: url('../../assets/png/tabletBottomBG.png') no-repeat bottom
-      right;
-  }
+
   .container {
     height: 523px;
   }
