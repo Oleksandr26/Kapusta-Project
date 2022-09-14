@@ -18,7 +18,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { updateBalance } from '../../redux/auth/auth-slice';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
-import Summary from 'components/Dashboard/Summary/Summary';
+// import Summary from 'components/Dashboard/Summary/Summary';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -61,7 +61,6 @@ const HomePage = () => {
             element={<ExpensesAndIncome date={date} setDate={setDate} />}
           />
         </Routes>
-        <Summary />
       </div>
     </main>
   );

@@ -80,9 +80,9 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
   const width = window.innerWidth;
 
   return (
-    <>
+    <div>
       <ButtonTransactions />
-      <div className={s.expenses}>
+      <div className={s.container}>
         <Calendar date={date} setDate={setDate} />
         {width < 768 && (
           <NavLink to="/" className={s.icon_back}>
@@ -153,6 +153,6 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
         </form>
         <TransactionDetails />
       </div>
-    </>
+    </div>
   );
 };
