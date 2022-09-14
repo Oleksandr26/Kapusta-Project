@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 138px;
+  max-width: 138px;
   height: 40px;
   color: black;
   font-weight: 700;
@@ -19,9 +19,7 @@
   text-decoration: none;
 
 }
-.link:first-child{
-  margin-right: 4px;
-}
+
 @media screen and (min-width: 768px){
   .link{
       border-radius: 15px 15px 0 0;
