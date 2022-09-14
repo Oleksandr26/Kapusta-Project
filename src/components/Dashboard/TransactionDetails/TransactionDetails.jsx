@@ -51,7 +51,8 @@ export const TransactionDetails = () => {
   };
 
   const summStyle =
-    location.pathname === '/transactions/expenses' ? 's.plus' : 's.minus';
+    location.pathname === '/transactions/expenses' ? s.minus : s.plus;
+  console.log('summStyle: ', summStyle);
 
   return (
     <div className={s.container}>

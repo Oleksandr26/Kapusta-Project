@@ -58,6 +58,7 @@
 
 .table__head__sum {
     height: 40px;
+    text-align: center;
 }
 
 .table__head__delete {
@@ -107,7 +108,7 @@
 
 .minus {
     height: 40px;
-    border-bottom: 2px solid var(--second-color);
+    border-bottom: 2px solid var(--bg-color);
     text-align: center;
 
     font-weight: 700;
@@ -118,7 +119,7 @@
 
 .plus {
     height: 40px;
-    border-bottom: 2px solid var(--second-color);
+    border-bottom: 2px solid var(--bg-color);
     text-align: center;
 
     font-weight: 700;
@@ -188,7 +189,7 @@
 
     .table__head__sum {
         width: 108px;
-        text-align: end;
+        text-align: center;
     }
 
 
@@ -254,7 +255,7 @@
 
     .table__head__sum {
         width: 109px;
-        text-align: center;
+        text-align: start;
     }
 
     .body {
