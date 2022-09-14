@@ -1,12 +1,6 @@
 import s from './TransationPage.module.css';
 import { ReactComponent as BarChart } from 'assets/svg/bar_chart.svg';
 import {
-  /*useGetIncomeCategoriesQuery,
-  useGetExpenseCategoriesQuery,
-  useGetPeriodDataQuery,
-  useGetIncomeQuery,
-  useGetExpenseQuery,*/
-  useDeleteTransactionMutation,
   useAddExpenseMutation,
   useAddIncomeMutation,
 } from 'redux/transaction/transactionOperations';
