@@ -76,63 +76,67 @@ export const ExpensesAndIncome = () => {
     setPrice('');
   };
 
+  const width = window.innerWidth;
+
   return (
     <div className={s.expenses}>
-      <NavLink to="/" className={s.icon_back}> 
-        <BackArrow
-          style={{
-            width: '32',
-            height: '24',
-          }}
-        />
-      </NavLink>
+      {width < 768 && (
+        <NavLink to="/" className={s.icon_back}>
+          <BackArrow
+            style={{
+              width: '32',
+              height: '24',
+            }}
+          />
+        </NavLink>
+      )}
       <form className={s.form}>
         <div className={s.blok_input}>
-        <input
-          className={s.input}
-          name="description"
-          value={description}
-          type="text"
-          onChange={handleChange}
-          placeholder="Product description"
-        />
-        <select
-          className={s.select}
-          placeholder="Product category"
-          name="category"
-          value={category}
-          autoComplete="off"
-          autoCorrect="off"
-          onChange={handleChange}
-        >
-          <option defaultValue>Product category</option>
-          {location.pathname === '/transactions/expenses'
-            ? expenseCategories &&
-              expenseCategories.map(item => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))
-            : incomeCategories &&
-              incomeCategories.map(item => (
-                <option value={item} key={item}>
-                  {item}
-                </option>
-              ))}
-        </select>
-        <div className={s.wrapper_input_cal}>
-        <input
-          className={s.price}
-          name="price"
-          value={price}
-          placeholder="00.00 UAH"
-          onChange={handleChange}
-        />
-        <div className={s.background_icon}>
-        <Calculator className={s.icon_cal} />
-        </div>
-        <Calculator className={s.icon_second_cal} />
-        </div>
+          <input
+            className={s.input}
+            name="description"
+            value={description}
+            type="text"
+            onChange={handleChange}
+            placeholder="Product description"
+          />
+          <select
+            className={s.select}
+            placeholder="Product category"
+            name="category"
+            value={category}
+            autoComplete="off"
+            autoCorrect="off"
+            onChange={handleChange}
+          >
+            <option defaultValue>Product category</option>
+            {location.pathname === '/transactions/expenses'
+              ? expenseCategories &&
+                expenseCategories.map(item => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))
+              : incomeCategories &&
+                incomeCategories.map(item => (
+                  <option value={item} key={item}>
+                    {item}
+                  </option>
+                ))}
+          </select>
+          <div className={s.wrapper_input_cal}>
+            <input
+              className={s.price}
+              name="price"
+              value={price}
+              placeholder="00.00 UAH"
+              onChange={handleChange}
+            />
+            <div className={s.background_icon}>
+              <Calculator className={s.icon_cal} />
+            </div>
+            <Calculator className={s.icon_second_cal} />
+          </div>
         </div>
         <div className={s.wrapper_button}>
           <Button
