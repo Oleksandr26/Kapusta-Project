@@ -39,12 +39,6 @@ const HomePage = () => {
       dispatch(updateBalance(addExpenseResult.data));
     }
   }, [dispatch, addExpenseResult]);
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   if (location.pathname === '/transactions' && window.innerWidth > 767) {
-  //   }
-  // }, [location]);
 
   return (
     <main className={s.meta}>

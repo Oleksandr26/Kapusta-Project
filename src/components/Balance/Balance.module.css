@@ -16,8 +16,17 @@
   margin-top: 8px;
   /* background-color: #f5f6fb; */
 }
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  height: 10px;
+}
 .confirmBtn {
   width: 142px;
+}
+.amount {
+  min-width: 142px;
 }
 .confirmBtn:hover {
   color: #ffffff;
