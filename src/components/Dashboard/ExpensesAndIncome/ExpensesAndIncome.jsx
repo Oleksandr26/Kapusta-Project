@@ -93,7 +93,7 @@ export const ExpensesAndIncome = () => {
           value={description}
           type="text"
           onChange={handleChange}
-          placeholder="Product description" 
+          placeholder="Product description"
         />
         <select
           className={s.select}
@@ -120,16 +120,16 @@ export const ExpensesAndIncome = () => {
               ))}
         </select>
         <div className={s.wrapper_input_cal}>
-        <input
-          className={s.price}
-          name="price"
-          value={price}
-          placeholder="00.00 UAH"
-          onChange={handleChange}
-        />
-        <div className={s.background_icon}>
-        <Calculator className={s.icon_cal} />
-        </div>
+          <input
+            className={s.price}
+            name="price"
+            value={price}
+            placeholder="00.00 UAH"
+            onChange={handleChange}
+          />
+          <div className={s.background_icon}>
+            <Calculator className={s.icon_cal} />
+          </div>
         </div>
         <div>
           <Button
