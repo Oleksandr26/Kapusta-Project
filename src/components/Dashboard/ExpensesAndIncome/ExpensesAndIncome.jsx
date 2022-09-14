@@ -48,19 +48,21 @@ export const ExpensesAndIncome = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    location.pathname === '/transactions/expenses'
-      ? addExpense({
-          description: description,
-          amount: price,
-          date: currentDate,
-          category: category,
-        })
-      : addIncome({
-          description: description,
-          amount: price,
-          date: currentDate,
-          category: category,
-        });
+    if (location.pathname === '/transactions/expenses') {
+      addExpense({
+        description: description,
+        amount: price,
+        date: currentDate,
+        category: category,
+      });
+    } else {
+      addIncome({
+        description: description,
+        amount: price,
+        date: currentDate,
+        category: category,
+      });
+    }
     setDescription('');
     setCategory('');
     setPrice('');
