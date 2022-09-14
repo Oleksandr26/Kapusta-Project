@@ -62,7 +62,9 @@
 }
 
 .table__head__sum {
-  height: 40px;
+    height: 40px;
+    text-align: center;
+
 }
 
 .table__head__delete {
@@ -125,25 +127,27 @@
 }
 
 .minus {
-  height: 40px;
-  border-bottom: 2px solid var(--second-color);
-  text-align: center;
 
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.17;
-  color: var(--expense-color);
+    height: 40px;
+    border-bottom: 2px solid var(--bg-color);
+    text-align: center;
+
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    color: var(--expense-color);
 }
 
 .plus {
-  height: 40px;
-  border-bottom: 2px solid var(--second-color);
-  text-align: center;
+    height: 40px;
+    border-bottom: 2px solid var(--bg-color);
+    text-align: center;
 
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.17;
-  color: var(--income-color);
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.17;
+    color: var(--income-color);
+
 }
 
 .body__delete {
@@ -375,4 +379,5 @@
     background: url('../../../assets/png/desktopBottomBG.png') no-repeat bottom;
     background-size: contain;
   }
+
 }
