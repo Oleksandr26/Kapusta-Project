@@ -17,7 +17,7 @@ export const QuestionModal = ({ closeModal }) => {
 
     return (
         <div className={s.modal}>
-            <p className={s.modal_text}>Are you sure?</p>
+            <p className={s.modal_text}>Do you really want to leave?</p>
             <ul className={s.modal_wrapper_button}>
                 <li className={s.modal_item}><button className={s.modal_button} type='button' onClick={exit}>Yes</button></li>
                 <li className={s.modal_item}><button className={s.modal_button} type='button' onClick={notExit}>No</button></li>
@@ -31,7 +31,7 @@ export const SecondQuestionModal = () => {
 
     return (
         <div className={s.modal}>
-            <p className={s.modal_text}>Do you really want to leave?</p>
+            <p className={s.modal_text}>Are you sure?</p>
             <ul className={s.modal_wrapper_button}>
                 <li className={s.modal_item}><button className={s.modal_button} type='button'>Yes</button></li>
                 <li className={s.modal_item}><button className={s.modal_button} type='button'>No</button></li>
@@ -39,5 +39,3 @@ export const SecondQuestionModal = () => {
         </div>
     )
 }
-
-
