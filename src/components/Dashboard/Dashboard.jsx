@@ -5,15 +5,25 @@ import { TransactionDetailsMobile } from './TransactionDetails/TransactionsDetai
 const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 
 const Dashboard = () => {
-
-
   return (
     <div className={s.container}>
       <TransactionDetailsMobile />
       <ul className={s.wrapper_nav}>
-        <li className={s.item}><NavLink className={getLinkClassName}   to="expenses">Expenses</NavLink></li>
-        <li className={s.item}><NavLink className={getLinkClassName}  to="income">Income</NavLink></li>
-        <li className={s.item}><NavLink className={getLinkClassName}  to="summary">Summary</NavLink></li>
+        <li className={s.item}>
+          <NavLink className={getLinkClassName} to="expenses">
+            Expenses
+          </NavLink>
+        </li>
+        <li className={s.item}>
+          <NavLink className={getLinkClassName} to="income">
+            Income
+          </NavLink>
+        </li>
+        <li className={s.item}>
+          <NavLink className={(getLinkClassName, s.summ__link)} to="summary">
+            Summary
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

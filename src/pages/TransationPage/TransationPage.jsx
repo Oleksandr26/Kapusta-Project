@@ -40,19 +40,22 @@ const HomePage = () => {
   }, [dispatch, addExpenseResult]);
 
   return (
-    <div className={s.container}>
-      <div className={s.wrap}>
-        <Link className={s.reportsBtn} to="/reports">
-          <span className={s.reports}>Reports</span>
-          <BarChart className={s.icon} />
-        </Link>
-        <Balance dateTransactions={date} />
+    <>
+      <div className={s.container}>
+        <div className={s.wrap}>
+          <Link className={s.reportsBtn} to="/reports">
+            <span className={s.reports}>Reports</span>
+            <BarChart className={s.icon} />
+          </Link>
+          <Balance dateTransactions={date} />
+        </div>
+
+        <Outlet />
       </div>
-
-      <Dashboard />
-
-      <Outlet />
-    </div>
+      <div>
+        <Dashboard />
+      </div>
+    </>
   );
 };
 

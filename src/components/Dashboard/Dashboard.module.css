@@ -1,7 +1,10 @@
 .wrapper_nav {
   display: flex;
+  justify-content: center;
 }
 .link {
+  padding: 20px 80px;
+  background-color: #F5F6FB;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,8 +15,17 @@
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-  border-radius: 15px 15px 0 0;
+  
   text-decoration: none;
+
+}
+.link:first-child{
+  margin-right: 4px;
+}
+@media screen and (min-width: 768px){
+  .link{
+      border-radius: 15px 15px 0 0;
+  }
 }
 
 .link:hover,
@@ -25,4 +37,13 @@
 .activeLink {
   composes: link;
   background-color: #ffffff;
+}
+
+.summ__link{
+  composes: link;
+}
+@media screen and (max-width: 768px) {
+  .summ__link{
+    display: none;
+  }
 }
