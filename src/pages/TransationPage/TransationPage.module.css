@@ -102,4 +102,8 @@
     right: 0;
     top: 10px;
   }
+  .meta {
+    background: url('../../assets/png/desktopBottomBG.png') no-repeat bottom;
+    background-size: contain;
+  }
 }
