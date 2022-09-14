@@ -17,7 +17,7 @@ import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { Link, Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { updateBalance } from '../../redux/auth/auth-slice';
 
 const HomePage = () => {
@@ -25,6 +25,7 @@ const HomePage = () => {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const [addExpense, addExpenseResult] = useAddExpenseMutation();
   const [addIncome, addIncomeResult] = useAddIncomeMutation();
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     if (addIncomeResult.isSuccess) {
@@ -40,14 +41,12 @@ const HomePage = () => {
 
   return (
     <div className={s.container}>
-      <h2>TransactionPage</h2>
-
       <div className={s.wrap}>
         <Link className={s.reportsBtn} to="/reports">
           <span className={s.reports}>Reports</span>
           <BarChart className={s.icon} />
         </Link>
-        <Balance />
+        <Balance dateTransactions={date} />
       </div>
 
       <Dashboard />
