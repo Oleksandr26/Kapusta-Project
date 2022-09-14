@@ -26,7 +26,6 @@ const HomePage = () => {
   const [addExpenseResult] = useAddExpenseMutation();
   const [addIncomeResult] = useAddIncomeMutation();
   const [date, setDate] = useState(new Date());
-  console.log('date TRANSATION PAGE: ', date);
 
   useEffect(() => {
     if (addIncomeResult.isSuccess) {
@@ -41,28 +40,30 @@ const HomePage = () => {
   }, [dispatch, addExpenseResult]);
 
   return (
-    <div className={s.container}>
-      <div className={s.wrap}>
-        <Link className={s.reportsBtn} to="/reports">
-          <span className={s.reports}>Reports</span>
-          <BarChart className={s.icon} />
-        </Link>
-        <Balance dateTransactions={date} />
+    <main className={s.meta}>
+      <div className={s.container}></div>
+      <div className={s.main}>
+        <div className={s.wrap}>
+          <Link className={s.reportsBtn} to="/reports">
+            <span className={s.reports}>Reports</span>
+            <BarChart className={s.icon} />
+          </Link>
+          <Balance dateTransactions={date} />
+        </div>
+        <Dashboard />
+        <Routes>
+          <Route
+            path="expenses"
+            element={<ExpensesAndIncome date={date} setDate={setDate} />}
+          />
+          <Route
+            path="incomes"
+            element={<ExpensesAndIncome date={date} setDate={setDate} />}
+          />
+        </Routes>
+        <Summary />
       </div>
-
-      <Dashboard />
-      <Routes>
-        <Route
-          path="expenses"
-          element={<ExpensesAndIncome date={date} setDate={setDate} />}
-        />
-        <Route
-          path="incomes"
-          element={<ExpensesAndIncome date={date} setDate={setDate} />}
-        />
-      </Routes>
-      <Summary />
-    </div>
+    </main>
   );
 };
 

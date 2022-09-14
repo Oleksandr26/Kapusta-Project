@@ -1,6 +1,8 @@
-.summary {
+@media screen and (max-width: 767px) {
+  .summary {
+    display: none;
+  }
 }
-
 
 .month {
   display: flex;
@@ -8,10 +10,10 @@
 
   padding: 10px 25px;
 
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
 }
 
-.month:not(:last-child){
+.month:not(:last-child) {
   margin-bottom: 5px;
 }
 
@@ -19,13 +21,13 @@
   border-radius: 0 0 35px 0;
 }
 
-.title{
+.title {
   margin-bottom: 0;
   padding: 10px 25px;
 
   border-radius: 35px 35px 0 0;
 
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
   text-align: center;
   font-weight: 700;
   font-size: 12px;
@@ -41,7 +43,7 @@
   letter-spacing: 0.04em;
   text-transform: uppercase;
 
-  color: #52555F;
+  color: #52555f;
 }
 
 .buttonWrapper {
@@ -52,7 +54,7 @@
   width: 50%;
   padding: 5px 0;
 
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
   border: none;
 
   font-weight: 700;
@@ -65,11 +67,11 @@
 }
 
 .button:hover {
-  background-color: #FF751D;
+  background-color: #ff751d;
   color: white;
 }
 
 .activeBtn {
-  background-color: #FF751D;
+  background-color: #ff751d;
   color: white;
 }
