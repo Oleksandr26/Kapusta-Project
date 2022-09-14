@@ -16,6 +16,13 @@
   margin-top: 8px;
   /* background-color: #f5f6fb; */
 }
+.confirmBtn {
+  width: 142px;
+}
+.confirmBtn:hover {
+  color: #ffffff;
+  background-color: var(--accent-color);
+}
 @media screen and (min-width: 768px) {
   .wrap {
     margin-top: 0;
