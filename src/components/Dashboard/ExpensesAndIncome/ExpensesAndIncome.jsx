@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button, ButtonTransactions } from './Button';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
@@ -80,76 +80,79 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
   const width = window.innerWidth;
 
   return (
-    <div className={s.expenses}>
-      <Calendar date={date} setDate={setDate} />
-      {width < 768 && (
-        <NavLink to="/" className={s.icon_back}>
-          <BackArrow
-            style={{
-              width: '32',
-              height: '24',
-            }}
-          />
-        </NavLink>
-      )}
-      <form className={s.form}>
-        <div className={s.blok_input}>
-          <input
-            className={s.input}
-            name="description"
-            value={description}
-            type="text"
-            onChange={handleChange}
-            placeholder="Product description"
-          />
-          <select
-            className={s.select}
-            placeholder="Product category"
-            name="category"
-            value={category}
-            autoComplete="off"
-            autoCorrect="off"
-            onChange={handleChange}
-          >
-            <option defaultValue>Product category</option>
-            {location.pathname === '/transactions/expenses'
-              ? expenseCategories &&
-                expenseCategories.map(item => (
-                  <option value={item} key={item}>
-                    {item}
-                  </option>
-                ))
-              : incomeCategories &&
-                incomeCategories.map(item => (
-                  <option value={item} key={item}>
-                    {item}
-                  </option>
-                ))}
-          </select>
-          <div className={s.wrapper_input_cal}>
-            <input
-              className={s.price}
-              name="price"
-              value={price}
-              placeholder="00.00 UAH"
-              onChange={handleChange}
+    <>
+      <ButtonTransactions />
+      <div className={s.expenses}>
+        <Calendar date={date} setDate={setDate} />
+        {width < 768 && (
+          <NavLink to="/" className={s.icon_back}>
+            <BackArrow
+              style={{
+                width: '32',
+                height: '24',
+              }}
             />
-            <div className={s.background_icon}>
-              <Calculator className={s.icon_cal} />
+          </NavLink>
+        )}
+        <form className={s.form}>
+          <div className={s.blok_input}>
+            <input
+              className={s.input}
+              name="description"
+              value={description}
+              type="text"
+              onChange={handleChange}
+              placeholder="Product description"
+            />
+            <select
+              className={s.select}
+              placeholder="Product category"
+              name="category"
+              value={category}
+              autoComplete="off"
+              autoCorrect="off"
+              onChange={handleChange}
+            >
+              <option defaultValue>Product category</option>
+              {location.pathname === '/transactions/expenses'
+                ? expenseCategories &&
+                  expenseCategories.map(item => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))
+                : incomeCategories &&
+                  incomeCategories.map(item => (
+                    <option value={item} key={item}>
+                      {item}
+                    </option>
+                  ))}
+            </select>
+            <div className={s.wrapper_input_cal}>
+              <input
+                className={s.price}
+                name="price"
+                value={price}
+                placeholder="00.00 UAH"
+                onChange={handleChange}
+              />
+              <div className={s.background_icon}>
+                <Calculator className={s.icon_cal} />
+              </div>
+              <Calculator className={s.icon_second_cal} />
             </div>
-            <Calculator className={s.icon_second_cal} />
           </div>
-        </div>
-        <div className={s.wrapper_button}>
-          <Button
-            className={s.btn}
-            type="submit"
-            onClickSubmit={handleSubmit}
-            onClickReset={handleReset}
-          ></Button>
-        </div>
-      </form>
-      <TransactionDetails />
-    </div>
+          <div className={s.wrapper_button}>
+            <Button
+              className={s.btn}
+              type="submit"
+              onClickSubmit={handleSubmit}
+              onClickReset={handleReset}
+            ></Button>
+          </div>
+        </form>
+        <TransactionDetails />
+      </div>
+    </>
   );
 };
