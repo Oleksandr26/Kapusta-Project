@@ -11,6 +11,7 @@ import {
 import s from './ExpensesAndIncome.module.css';
 import { TransactionDetails } from '../TransactionDetails/TransactionDetails';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
+import { ReactComponent as Calculator } from 'assets/svg/calculator.svg';
 
 export const ExpensesAndIncome = () => {
   const token = useSelector(state => state.auth.accessToken);
@@ -89,7 +90,7 @@ export const ExpensesAndIncome = () => {
           value={description}
           type="text"
           onChange={handleChange}
-          placeholder="Product description"
+          placeholder="Product description" 
         />
         <select
           className={s.select}
@@ -115,6 +116,7 @@ export const ExpensesAndIncome = () => {
                 </option>
               ))}
         </select>
+        <div className={s.wrapper_input_cal}>
         <input
           className={s.price}
           name="price"
@@ -122,6 +124,10 @@ export const ExpensesAndIncome = () => {
           placeholder="00.00 UAH"
           onChange={handleChange}
         />
+        <div className={s.background_icon}>
+        <Calculator className={s.icon_cal} />
+        </div>
+        </div>
         <div>
           <Button className={s.btn} type="submit" onClick={handleSubmit}>
             Input
