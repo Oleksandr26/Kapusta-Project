@@ -24,9 +24,10 @@ const Balance = ({ date }) => {
     setModalActive(!modalActive);
   };
 
+  console.log('date: ', date);
   const formatDate = date => {
-    let month = (date.getMonth() + 1).toString();
-    let year = date.getFullYear();
+    let month = (date?.getMonth() + 1).toString();
+    let year = date?.getFullYear();
     if (month.length < 2) {
       month = '0' + month;
     }
@@ -34,9 +35,8 @@ const Balance = ({ date }) => {
   };
 
   const { currentData } = useGetPeriodDataQuery(formatDate(date));
-  const incomeTotal = currentData?.incomes.incomeTotal;
-  const expenseTotal = currentData?.expenses.expenseTotal;
-  const monthlyBalance = incomeTotal - expenseTotal;
+  const monthlyBalance =
+    currentData?.incomes.incomeTotal - currentData?.expenses.expenseTotal;
 
   return (
     <div className={s.container}>

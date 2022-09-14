@@ -14,6 +14,7 @@ import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
 
 const ReportPage = () => {
   const [date, setDate] = useState(new Date());
+
   const [reportsType, setReportsType] = useState(false);
   const [category, setCategory] = useState(null);
 
