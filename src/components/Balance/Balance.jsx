@@ -15,7 +15,11 @@ const Balance = ({ dateReports, dateTransactions }) => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    if (pathname === '/transactions' || pathname === '/transactions/*') {
+    if (
+      pathname === '/transactions' ||
+      pathname === '/transactions/expenses' ||
+      pathname === '/transactions/incomes'
+    ) {
       setDate(dateTransactions);
     }
     if (pathname === '/reports' || pathname === '/reports/*') {
@@ -42,8 +46,8 @@ const Balance = ({ dateReports, dateTransactions }) => {
     }
     return [year, month].join('-');
   };
-
   const { currentData } = useGetPeriodDataQuery(formatDate(date));
+
   const monthlyBalance =
     currentData?.incomes.incomeTotal - currentData?.expenses.expenseTotal;
 
