@@ -1,5 +1,6 @@
 .wrapper_nav {
   display: flex;
+  justify-content: center;
 }
 .link {
   padding: 20px 80px;
@@ -17,6 +18,9 @@
   
   text-decoration: none;
 
+}
+.link:first-child{
+  margin-right: 4px;
 }
 @media screen and (min-width: 768px){
   .link{
