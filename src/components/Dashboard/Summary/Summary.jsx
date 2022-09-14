@@ -5,7 +5,8 @@ import {
 } from 'redux/transaction/transactionOperations';
 import s from './Summary.module.css';
 
-const Summary = ({ params }) => {
+const Summary = ({ params = '' }) => {
+  console.log('params: ', params);
   const checkType = Object?.values(params)[0];
   const [showIncome, setShowIncome] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
