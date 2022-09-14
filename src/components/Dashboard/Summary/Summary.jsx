@@ -85,5 +85,3 @@ const Summary = () => {
 };
 
 export default Summary;
-
-// Invalid session
