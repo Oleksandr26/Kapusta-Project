@@ -7,11 +7,21 @@ import { useGetPeriodDataQuery } from 'redux/transaction/transactionOperations';
 import { handleUpdateUserBalance } from '../../redux/auth/auth-operations';
 import s from './Balance.module.css';
 
-const Balance = ({ date }) => {
+const Balance = ({ dateReports, dateTransactions }) => {
   const dispatch = useDispatch();
   const [modalActive, setModalActive] = useState(false);
   const transactions = useSelector(state => state.auth.userData.transactions);
   const { pathname } = useLocation();
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    if (pathname === '/transactions' || pathname === '/transactions/*') {
+      setDate(dateTransactions);
+    }
+    if (pathname === '/reports' || pathname === '/reports/*') {
+      setDate(dateReports);
+    }
+  }, [pathname, dateTransactions, dateReports]);
 
   useEffect(() => {
     if (pathname === '/transactions' && transactions.length === 0) {
@@ -24,7 +34,6 @@ const Balance = ({ date }) => {
     setModalActive(!modalActive);
   };
 
-  console.log('date: ', date);
   const formatDate = date => {
     let month = (date?.getMonth() + 1).toString();
     let year = date?.getFullYear();
@@ -38,16 +47,22 @@ const Balance = ({ date }) => {
   const monthlyBalance =
     currentData?.incomes.incomeTotal - currentData?.expenses.expenseTotal;
 
+  const balanceNormalizer =
+    monthlyBalance?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ') + ' грн.';
+
+  const confirmBalance = total => {
+    dispatch(handleUpdateUserBalance(total));
+  };
   return (
     <div className={s.container}>
       <span className={s.balance}>Balance:</span>
 
       <div className={s.wrap}>
-        <div className={s.amount}>{monthlyBalance} UAH</div>
+        <div className={s.amount}>{balanceNormalizer}</div>
         <button
           className={s.confirmBtn}
           type="button"
-          onClick={() => dispatch(handleUpdateUserBalance())}
+          onClick={() => confirmBalance(monthlyBalance)}
         >
           CONFIRM
         </button>
@@ -61,7 +76,6 @@ const Balance = ({ date }) => {
           />
         )}
       </div>
-      {/* <TransactionDetailsMobile /> */}
     </div>
   );
 };

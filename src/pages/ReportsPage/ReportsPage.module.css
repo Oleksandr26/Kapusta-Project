@@ -20,7 +20,6 @@
 .block {
   background-color: #ffffff;
   margin-bottom: 20px;
-  box-shadow: var(--shadow-mob);
 }
 .header {
   display: flex;
