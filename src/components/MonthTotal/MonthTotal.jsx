@@ -14,7 +14,7 @@ export default function MonthTotalStatistics({ date }) {
   const { currentData, isFetching } = useGetPeriodDataQuery(formatDate(date));
 
   const incomeTotal = currentData?.incomes.incomeTotal;
-  console.log('incomeTotal: ', incomeTotal);
+  
   const expenseTotal = currentData?.expenses.expenseTotal;
 
   const expenseNormalizer =
