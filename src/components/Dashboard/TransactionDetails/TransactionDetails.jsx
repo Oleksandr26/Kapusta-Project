@@ -51,11 +51,11 @@ export const TransactionDetails = () => {
 
   return (
     <div className={s.scrollTable}>
-      <table className={s.x}>
+      <table className={s.x}> 
         <thead className={s.tableHead}>
           <tr>
-            <th className={s.tableTheadEmpty}></th>
-            <th className={s.table__head}>DATE</th>
+            {/* <th className={s.tableTheadEmpty}></th> */}
+            <th className={`${s.table__head} ${s.table_head_left}`}>DATE</th>
             <th className={s.table__head}>DESCRIPTION</th>
             <th className={s.table__head}>CATEGORY</th>
             <th className={s.table__head}>SUM</th>
@@ -65,12 +65,12 @@ export const TransactionDetails = () => {
         <tbody>
           {reportArr.map(item => (
             <tr className={s.tableBodyTR} key={item._id}>
-              <td className={s.tableTheadEmpty}></td>
-              <td className={s.table__head}>{item.date}</td>
-              <td className={s.table__head}>{item.description}</td>
-              <td className={s.table__head}>{item.category}</td>
-              <td className={s.table__head}>{normalize(item.amount)}</td>
-              <td className={s.table__head}>
+              {/* <td className={s.tableTheadEmpty}></td> */}
+              <td className={s.table__body}>{item.date}</td>
+              <td className={s.table__body}>{item.description}</td>
+              <td className={s.table__body}>{item.category}</td>
+              <td className={s.table__body}>{normalize(item.amount)}</td>
+              <td className={s.table__body}>
                 <button
                   onClick={() => handleDeleteTransaction(item._id)}
                   type="button"

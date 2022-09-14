@@ -6,14 +6,14 @@ const Dashboard = () => {
   return (
     <div className={s.container}>
       <TransactionDetailsMobile />
-      <NavLink className={s.link} to="expenses">
-        Expenses
+      <NavLink className={s.link}  to="expenses">
+      <div className={s.button}>Expenses</div>
       </NavLink>
       <NavLink className={s.link} to="income">
-        Income
+      <div  className={s.button}>Income</div>
       </NavLink>
       <NavLink className={s.link} to="summary">
-        Summary
+      <div  className={s.button}>Summary</div>
       </NavLink>
     </div>
   );

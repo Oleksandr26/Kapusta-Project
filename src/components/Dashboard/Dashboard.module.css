@@ -1,16 +1,25 @@
-.link{
-    display: inline-block;
-    width: 158px;
-    text-decoration: none;
-    font-weight: 700;
-font-size: 12px;
-line-height: 1.17;
-color: black;
-padding:20px 80px;
-background-color: #F5F6FB;
+.link {
+  display: inline-block;
+  text-decoration: none;
 }
 
-.link:hover{   
-    color:#FFF;
-     background-color: #FF751D;
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 40px;
+  background-color: #f7f8fb;
+  color: black;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  border-radius: 15px 15px 0 0;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #ffffff;
+  color: var(--accent-color);
 }

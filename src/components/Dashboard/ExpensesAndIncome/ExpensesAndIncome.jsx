@@ -78,7 +78,7 @@ export const ExpensesAndIncome = () => {
 
   return (
     <div className={s.expenses}>
-      <NavLink to="/">
+      <NavLink to="/" className={s.icon_back}> 
         <BackArrow
           style={{
             width: '32',
@@ -87,6 +87,7 @@ export const ExpensesAndIncome = () => {
         />
       </NavLink>
       <form className={s.form}>
+        <div className={s.blok_input}>
         <input
           className={s.input}
           name="description"
@@ -120,18 +121,20 @@ export const ExpensesAndIncome = () => {
               ))}
         </select>
         <div className={s.wrapper_input_cal}>
-          <input
-            className={s.price}
-            name="price"
-            value={price}
-            placeholder="00.00 UAH"
-            onChange={handleChange}
-          />
-          <div className={s.background_icon}>
-            <Calculator className={s.icon_cal} />
-          </div>
+        <input
+          className={s.price}
+          name="price"
+          value={price}
+          placeholder="00.00 UAH"
+          onChange={handleChange}
+        />
+        <div className={s.background_icon}>
+        <Calculator className={s.icon_cal} />
         </div>
-        <div>
+        <Calculator className={s.icon_second_cal} />
+        </div>
+        </div>
+        <div className={s.wrapper_button}>
           <Button
             className={s.btn}
             type="submit"
