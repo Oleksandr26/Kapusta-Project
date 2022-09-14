@@ -93,3 +93,10 @@ display: flex;
         display: none;
     }
 }
+.plus{
+    color : var(--income-color);
+}
+
+.minus{
+    color: var(--expense-color);
+}
