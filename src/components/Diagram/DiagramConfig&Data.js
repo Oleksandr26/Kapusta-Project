@@ -3,7 +3,10 @@ const DiagramConfig = {
     responsive: true,
     maintainAspectRatio: false,
     layout: {
-      padding: 15,
+      padding: {
+        top: 35,
+        bottom: 15,
+      },
     },
     scales: {
       y: {

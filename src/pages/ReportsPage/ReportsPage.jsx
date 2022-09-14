@@ -39,6 +39,7 @@ const ReportPage = () => {
 
   const changeReportsVision = () => {
     setReportsType(!reportsType);
+    setCategory(null);
   };
 
   return (
@@ -100,11 +101,6 @@ const ReportPage = () => {
             }
           />
         </Routes>
-
-        {/* <Diagram
-          dateTransactionFilter={dateTransactionFilter}
-          category={category}
-        /> */}
       </div>
     </div>
   );
