@@ -1,21 +1,25 @@
 import s from './TransactionDetailsMobile.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useDeleteTransactionMutation } from 'redux/transaction/transactionOperations';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { getCurrentUser } from 'redux/auth/auth-operations';
 
 export const TransactionDetailsMobile = () => {
   const [totalArr, setTotalArr] = useState([]);
+  const dispatch = useDispatch();
   const getUserTransaction = useSelector(
     state => state.auth.userData.transactions
   );
-  console.log('getUserTransaction: ', getUserTransaction);
-
   const [deleteTransaction] = useDeleteTransactionMutation();
 
   useEffect(() => {
     setTotalArr(getUserTransaction);
   }, [getUserTransaction]);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   const handleDeleteTransaction = id => {
     deleteTransaction(id);
@@ -50,7 +54,6 @@ export const TransactionDetailsMobile = () => {
             ) : (
               <p className={s.minus}>{amountNormalizer('-', item.amount)}</p>
             )}
-            {/* <p className={s.divSumAndButtonFlex__sum}>{item.amount} грн.</p> */}
             <button
               onClick={() => handleDeleteTransaction(item._id)}
               type="button"
