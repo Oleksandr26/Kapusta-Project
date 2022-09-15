@@ -16,6 +16,25 @@
   margin-top: 8px;
   /* background-color: #f5f6fb; */
 }
+.input {
+  width: 116px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.17;
+  border: none;
+  outline: none;
+  padding-left: 30px;
+  /* background-color: transparent; */
+}
+.input::placeholder {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.17;
+  border: none;
+  color: black;
+}
 .spinner {
   position: absolute;
   top: 0;

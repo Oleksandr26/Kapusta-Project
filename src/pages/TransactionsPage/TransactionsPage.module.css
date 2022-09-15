@@ -71,6 +71,7 @@
 @media screen and (min-width: 768px) {
   .main {
     width: 768px;
+    padding: 20px 32px 40px;
   }
 
   .container {
@@ -85,19 +86,23 @@
   .reportsBtn {
     margin: 0;
   }
-
-  .container {
-    background: url('../../assets/png/tabletBottomBG.png') no-repeat bottom
-      right;
+}
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .meta {
+    background: url('../../assets/png/tabletBottomBG.png') no-repeat;
+    background-position: bottom 59px right 88px;
   }
 }
 @media screen and (min-width: 1280px) {
   .main {
-    width: 1280px;
+    width: 1098px;
+    margin: 0 auto;
+    padding: 40px 0 83px 0;
   }
   .wrap {
     justify-content: center;
     position: relative;
+    margin-bottom: 8px;
   }
   .reportsBtn {
     position: absolute;
@@ -105,7 +110,8 @@
     top: 10px;
   }
   .meta {
-    background: url('../../assets/png/desktopBottomBG.png') no-repeat bottom;
+    background: url('../../assets/png/desktopBottomBG.png') no-repeat;
     background-size: contain;
+    background-position: bottom -30px right 1px;
   }
 }
