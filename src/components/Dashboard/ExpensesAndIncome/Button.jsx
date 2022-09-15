@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink /*, useLocation*/ } from 'react-router-dom';
 
 import s from './ExpensesAndIncome.module.css';
 
@@ -24,7 +24,6 @@ export const ButtonTransactions = () => {
   // console.log('showButtons: ', showButtons);
   return (
     <>
-      {' '}
       {/* {showButtons && ( */}
       <ul className={s.wrapper_nav}>
         <li className={s.item}>
