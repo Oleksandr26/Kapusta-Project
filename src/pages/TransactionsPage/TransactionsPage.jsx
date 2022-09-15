@@ -16,7 +16,8 @@ import Calendar from 'components/Calendar/Calendar';
 
 const HomePage = () => {
   const { pathname } = useLocation();
-  const vision = pathname === '/transactions' && window.innerWidth < 768;
+
+  const vision = window.innerWidth > 767 || pathname === '/transactions';
 
   const dispatch = useDispatch();
   const [addExpenseResult] = useAddExpenseMutation();
