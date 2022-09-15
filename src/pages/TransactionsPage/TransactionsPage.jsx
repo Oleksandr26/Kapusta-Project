@@ -12,10 +12,13 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { updateBalance } from '../../redux/auth/auth-slice';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
+import Calendar from 'components/Calendar/Calendar';
 
 const HomePage = () => {
   const { pathname } = useLocation();
+
   const vision = window.innerWidth > 767 || pathname === '/transactions';
+
   const dispatch = useDispatch();
   const [addExpenseResult] = useAddExpenseMutation();
   const [addIncomeResult] = useAddIncomeMutation();
@@ -44,9 +47,13 @@ const HomePage = () => {
               <BarChart className={s.icon} />
             </Link>
             <Balance dateTransactions={date} />
+            <div className={s.absCalendar}>
+              {' '}
+              <Calendar date={date} setDate={setDate} />
+            </div>
           </div>
         )}
-        <Dashboard />
+        <Dashboard date={date} setDate={setDate} />
         <Routes>
           <Route
             path="expenses"

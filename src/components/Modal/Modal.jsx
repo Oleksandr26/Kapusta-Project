@@ -8,8 +8,6 @@ const Modal = ({ handleToggle, active, setActive }) => {
         if (e.target === e.currentTarget) {
           handleToggle();
 
-          // console.log('e.currentTarget: ', e.currentTarget);
-          // console.log('e.target : ', e.target);
         }
       }}
     >
