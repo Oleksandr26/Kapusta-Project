@@ -87,12 +87,7 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
         <div className={s.block}>
           <div className={s.thumbs}>
             <NavLink to="/" className={s.icon_back}>
-              <BackArrow
-                style={{
-                  width: '32',
-                  height: '24',
-                }}
-              />
+              <BackArrow className={s.backArrow} />
             </NavLink>
             <Calendar date={date} setDate={setDate} />
             <form className={s.form}>

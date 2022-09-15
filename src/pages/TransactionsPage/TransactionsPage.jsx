@@ -7,13 +7,15 @@ import {
 
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { updateBalance } from '../../redux/auth/auth-slice';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
 
 const HomePage = () => {
+  const { pathname } = useLocation();
+  const vision = pathname === '/transactions' && window.innerWidth < 768;
   const dispatch = useDispatch();
   const [addExpenseResult] = useAddExpenseMutation();
   const [addIncomeResult] = useAddIncomeMutation();
@@ -35,13 +37,15 @@ const HomePage = () => {
     <main className={s.meta}>
       <div className={s.container}></div>
       <div className={s.main}>
-        <div className={s.wrap}>
-          <Link className={s.reportsBtn} to="/reports">
-            <span className={s.reports}>Reports</span>
-            <BarChart className={s.icon} />
-          </Link>
-          <Balance dateTransactions={date} />
-        </div>
+        {vision && (
+          <div className={s.wrap}>
+            <Link className={s.reportsBtn} to="/reports">
+              <span className={s.reports}>Reports</span>
+              <BarChart className={s.icon} />
+            </Link>
+            <Balance dateTransactions={date} />
+          </div>
+        )}
         <Dashboard />
         <Routes>
           <Route
