@@ -29,7 +29,7 @@ const Balance = ({ dateReports, dateTransactions }) => {
   }, [pathname, dateTransactions, dateReports]);
 
   useEffect(() => {
-    if (pathname === '/transactions' && transactions.length === 0) {
+    if (pathname === '/transactions/expenses' && transactions.length === 0) {
       setModalActive(true);
       return;
     }
