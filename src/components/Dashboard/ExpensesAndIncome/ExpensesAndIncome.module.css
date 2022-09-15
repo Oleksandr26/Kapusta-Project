@@ -210,9 +210,8 @@
   }
 }
 .backArrow {
-  position: absolute;
-  width: 32px;
-  height: 24px;
+  left: 23px;
+  top: 30px;
 }
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .wrapper_button {
