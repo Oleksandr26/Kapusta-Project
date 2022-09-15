@@ -19,26 +19,26 @@ export const Button = ({ onClickSubmit, onClickReset }) => {
 
 const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 export const ButtonTransactions = () => {
-  const { pathname } = useLocation();
-  const showButtons = pathname === '/transactions' && window.innerWidth < 768;
-  console.log('showButtons: ', showButtons);
+  // const { pathname } = useLocation();
+  // const showButtons = pathname === '/transactions' && window.innerWidth < 768;
+  // console.log('showButtons: ', showButtons);
   return (
     <>
       {' '}
-      {showButtons && (
-        <ul className={s.wrapper_nav}>
-          <li className={s.item}>
-            <NavLink className={getLinkClassName} to="/transactions/expenses">
-              Expenses
-            </NavLink>
-          </li>
-          <li className={s.item}>
-            <NavLink className={getLinkClassName} to="/transactions/incomes">
-              Income
-            </NavLink>
-          </li>
-        </ul>
-      )}
+      {/* {showButtons && ( */}
+      <ul className={s.wrapper_nav}>
+        <li className={s.item}>
+          <NavLink className={getLinkClassName} to="/transactions/expenses">
+            Expenses
+          </NavLink>
+        </li>
+        <li className={s.item}>
+          <NavLink className={getLinkClassName} to="/transactions/incomes">
+            Income
+          </NavLink>
+        </li>
+      </ul>
+      {/* )} */}
     </>
   );
 };

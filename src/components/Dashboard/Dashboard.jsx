@@ -6,13 +6,15 @@ import { ButtonTransactions } from './ExpensesAndIncome/Button';
 // const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 const Dashboard = () => {
   const location = useLocation();
-  // const bool = location.pathname === '/transactions' || width < 768;
+  const showBtn =
+    location.pathname === '/transactions' && window.innerWidth < 768;
   return (
     <div className={s.container}>
       {location.pathname === '/transactions' && (
         <div className={s.wrap}>
           <TransactionDetailsMobile />
-          <ButtonTransactions />
+          {showBtn && <ButtonTransactions />}
+          {/* <ButtonTransactions /> */}
         </div>
       )}
     </div>
