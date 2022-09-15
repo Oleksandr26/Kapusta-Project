@@ -6,7 +6,7 @@ import {
   useGetIncomeQuery,
   useDeleteTransactionMutation,
 } from 'redux/transaction/transactionOperations';
-import Summary from '../Summary/Summary';
+
 import s from './TransactionDetails.module.css';
 
 export const TransactionDetails = () => {
@@ -54,7 +54,7 @@ export const TransactionDetails = () => {
     location.pathname === '/transactions/expenses' ? s.minus : s.plus;
 
   return (
-    <div className={s.container}>
+    <>
       <div className={s.scrollTable}>
         <table>
           <thead className={s.tableHead}>
@@ -91,7 +91,6 @@ export const TransactionDetails = () => {
           </table>
         </div>
       </div>
-      <Summary />
-    </div>
+    </>
   );
 };

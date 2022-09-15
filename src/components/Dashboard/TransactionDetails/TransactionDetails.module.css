@@ -1,8 +1,7 @@
-.container {
+/* .container {
   display: flex;
-  /* justify-content: space-around; */
   justify-content: center;
-}
+} */
 .scrollTable table {
   width: 100%;
   border-spacing: 0px;
@@ -63,9 +62,8 @@
 }
 
 .table__head__sum {
-    height: 40px;
-    text-align: center;
-
+  height: 40px;
+  text-align: center;
 }
 
 .table__head__delete {
@@ -128,27 +126,25 @@
 }
 
 .minus {
+  height: 40px;
+  border-bottom: 2px solid var(--bg-color);
+  text-align: center;
 
-    height: 40px;
-    border-bottom: 2px solid var(--bg-color);
-    text-align: center;
-
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    color: var(--expense-color);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--expense-color);
 }
 
 .plus {
-    height: 40px;
-    border-bottom: 2px solid var(--bg-color);
-    text-align: center;
+  height: 40px;
+  border-bottom: 2px solid var(--bg-color);
+  text-align: center;
 
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
-    color: var(--income-color);
-
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--income-color);
 }
 
 .body__delete {
@@ -187,14 +183,12 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container {
-    padding-left: 20px;
+  /* .container {
+    width: 704px;
     flex-direction: column;
-    align-items: flex-start;
-  }
+  } */
   .scrollTable {
     width: 624px;
-    margin-bottom: 40px;
   }
 
   .table__head__empty {
@@ -380,8 +374,8 @@
     background-size: contain;
   }
 
-  .container{
+  /* .container {
     flex-direction: row;
-    justify-content: space-around;
-  }
+    justify-content: space-between;
+  } */
 }
