@@ -82,7 +82,7 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
 
   return (
     <>
-      <ButtonTransactions />
+      {window.innerWidth > 768 && <ButtonTransactions />}
       <div className={s.container}>
         <div className={s.block}>
           <div className={s.thumbs}>

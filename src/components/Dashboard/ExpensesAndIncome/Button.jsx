@@ -20,8 +20,8 @@ export const Button = ({ onClickSubmit, onClickReset }) => {
 const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 export const ButtonTransactions = () => {
   // const { pathname } = useLocation();
-  // const showButtons =
-  //   pathname === '/transactions/expenses' && window.innerWidth > 768;
+  // const showButtons = pathname === '/transactions' && window.innerWidth < 768;
+  // console.log('showButtons: ', showButtons);
   return (
     <>
       {/* {showButtons && ( */}
