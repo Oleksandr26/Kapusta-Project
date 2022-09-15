@@ -14,7 +14,6 @@ const Dashboard = () => {
         <div className={s.wrap}>
           <TransactionDetailsMobile />
           {showBtn && <ButtonTransactions />}
-          {/* <ButtonTransactions /> */}
         </div>
       )}
     </div>

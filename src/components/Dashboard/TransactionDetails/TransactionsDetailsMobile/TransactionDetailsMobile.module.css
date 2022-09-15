@@ -1,91 +1,85 @@
-
-
 .tableContainer {
-    padding: 20px 23px 0 20px;
-    display: flex;
-    flex-direction: column; 
-    justify-content: space-between;
-    height: 370px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
-
 
 .title {
-    margin-bottom: 3px;
-    text-transform: capitalize;
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 1.17;
+  margin-bottom: 3px;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
 
-    color: var(--second-color); 
+  color: var(--second-color);
 }
 
-
-.list__item {margin-bottom: 8px;
-     border-bottom: 1px solid grey;
-    display: flex;
-    justify-content: space-between;
+.list__item {
+  margin-bottom: 8px;
+  border-bottom: 1px solid grey;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.text__container{
-display: flex;
+.text__container {
+  display: flex;
 }
 
 .item__text {
-    font-size: 10px;
-    line-height: 1.12;
+  font-size: 10px;
+  line-height: 1.12;
 
-    color: var(--second-color);
+  color: var(--second-color);
 }
 
 .item__text:first-child {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .divSumAndButtonFlex {
-    padding-bottom: 12px;
-    display: flex;
-    align-items: center;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
 }
 
-
 .btnDelete {
-    width: 28px;
-    height: 28px;
-    border-radius: 50px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50px;
 
-    border: none;
-    background: none;
-    background-image: url(../../../../assets/svg/garbagebin.svg);
-    background-position: center; 
-    background-repeat: no-repeat; 
-    transition: all 250ms linear; 
+  border: none;
+  background: none;
+  background-image: url(../../../../assets/svg/garbagebin.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 250ms linear;
 }
 
 .btnDelete:hover,
 .btnDelete:focus {
-    background: var(--accent-color);
-    background-image: url(../../../../assets/svg/garbagebin.svg);
-    fill: white;
-    background-position: center;
-    background-repeat: no-repeat;
+  background: var(--accent-color);
+  background-image: url(../../../../assets/svg/garbagebin.svg);
+  fill: white;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 768px) {
-    .tableContainer {
-        display: none;
-    }
+  .tableContainer {
+    display: none;
+  }
 }
-.plus{
-    font-weight: 700;
-font-size: 12px;
-line-height: 1.17;
-    color : var(--income-color);
+.plus {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--income-color);
 }
 
-.minus{
-    font-weight: 700;
-font-size: 12px;
-line-height: 1.17;
-    color: var(--expense-color);
+.minus {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--expense-color);
 }
