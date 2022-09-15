@@ -18,7 +18,8 @@ const HomePage = () => {
   const { pathname } = useLocation();
 
   const vision = window.innerWidth > 767 || pathname === '/transactions';
-
+  const calendarVision =
+    window.innerWidth < 767 && pathname === '/transactions';
   const dispatch = useDispatch();
   const [addExpenseResult] = useAddExpenseMutation();
   const [addIncomeResult] = useAddIncomeMutation();
@@ -47,12 +48,14 @@ const HomePage = () => {
               <BarChart className={s.icon} />
             </Link>
             <Balance dateTransactions={date} />
-            <div className={s.absCalendar}>
-              {' '}
-              <Calendar date={date} setDate={setDate} />
-            </div>
           </div>
         )}
+        {calendarVision && (
+          <div className={s.absCalendar}>
+            <Calendar date={date} setDate={setDate} />
+          </div>
+        )}
+
         <Dashboard date={date} setDate={setDate} />
         <Routes>
           <Route
