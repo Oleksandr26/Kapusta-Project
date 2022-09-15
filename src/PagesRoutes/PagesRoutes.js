@@ -6,8 +6,8 @@ import PublicRoute from 'components/PublicRoute/PublicRoute';
 import Spinner from 'components/Spinner/Spinner';
 
 const AuthPage = lazy(() => import('pages/AuthPage/AuthPage'));
-const TransationPage = lazy(() =>
-  import('pages/TransationPage/TransationPage')
+const TransactionsPage = lazy(() =>
+  import('pages/TransactionsPage/TransactionsPage')
 );
 const ReportsPage = lazy(() => import('pages/ReportsPage/ReportsPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
@@ -21,7 +21,7 @@ const PagesRoutes = () => {
         </Route>
 
         <Route element={<PrivateRoute />}>
-          <Route path="/transactions/*" element={<TransationPage />} />
+          <Route path="/transactions/*" element={<TransactionsPage />} />
           <Route path="/reports/*" element={<ReportsPage />} />
         </Route>
 
