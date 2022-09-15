@@ -15,6 +15,7 @@ import Summary from '../Summary/Summary';
 import { TransactionDetails } from '../TransactionDetails/TransactionDetails';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 import { ReactComponent as Calculator } from 'assets/svg/calculator.svg';
+import useWindowDimensions from 'redux/hooks/hooks';
 
 export const ExpensesAndIncome = ({ date, setDate }) => {
   const params = useParams();
@@ -79,10 +80,11 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
     setCategory('');
     setPrice('');
   };
+  const { width } = useWindowDimensions();
 
   return (
     <>
-      {window.innerWidth > 768 && <ButtonTransactions />}
+      {Boolean(width > 768) && <ButtonTransactions />}
       <div className={s.container}>
         <div className={s.block}>
           <div className={s.thumbs}>

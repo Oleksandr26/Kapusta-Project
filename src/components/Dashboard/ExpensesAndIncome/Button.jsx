@@ -24,7 +24,6 @@ export const ButtonTransactions = () => {
   // console.log('showButtons: ', showButtons);
   return (
     <>
-      {' '}
       {/* {showButtons && ( */}
       <ul className={s.wrapper_nav}>
         <li className={s.item}>
