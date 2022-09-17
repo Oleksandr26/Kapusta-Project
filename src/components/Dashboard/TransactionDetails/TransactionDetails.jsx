@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
   useGetExpenseQuery,
@@ -12,30 +10,18 @@ import s from './TransactionDetails.module.css';
 export const TransactionDetails = () => {
   const location = useLocation();
   const [deleteTransaction] = useDeleteTransactionMutation();
-  const token = useSelector(state => state.auth.accessToken);
-  const [reportArr, setReportArr] = useState([]);
-  const getExpense = useGetExpenseQuery({
-    skip: token,
-  });
 
-  const getIncome = useGetIncomeQuery({
-    skip: token,
-  });
-  const expenses = getExpense?.data?.expenses;
-  const incomes = getIncome?.data?.incomes;
+  const { data: expenseData = [] } = useGetExpenseQuery();
+  const { data: incomeData = [] } = useGetIncomeQuery();
 
-  useEffect(() => {
-    if (expenses !== undefined && incomes !== undefined) {
-      location.pathname === '/transactions/expenses'
-        ? setReportArr([...expenses].reverse())
-        : setReportArr([...incomes].reverse());
-    }
-    return;
-  }, [incomes, expenses, location]);
+  const { expenses } = expenseData;
+  const { incomes } = incomeData;
 
-  const handleDeleteTransaction = id => {
-    deleteTransaction(id);
-    setReportArr(reportArr.filter(item => item._id !== id));
+  const transactionsType =
+    location.pathname === '/transactions/expenses' ? expenses : incomes;
+
+  const handleDeleteTransaction = async id => {
+    await deleteTransaction(id).unwrap();
   };
 
   const normalize = amount => {
@@ -71,22 +57,24 @@ export const TransactionDetails = () => {
         <div className={s.scrollTableBody}>
           <table>
             <tbody>
-              {reportArr.map(item => (
-                <tr className={s.body} key={item._id}>
-                  <td className={s.body__empty}></td>
-                  <td className={s.body__date}>{item.date}</td>
-                  <td className={s.body__description}>{item.description}</td>
-                  <td className={s.body__category}>{item.category}</td>
-                  <td className={summStyle}>{normalize(item.amount)}</td>
-                  <td className={s.body__delete}>
-                    <button
-                      onClick={() => handleDeleteTransaction(item._id)}
-                      type="button"
-                      className={s.btnDelete}
-                    ></button>
-                  </td>
-                </tr>
-              ))}
+              {transactionsType
+                ?.map(item => (
+                  <tr className={s.body} key={item._id}>
+                    <td className={s.body__empty}></td>
+                    <td className={s.body__date}>{item.date}</td>
+                    <td className={s.body__description}>{item.description}</td>
+                    <td className={s.body__category}>{item.category}</td>
+                    <td className={summStyle}>{normalize(item.amount)}</td>
+                    <td className={s.body__delete}>
+                      <button
+                        onClick={() => handleDeleteTransaction(item._id)}
+                        type="button"
+                        className={s.btnDelete}
+                      ></button>
+                    </td>
+                  </tr>
+                ))
+                ?.reverse()}
             </tbody>
           </table>
         </div>

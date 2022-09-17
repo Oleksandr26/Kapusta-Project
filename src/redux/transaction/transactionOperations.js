@@ -15,8 +15,8 @@ const baseQuery = fetchBaseQuery({
 
 export const transactionApi = createApi({
   reducerPath: 'transactionApi',
-  baseQuery,
   tagTypes: ['Transactions'],
+  baseQuery,
   endpoints: builder => ({
     getIncomeCategories: builder.query({
       query: () => `/income-categories`,
@@ -41,14 +41,21 @@ export const transactionApi = createApi({
     getExpense: builder.query({
       query: () => `/expense`,
       providesTags: ['Transactions'],
+      // providesTags: result =>
+      // result
+      //   ? [
+      //       ...result.map(({ id }) => ({ type: 'Transactions', id })),
+      //       { type: 'Transactions', id: 'LIST' },
+      //     ]
+      //   : [{ type: 'Transactions', id: 'LIST' }],
     }),
 
     deleteTransaction: builder.mutation({
       query: id => ({
         url: `${id}`,
         method: 'DELETE',
-        invalidatesTags: ['Transactions'],
       }),
+      invalidatesTags: ['Transactions'],
     }),
 
     addExpense: builder.mutation({

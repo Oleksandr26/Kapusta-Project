@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { InfinitySpin } from 'react-loader-spinner';
 import sprite from 'assets/svg/icons.svg';
 import backgroundSprite from 'assets/svg/symbols.svg';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import {
   useGetIncomeCategoriesQuery,
@@ -18,11 +18,9 @@ const IncomeByCategories = ({
   setCategory,
   category,
 }) => {
-  const isLogin = useSelector(store => store.auth.accessToken);
-  const { data: incomeCategories } = useGetIncomeCategoriesQuery({
-    skip: isLogin,
-  });
-  const { data = [], isFetching } = useGetIncomeQuery({ skip: isLogin });
+  // const isLogin = useSelector(store => store.auth.accessToken);
+  const { data: incomeCategories } = useGetIncomeCategoriesQuery();
+  const { data = [], isFetching } = useGetIncomeQuery();
   const { incomes = [] } = data;
 
   const result = incomeCategories?.map(item => ({

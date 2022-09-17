@@ -210,6 +210,9 @@
   }
 }
 .backArrow {
+  position: absolute;
+  width: 32px;
+  height: 24px;
   left: 23px;
   top: 30px;
 }

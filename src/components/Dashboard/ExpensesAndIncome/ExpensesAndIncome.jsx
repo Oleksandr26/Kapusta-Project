@@ -1,7 +1,6 @@
 import { Button, ButtonTransactions } from './Button';
 import s from './ExpensesAndIncome.module.css';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import Calendar from 'components/Calendar/Calendar';
 import {
@@ -19,24 +18,25 @@ import useWindowDimensions from 'redux/hooks/hooks';
 
 export const ExpensesAndIncome = ({ date, setDate }) => {
   const params = useParams();
-  const token = useSelector(state => state.auth.accessToken);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
+  const { data: expenseCategories } = useGetExpenseCategoriesQuery();
   const [addExpense] = useAddExpenseMutation();
   const [addIncome] = useAddIncomeMutation();
   const location = useLocation();
-  const { data: expenseCategories } = useGetExpenseCategoriesQuery({
-    skip: token,
-  });
-  const { data: incomeCategories } = useGetIncomeCategoriesQuery({
-    skip: token,
-  });
+
+  // (undefined, {
+  //   selectFromResult: ({ data }) => {
+  //     console.log('data: ', data);
+  //     return { data: data ?? [] };
+  //   },
+  // });
+  const { data: incomeCategories } = useGetIncomeCategoriesQuery();
   let currentDate = date.toJSON().slice(0, 10);
 
   const handleChange = e => {
-    const name = e.currentTarget.name;
-    const value = e.currentTarget.value;
+    const { name, value } = e.target;
     switch (name) {
       case 'description':
         setDescription(value);
@@ -56,17 +56,17 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
     e.preventDefault();
     if (location.pathname === '/transactions/expenses') {
       addExpense({
-        description: description,
+        description,
         amount: price,
         date: currentDate,
-        category: category,
+        category,
       });
     } else {
       addIncome({
-        description: description,
+        description,
         amount: price,
         date: currentDate,
-        category: category,
+        category,
       });
     }
     setDescription('');
