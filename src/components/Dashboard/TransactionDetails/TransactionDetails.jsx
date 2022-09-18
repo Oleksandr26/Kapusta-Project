@@ -11,6 +11,7 @@ import s from './TransactionDetails.module.css';
 
 export const TransactionDetails = () => {
   const [modal, setModal] = useState(false);
+  const [transactionOnDeleteId, setTransactionOnDeleteId] = useState('');
   const location = useLocation();
   const [deleteTransaction] = useDeleteTransactionMutation();
 
@@ -23,9 +24,17 @@ export const TransactionDetails = () => {
   const transactionsType =
     location.pathname === '/transactions/expenses' ? expenses : incomes;
 
-  const confirmDeletion = async id => {
-    await deleteTransaction(id).unwrap();
+  const handleDeleteTransaction = async id => {
     setModal(false);
+    try {
+      await deleteTransaction(id).unwrap();
+    } catch (error) {
+      return error.message;
+    }
+  };
+  const onDelete = id => {
+    setModal(true);
+    setTransactionOnDeleteId(id);
   };
 
   const normalize = amount => {
@@ -71,18 +80,10 @@ export const TransactionDetails = () => {
                     <td className={summStyle}>{normalize(item.amount)}</td>
                     <td className={s.body__delete}>
                       <button
-                        onClick={() => setModal(true)}
+                        onClick={() => onDelete(item._id)}
                         type="button"
                         className={s.btnDelete}
                       ></button>
-                      {modal && (
-                        <ConfirmActionModal
-                          title="Are you sure?"
-                          id={item._id}
-                          onClickYes={() => confirmDeletion(item._id)}
-                          onClickNo={() => setModal(false)}
-                        />
-                      )}
                     </td>
                   </tr>
                 ))
@@ -90,6 +91,13 @@ export const TransactionDetails = () => {
             </tbody>
           </table>
         </div>
+        {modal && (
+          <ConfirmActionModal
+            title="Are you sure?"
+            onClickYes={() => handleDeleteTransaction(transactionOnDeleteId)}
+            onClickNo={() => setModal(false)}
+          />
+        )}
       </div>
     </>
   );

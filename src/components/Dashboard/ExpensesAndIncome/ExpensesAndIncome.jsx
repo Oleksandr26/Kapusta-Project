@@ -22,17 +22,11 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const { data: expenseCategories } = useGetExpenseCategoriesQuery();
+  const { data: incomeCategories } = useGetIncomeCategoriesQuery();
   const [addExpense] = useAddExpenseMutation();
   const [addIncome] = useAddIncomeMutation();
   const location = useLocation();
 
-  // (undefined, {
-  //   selectFromResult: ({ data }) => {
-  //     console.log('data: ', data);
-  //     return { data: data ?? [] };
-  //   },
-  // });
-  const { data: incomeCategories } = useGetIncomeCategoriesQuery();
   let currentDate = date.toJSON().slice(0, 10);
 
   const handleChange = e => {
@@ -54,20 +48,17 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    const transactionObject = {
+      description,
+      amount: Number(price),
+      date: currentDate,
+      category,
+    };
+
     if (location.pathname === '/transactions/expenses') {
-      addExpense({
-        description,
-        amount: price,
-        date: currentDate,
-        category,
-      });
+      addExpense(transactionObject);
     } else {
-      addIncome({
-        description,
-        amount: price,
-        date: currentDate,
-        category,
-      });
+      addIncome(transactionObject);
     }
     setDescription('');
     setCategory('');
