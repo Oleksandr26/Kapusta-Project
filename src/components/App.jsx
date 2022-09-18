@@ -29,13 +29,12 @@ export const App = () => {
   }, [dispatch, currentUser, accessToken]);
 
   useEffect(() => {
-    const dataRefetch = () => {
+    if (currentUser && accessToken) {
       expenseRefetch();
       incomeRefetch();
       expenseCategoriesRefetch();
       incomeCategoriesRefetch();
-    };
-    if (currentUser && accessToken) dataRefetch();
+    }
   }, [
     accessToken,
     currentUser,
