@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { handleLogin, handleRegistration } from 'redux/auth/auth-operations';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
 import { useState } from 'react';
+
 // import { GoogleLogin } from '@moeindana/google-oauth';
 import s from './UserForm.module.css';
 
@@ -26,6 +27,18 @@ const UserForm = () => {
     }
   };
 
+  const onLoginClick = e => {
+    e.preventDefault();
+    dispatch(handleLogin({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
+  const onRegisterClick = e => {
+    e.preventDefault();
+    dispatch(handleRegistration({ email, password }));
+    setEmail('');
+    setPassword('');
+  };
   // <GoogleLogin
   // onSuccess={response => {
   //   console.log(response);
@@ -81,12 +94,7 @@ const UserForm = () => {
             className={s.button}
             type="submit"
             name="login"
-            onClick={e => {
-              e.preventDefault();
-              dispatch(handleLogin({ email, password }));
-              setEmail('');
-              setPassword('');
-            }}
+            onClick={e => onLoginClick(e)}
           >
             Login
           </button>
@@ -94,12 +102,7 @@ const UserForm = () => {
             className={s.button}
             type="submit"
             name="register"
-            onClick={e => {
-              e.preventDefault();
-              dispatch(handleRegistration({ email, password }));
-              setEmail('');
-              setPassword('');
-            }}
+            onClick={e => onRegisterClick(e)}
           >
             Register
           </button>
