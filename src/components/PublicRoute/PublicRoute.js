@@ -7,7 +7,6 @@ const PublicRoute = () => {
   const accessToken = useSelector(getAccessToken);
   const correctPath =
     window.innerWidth > 767 ? '/transactions/expenses' : '/transactions';
-  console.log('correctPath: ', correctPath);
   return (
     <>
       {currentUser && accessToken ? <Navigate to={correctPath} /> : <Outlet />}
