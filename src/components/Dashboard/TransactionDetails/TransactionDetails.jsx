@@ -1,3 +1,5 @@
+import { ConfirmActionModal } from 'components/Modal/QuestionModal';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import {
   useGetExpenseQuery,
@@ -8,6 +10,7 @@ import {
 import s from './TransactionDetails.module.css';
 
 export const TransactionDetails = () => {
+  const [modal, setModal] = useState(false);
   const location = useLocation();
   const [deleteTransaction] = useDeleteTransactionMutation();
 
@@ -20,8 +23,9 @@ export const TransactionDetails = () => {
   const transactionsType =
     location.pathname === '/transactions/expenses' ? expenses : incomes;
 
-  const handleDeleteTransaction = async id => {
+  const confirmDeletion = async id => {
     await deleteTransaction(id).unwrap();
+    setModal(false);
   };
 
   const normalize = amount => {
@@ -67,10 +71,18 @@ export const TransactionDetails = () => {
                     <td className={summStyle}>{normalize(item.amount)}</td>
                     <td className={s.body__delete}>
                       <button
-                        onClick={() => handleDeleteTransaction(item._id)}
+                        onClick={() => setModal(true)}
                         type="button"
                         className={s.btnDelete}
                       ></button>
+                      {modal && (
+                        <ConfirmActionModal
+                          title="Are you sure?"
+                          id={item._id}
+                          onClickYes={() => confirmDeletion(item._id)}
+                          onClickNo={() => setModal(false)}
+                        />
+                      )}
                     </td>
                   </tr>
                 ))
