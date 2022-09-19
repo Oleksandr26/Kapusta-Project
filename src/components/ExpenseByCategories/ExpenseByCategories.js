@@ -9,8 +9,14 @@ import {
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
 import { NavLink } from 'react-router-dom';
+import categoriesData from './categoriesData.json';
 
-const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
+// const key = Object.keys(categoriesData);
+
+const getLinkClassName = ({ isActive }) => {
+  console.log('isActive: ', isActive);
+  return isActive ? s.activeLink : s.link;
+};
 
 const ExpenseByCategories = ({
   dateTransactionFilter,
@@ -31,12 +37,14 @@ const ExpenseByCategories = ({
         dateTransactionFilter(expenses)?.find(
           expense => expense.category === item
         )?._id ?? '',
+      convertName: categoriesData[item],
     };
   });
 
+
   const elements = result
     ?.filter(({ amount }) => amount > 0)
-    ?.map(({ name, amount, id }) => {
+    ?.map(({ name, amount, id, convertName }) => {
       const iconPath = sprite + `#${name}`;
       const backgroundPath = backgroundSprite + `#${name}`;
       const amountNormalizer = amount
@@ -53,7 +61,7 @@ const ExpenseByCategories = ({
         <li className={s.item} key={nanoid()} onClick={handleSetCategory}>
           <p className={s.info}>{amountNormalizer}</p>
           {id ? (
-            <NavLink to={id} className={getLinkClassName}>
+            <NavLink to={convertName} className={getLinkClassName}>
               <svg className={s.iconBackground} width="56px" height="56px">
                 <use href={backgroundPath}></use>
               </svg>
