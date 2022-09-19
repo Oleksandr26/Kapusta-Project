@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
@@ -25,14 +25,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 );
 
 const { dispatch } = store;
-const ERROR_MESSAGE = 'Invalid session';
 instance.interceptors.response.use(
   response => {
     return response;
   },
   error => {
-    console.log(error.message);
-    if (error.response.data.message === ERROR_MESSAGE) {
+    if (error.response.data.message === 'Unauthorized') {
+      <Navigate to="/" />;
+      return;
+    }
+    if (error.response.data.message === 'Invalid session') {
       dispatch(initNewSession());
     }
     return Promise.reject(error);

@@ -1,13 +1,11 @@
 // import { TransactionDetailsMobile } from 'components/Dashboard/TransactionDetails/TransactionsDetailsMobile/TransactionsDetailsMobile';
 import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
-import { InfinitySpin } from 'react-loader-spinner';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import {
   useGetExpenseQuery,
   useGetIncomeQuery,
-  useGetPeriodDataQuery,
 } from 'redux/transaction/transactionOperations';
 import {
   getCurrentUser,

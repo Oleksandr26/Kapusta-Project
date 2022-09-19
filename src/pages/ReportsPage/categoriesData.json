@@ -9,5 +9,7 @@
     "Коммуналка и связь": "CommunalAndCommunication",
     "Спорт и хобби": "SportsAndHobbies",
     "Образование": "Education",
-    "Прочее": "Other"
+    "Прочее": "Other",
+    "З/П": "Salary",
+    "Доп. доход": "Spin-off"
 }

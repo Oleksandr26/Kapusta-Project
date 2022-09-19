@@ -23,9 +23,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    updateBalance: (state, {payload: {newBalance}}) => {
+    updateBalance: (state, { payload: { newBalance } }) => {
       state.userData.balance = newBalance;
-    }
+    },
   },
   extraReducers: {
     // -------------------register------------------------------
@@ -48,7 +48,7 @@ const authSlice = createSlice({
 
     [handleAuthGoogle.fulfilled]: (store, { payload }) => {
       store.loading = false;
-      console.log(payload);
+      // console.log(payload);
     },
 
     // -------------------login------------------------------

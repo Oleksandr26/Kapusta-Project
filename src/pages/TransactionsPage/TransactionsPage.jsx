@@ -5,7 +5,6 @@ import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-// import { updateBalance } from '../../redux/auth/auth-slice';
 import { ExpensesAndIncome } from 'components/Dashboard/ExpensesAndIncome/ExpensesAndIncome';
 import Calendar from 'components/Calendar/Calendar';
 
@@ -27,7 +26,7 @@ const TransactionsPage = () => {
               <span className={s.reports}>Reports</span>
               <BarChart className={s.icon} />
             </Link>
-            <Balance dateTransactions={date} />
+            <Balance />
           </div>
         )}
         {calendarVision && (
