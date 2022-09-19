@@ -11,6 +11,7 @@ import {
   handleChosenCategoryUniqueLabels,
   newDiagramHeight,
 } from './DiagramLogic';
+import { useEffect, useState } from 'react';
 
 Chart.register(ChartDataLabels, ...registerables);
 
@@ -18,6 +19,15 @@ export function Diagram({ dateTransactionFilter, category }) {
   const expenses = useGetExpenseQuery().currentData?.expenses;
   const incomes = useGetIncomeQuery().currentData?.incomes;
   const MONTH_CASHFLOW = [];
+
+  const [isMobile, setIsMobile] = useState('');
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const canvasTag = document.querySelector('canvas');
 
@@ -88,13 +98,13 @@ export function Diagram({ dateTransactionFilter, category }) {
   newDiagramHeight(diagramForSelectedMonth, canvasTag);
   return (
     <>
-      {window.innerWidth > 768 ? (
+      {isMobile ? (
+        <Bar options={DiagramConfig.Mobile} data={MobileData} />
+      ) : (
         <Bar
           options={DiagramConfig.TabletAndDesktop}
           data={TabletAndDesktopData}
         />
-      ) : (
-        <Bar options={DiagramConfig.Mobile} data={MobileData} />
       )}
     </>
   );

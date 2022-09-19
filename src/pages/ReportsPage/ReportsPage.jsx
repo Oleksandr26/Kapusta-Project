@@ -14,7 +14,6 @@ import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
 
 const ReportPage = () => {
   const [date, setDate] = useState(new Date());
-
   const [reportsType, setReportsType] = useState(false);
   const [category, setCategory] = useState(null);
 
@@ -52,7 +51,7 @@ const ReportPage = () => {
             <BackArrow className={s.icon} /> <p className={s.text}>Main page</p>
           </Link>
           <div className={s.item}>
-            <Balance dateReports={date} />
+            <Balance />
           </div>
           <div className={s.item}>
             <ReportsDate date={date} setDate={setDate} />
@@ -68,7 +67,7 @@ const ReportPage = () => {
             >
               <LeftArrow className={s.iconArrow} />
             </button>
-            <p className={s.title}>{reportsType ? 'Income' : 'Expenses'} </p>
+            <p className={s.title}> {reportsType ? 'Income' : 'Expenses'} </p>
             <button
               type="button"
               className={s.rightArrow}
@@ -83,19 +82,21 @@ const ReportPage = () => {
               dateTransactionFilter={dateTransactionFilter}
               setCategory={setCategory}
               category={category}
+              reportsType={reportsType}
             />
           ) : (
             <ExpenseByCategories
               dateTransactionFilter={dateTransactionFilter}
               setCategory={setCategory}
               category={category}
+              reportsType={reportsType}
             />
           )}
         </div>
         <div className={s.chart_container} id="flexible">
           <Routes>
             <Route
-              path=":categoryId"
+              path=":categoryName"
               element={
                 <Diagram
                   dateTransactionFilter={dateTransactionFilter}

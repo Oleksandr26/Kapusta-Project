@@ -1,7 +1,7 @@
 import { Button, ButtonTransactions } from './Button';
 import s from './ExpensesAndIncome.module.css';
 import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import Calendar from 'components/Calendar/Calendar';
 import {
