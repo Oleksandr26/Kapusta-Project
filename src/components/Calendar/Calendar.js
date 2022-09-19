@@ -9,6 +9,7 @@ const Calendar = ({ date, setDate }) => {
       <NewCalendar className={s.icon} />
       <DatePicker
         className={s.calendar}
+        dateFormat="dd/MM/yyyy"
         selected={date}
         onChange={date => setDate(date)}
       />

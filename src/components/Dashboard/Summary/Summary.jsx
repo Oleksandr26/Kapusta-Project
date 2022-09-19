@@ -12,10 +12,10 @@ const Summary = ({ params = '' }) => {
 
   const {
     data: incomeStats /*isLoading: incomeIsLoading, error: incomeError*/,
-  } = useGetIncomeQuery({ skip: showIncome });
+  } = useGetIncomeQuery();
   const {
     data: expenseStats /*isLoading: expenseIsLoading, error: expenseError*/,
-  } = useGetExpenseQuery({ skip: showExpenses });
+  } = useGetExpenseQuery();
 
   useEffect(() => {
     if (checkType === 'expenses') {

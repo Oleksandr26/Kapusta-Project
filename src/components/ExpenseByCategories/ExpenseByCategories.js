@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { InfinitySpin } from 'react-loader-spinner';
 import sprite from 'assets/svg/icons.svg';
 import backgroundSprite from 'assets/svg/symbols.svg';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import {
   useGetExpenseCategoriesQuery,
   useGetExpenseQuery,
@@ -23,11 +23,8 @@ const ExpenseByCategories = ({
   setCategory,
   category,
 }) => {
-  const isLogin = useSelector(store => store.auth.accessToken);
-  const { data: expenseCategories } = useGetExpenseCategoriesQuery({
-    skip: isLogin,
-  });
-  const { data = [], isFetching } = useGetExpenseQuery({ skip: isLogin });
+  const { data: expenseCategories } = useGetExpenseCategoriesQuery();
+  const { data = [], isFetching } = useGetExpenseQuery();
   const { expenses = [] } = data;
 
   const result = expenseCategories?.map(item => {
@@ -44,7 +41,7 @@ const ExpenseByCategories = ({
     };
   });
 
-  console.log('result: ', result);
+
   const elements = result
     ?.filter(({ amount }) => amount > 0)
     ?.map(({ name, amount, id, convertName }) => {

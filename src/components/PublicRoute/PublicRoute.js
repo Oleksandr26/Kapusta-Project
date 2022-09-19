@@ -5,19 +5,11 @@ import { getAccessToken, getUser } from 'redux/auth/auth-selector';
 const PublicRoute = () => {
   const currentUser = useSelector(getUser);
   const accessToken = useSelector(getAccessToken);
+  const correctPath =
+    window.innerWidth > 767 ? '/transactions/expenses' : '/transactions';
   return (
     <>
-      {currentUser && accessToken && window.innerWidth > 767 ? (
-        <Navigate to="/transactions/expenses" />
-      ) : (
-        <Outlet />
-      )}
-
-      {currentUser && accessToken && window.innerWidth < 768 ? (
-        <Navigate to="/transactions" />
-      ) : (
-        <Outlet />
-      )}
+      {currentUser && accessToken ? <Navigate to={correctPath} /> : <Outlet />}
     </>
   );
 };
