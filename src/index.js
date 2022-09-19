@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
-import {BrowserRouter} from 'react-router-dom';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import {store, persistor} from './redux/store';
-import instance from "./helpers/auth";
-import {initNewSession} from "./redux/auth/auth-operations";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
+import instance from './helpers/auth';
+import { initNewSession } from './redux/auth/auth-operations';
 // import { GoogleOAuthProvider } from '@moeindana/google-oauth';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -15,8 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/Kapusta_Team-Project/">
-        {/* <GoogleOAuthProvider clientId="576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com"> */}
-          <App/>
+          {/* <GoogleOAuthProvider clientId="576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com"> */}
+          <App />
           {/* </GoogleOAuthProvider> */}
         </BrowserRouter>
       </PersistGate>
@@ -31,7 +31,7 @@ instance.interceptors.response.use(
     return response;
   },
   error => {
-    console.log(error);
+    console.log(error.message);
     if (error.response.data.message === ERROR_MESSAGE) {
       dispatch(initNewSession());
     }

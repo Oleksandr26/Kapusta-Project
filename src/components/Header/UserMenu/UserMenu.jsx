@@ -1,16 +1,18 @@
-import React from 'react';
+import s from './UserMenu.module.css';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { ReactComponent as LogOut } from '../../../assets/svg/logout.svg';
-import { QuestionModal } from '../../../components/Modal/QuestionModal';
-import s from './UserMenu.module.css';
+import { ConfirmActionModal } from '../../Modal/QuestionModal';
+import { useDispatch } from 'react-redux';
+import { handleLogout } from 'redux/auth/auth-operations';
 
 const UserMenu = () => {
-  const [modal, setModal] = useState(null);
+  const [modal, setModal] = useState(false);
   const email = useSelector(state => state.auth.userData.email);
-
-  const closeModal = data => {
-    setModal(data);
+  const dispatch = useDispatch();
+  const onExit = () => {
+    dispatch(handleLogout());
+    setModal(false);
   };
 
   return (
@@ -18,11 +20,18 @@ const UserMenu = () => {
       <nav className={s.nav}>
         <span className={s.name}>{email[0].toUpperCase()}</span>
         <p className={s.full_name}>{email}</p>
-        <p className={s.exit} onClick={() => closeModal(true)}>
+        <p className={s.exit} onClick={() => setModal(true)}>
           Exit
         </p>
-        <LogOut className={s.icon_logOut} onClick={() => closeModal(true)} />
-        {modal && <QuestionModal className={s.modal} closeModal={closeModal} />}
+        <LogOut className={s.icon_logOut} onClick={() => setModal(true)} />
+        {modal && (
+          <ConfirmActionModal
+            className={s.modal}
+            title="Do you really want to leave?"
+            onClickYes={() => onExit()}
+            onClickNo={() => setModal(false)}
+          />
+        )}
       </nav>
     )
 
