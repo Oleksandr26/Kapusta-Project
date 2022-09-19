@@ -1,5 +1,6 @@
 import { Button, ButtonTransactions } from './Button';
 import s from './ExpensesAndIncome.module.css';
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import Calendar from 'components/Calendar/Calendar';
@@ -45,9 +46,17 @@ export const ExpensesAndIncome = ({ date, setDate }) => {
         return;
     }
   };
-
+  const buttonStatus =
+    description.length > 0 &&
+    price.length > 0 &&
+    category.length > 0 &&
+    category !== 'Product category';
   const handleSubmit = e => {
     e.preventDefault();
+    if (!buttonStatus) {
+      toast.error('Fill in all the fields');
+      return;
+    }
     const transactionObject = {
       description,
       amount: Number(price),
