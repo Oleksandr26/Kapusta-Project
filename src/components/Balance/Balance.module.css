@@ -51,12 +51,22 @@
   color: #ffffff;
   background-color: var(--accent-color);
 }
+
+.confirmBtn:disabled:hover {
+  color: var(--second-color);
+  background-color: transparent;
+}
 @media screen and (min-width: 768px) {
   .wrap {
     margin-top: 0;
   }
 }
-
+.input {
+  background-color: transparent;
+  outline: none;
+  padding: 0;
+  text-align: center;
+}
 .amount {
   color: var(--main-color);
   font-weight: 700;
