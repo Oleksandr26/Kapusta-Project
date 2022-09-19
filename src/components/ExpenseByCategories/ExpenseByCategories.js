@@ -14,7 +14,6 @@ import categoriesData from './categoriesData.json';
 // const key = Object.keys(categoriesData);
 
 const getLinkClassName = ({ isActive }) => {
-  console.log('isActive: ', isActive);
   return isActive ? s.activeLink : s.link;
 };
 
@@ -40,7 +39,6 @@ const ExpenseByCategories = ({
       convertName: categoriesData[item],
     };
   });
-
 
   const elements = result
     ?.filter(({ amount }) => amount > 0)
