@@ -255,13 +255,23 @@
 }
 
 /* ////Button///// */
+@media screen and (max-width: 768px){
+.button__container{
+  position: fixed;
+  right: 50%;
+  left: 50%;
+  bottom: 0;
+}
+}
 
 .wrapper_nav {
   display: flex;
   justify-content: center;
+  gap: 4px;
 }
+
 .link {
-  padding: 20px 80px;
+  padding: 30px 80px;
   background-color: #fafbfd;
   display: flex;
   align-items: center;
@@ -273,12 +283,12 @@
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-
   text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {
   .link {
+    padding: 20px 80px;
     border-radius: 15px 15px 0 0;
   }
   .wrapper_nav {
@@ -291,20 +301,11 @@
 
 .link:hover,
 .link:focus {
-  background-color: #fefefe;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color:#FFFFFF;
 }
 
 .activeLink {
   composes: link;
   background-color: #fefefe;
-}
-
-.summ__link {
-  composes: link;
-}
-@media screen and (max-width: 768px) {
-  .summ__link {
-    display: none;
-  }
 }
