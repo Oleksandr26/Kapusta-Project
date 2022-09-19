@@ -17,7 +17,7 @@ export const TransactionDetailsMobile = () => {
   const [deleteTransaction] = useDeleteTransactionMutation();
 
   useEffect(() => {
-    setTotalArr(getUserTransaction);
+    setTotalArr([...getUserTransaction].reverse());
   }, [getUserTransaction]);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const TransactionDetailsMobile = () => {
     setTransactionOnDeleteId(id);
   };
   const elements = totalArr
-    .slice(-3)
+    // .slice(-3)
     .reverse()
     .map(item => {
       const transactionsType =

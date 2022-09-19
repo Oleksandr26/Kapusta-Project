@@ -20,8 +20,7 @@ export const Button = ({ onClickSubmit, onClickReset }) => {
 const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 export const ButtonTransactions = () => {
   return (
-    <>
-
+    <div className={s.button__container}>
       <ul className={s.wrapper_nav}>
         <li className={s.item}>
           <NavLink className={getLinkClassName} to="/transactions/expenses">
@@ -34,6 +33,6 @@ export const ButtonTransactions = () => {
           </NavLink>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
