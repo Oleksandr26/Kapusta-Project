@@ -1,44 +1,29 @@
 import { useDispatch } from 'react-redux';
 import { handleLogin, handleRegistration } from 'redux/auth/auth-operations';
 import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
-import { useState } from 'react';
-
+import { useForm } from 'react-hook-form';
 // import { GoogleLogin } from '@moeindana/google-oauth';
 import s from './UserForm.module.css';
 
 const UserForm = () => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm({ mode: 'onBlur' });
 
-  const handleChange = e => {
-    const value = e.currentTarget.value;
-    const name = e.currentTarget.name;
-
-    switch (name) {
-      case 'email':
-        setEmail(value);
-        break;
-      case 'password':
-        setPassword(value);
-        break;
-      default:
-        return;
-    }
+  const onLoginClick = data => {
+    dispatch(handleLogin(data));
+    reset();
   };
 
-  const onLoginClick = e => {
-    e.preventDefault();
-    dispatch(handleLogin({ email, password }));
-    setEmail('');
-    setPassword('');
+  const onRegisterClick = data => {
+    dispatch(handleRegistration(data));
+    reset();
   };
-  const onRegisterClick = e => {
-    e.preventDefault();
-    dispatch(handleRegistration({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
+
   // <GoogleLogin
   // onSuccess={response => {
   //   console.log(response);
@@ -55,7 +40,6 @@ const UserForm = () => {
         className={s.auth_button}
         onClick={e => {
           e.preventDefault();
-          setEmail('');
         }}
       >
         <GoogleIcon className={s.googleIcon} />
@@ -66,43 +50,52 @@ const UserForm = () => {
       </p>
       <form className={s.form}>
         <label className={s.label}>
-          <span className={s.label_text}>Email:</span>
+          <span className={s.label_text}> {errors.email && <span className={s.error_span}>*</span>} Email:</span>
           <input
             className={s.input}
             placeholder="your@email.com"
-            type="email"
-            value={email}
-            onChange={handleChange}
-            name="email"
-            required
+            {...register('email', {
+              required: 'This is a required field',
+              pattern: {
+                value:
+                  /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/,
+                message: 'Invalid email',
+              },
+            })}
           />
+          <p className={s.error}>
+            {errors?.email ? `* ${errors.email.message}` : <>&nbsp;</>}
+          </p>
         </label>
         <label className={s.label}>
-          <span className={s.label_text}>Password:</span>
+          <span className={s.label_text}> {errors.password && <span className={s.error_span}>*</span>} Password:</span>
           <input
             className={s.input}
             placeholder="Password"
             type="password"
-            value={password}
-            onChange={handleChange}
-            name="password"
-            required
+            {...register('password', {
+              required: 'This is a required field',
+              minLength: { value: 8, message: 'Password must contain 8 or more characters' },
+            })}
           />
+          <p className={s.error}>
+            {errors?.password ? `* ${errors.password.message}` : <>&nbsp;</>}
+          </p>
         </label>
         <div className={s.wrapper_button}>
           <button
             className={s.button}
-            type="submit"
+            type="button"
             name="login"
-            onClick={e => onLoginClick(e)}
+            onClick={handleSubmit(onLoginClick)}
           >
             Login
           </button>
           <button
             className={s.button}
-            type="submit"
+            type="button"
             name="register"
-            onClick={e => onRegisterClick(e)}
+            onClick={handleSubmit(onRegisterClick)}
           >
             Register
           </button>

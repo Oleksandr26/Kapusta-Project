@@ -22,7 +22,7 @@
   background-color: var(--bg-color);
   padding-top: 86px;
   min-height: 286px;
-  border-radius: 0px 0px 0px 50%;
+  border-radius: 0px 0px 0px 25%;
 }
 .icon {
   position: absolute;
@@ -69,7 +69,7 @@
   }
   .backgraund_title {
     padding-top: 80px;
-    border-radius: 0px 0px 0px 25%;
+    border-radius: 0px 0px 0px 15%;
     background-image: url(../../assets/png/fon.png);
     background-size: 1334px 232px;
     background-repeat: no-repeat;

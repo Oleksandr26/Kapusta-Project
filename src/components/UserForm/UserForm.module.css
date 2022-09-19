@@ -101,6 +101,19 @@
   line-height: 16px;
   letter-spacing: 0.02em;
 }
+.error {
+  margin-top: 5px;
+  text-align: center;
+  max-width: 240px;
+  color: red;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.02em;
+}
+
+.error_span {
+  color: red;
+}
 
 @media screen and (max-width: 767px) {
   .container {
