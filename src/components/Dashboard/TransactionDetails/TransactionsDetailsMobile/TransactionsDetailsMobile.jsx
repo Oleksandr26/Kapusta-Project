@@ -47,7 +47,7 @@ export const TransactionDetailsMobile = () => {
   };
   const elements = totalArr
     // .slice(-3)
-    .reverse()
+    // .reverse()
     .map(item => {
       const transactionsType =
         item.category === 'З/П' || item.category === 'Доп. доход';
