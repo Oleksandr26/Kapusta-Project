@@ -10,7 +10,7 @@ import {
 import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import expenseCategoriesData from './expenseCategoriesData.json';
 import incomeCategoriesData from 'components/IncomeByCategories/incomeCategoriesData.json';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const getLinkClassName = ({ isActive }) => {
   return isActive ? s.activeLink : s.link;
@@ -28,7 +28,6 @@ const ExpenseByCategories = ({
   const { data = [], isFetching } = useGetExpenseQuery();
   const { expenses = [] } = data;
   const { pathname } = useLocation();
-  const [dateChanged, setDateChanged] = useState(false);
 
   const result = expenseCategories?.map(item => ({
     name: item,
@@ -49,13 +48,7 @@ const ExpenseByCategories = ({
     if (reportsType === false) setCategory(mostExpensiveCategory);
   }, [setCategory, mostExpensiveCategory, reportsType]);
 
-  // if (dateChanged) {
-  //   navigate(expenseCategoriesData[mostExpensiveCategory]);
-  //   setDateChanged(false);
-  // }
-
   useEffect(() => {
-    // setDateChanged(true);
     navigate(expenseCategoriesData[mostExpensiveCategory]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date]);
