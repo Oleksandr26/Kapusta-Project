@@ -40,7 +40,8 @@ const Summary = ({ params = '' }) => {
           <span className={s.text}>{month[0]}</span>
           <span className={s.text}>{month[1].toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ')}</span>
         </div>
-      ));
+      ))
+      .reverse();
   };
 
   const expenseSummaryStatus = expenseStats.expenses.length > 0;
