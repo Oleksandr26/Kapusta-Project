@@ -7,9 +7,10 @@ import {
   useGetExpenseCategoriesQuery,
   useGetExpenseQuery,
 } from 'redux/transaction/transactionOperations';
-import { Navigate, NavLink, useLocation } from 'react-router-dom';
-import categoriesData from './categoriesData.json';
-import { useEffect } from 'react';
+import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import expenseCategoriesData from './expenseCategoriesData.json';
+import incomeCategoriesData from 'components/IncomeByCategories/incomeCategoriesData.json';
+import { useEffect, useState } from 'react';
 
 const getLinkClassName = ({ isActive }) => {
   return isActive ? s.activeLink : s.link;
@@ -20,39 +21,50 @@ const ExpenseByCategories = ({
   setCategory,
   category,
   reportsType,
+  date,
 }) => {
+  const navigate = useNavigate();
   const { data: expenseCategories } = useGetExpenseCategoriesQuery();
   const { data = [], isFetching } = useGetExpenseQuery();
   const { expenses = [] } = data;
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const [dateChanged, setDateChanged] = useState(false);
+
   const result = expenseCategories?.map(item => ({
     name: item,
     amount: dateTransactionFilter(expenses)?.reduce((acc, transaction) => {
       return item === transaction.category ? acc + transaction.amount : acc;
     }, 0),
-    convertName: categoriesData[item],
+    convertName: expenseCategoriesData[item],
   }));
 
   const mostExpensiveCategory = [...result].sort(
     (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
   )[0].name;
-  const showMostExpesiveCategoryDiagram =
-    location.pathname === '/reports' ||
-    location.pathname === '/reports/Spin-off' ||
-    location.pathname === '/reports/Salary';
+
+  const pathNames = Object.values(incomeCategoriesData);
+  const showMostExpesiveCategoryDiagram = pathNames.includes(pathname.slice(9));
 
   useEffect(() => {
     if (reportsType === false) setCategory(mostExpensiveCategory);
   }, [setCategory, mostExpensiveCategory, reportsType]);
 
+  // if (dateChanged) {
+  //   navigate(expenseCategoriesData[mostExpensiveCategory]);
+  //   setDateChanged(false);
+  // }
+
+  useEffect(() => {
+    // setDateChanged(true);
+    navigate(expenseCategoriesData[mostExpensiveCategory]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date]);
   const elements = result
     ?.filter(({ amount }) => amount > 0)
     ?.map(({ name, amount, convertName }) => {
       const iconPath = sprite + `#${name}`;
       const backgroundPath = backgroundSprite + `#${name}`;
-      const amountNormalizer = amount
-        .toFixed(2)
-        .replace(/\d(?=(\d{3})+\.)/g, '$& ');
+      const amountNormalizer = amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
 
       const handleSetCategory = () => {
         if (category === name) {
@@ -85,7 +97,7 @@ const ExpenseByCategories = ({
         <>
           <ul className={s.list}>{elements}</ul>
           {showMostExpesiveCategoryDiagram && (
-            <Navigate to={categoriesData[mostExpensiveCategory]} />
+            <Navigate to={expenseCategoriesData[mostExpensiveCategory]} />
           )}
         </>
       )}

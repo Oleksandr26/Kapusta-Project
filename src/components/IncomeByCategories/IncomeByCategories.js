@@ -7,9 +7,10 @@ import {
   useGetIncomeCategoriesQuery,
   useGetIncomeQuery,
 } from 'redux/transaction/transactionOperations';
-import { Navigate, NavLink, useLocation } from 'react-router-dom';
-import categoriesData from './categoriesData.json';
-import { useEffect } from 'react';
+import { Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom';
+import incomeCategoriesData from './incomeCategoriesData.json';
+import expenseCategoriesData from 'components/ExpenseByCategories/expenseCategoriesData.json';
+import { useEffect, useState } from 'react';
 
 const getLinkClassName = ({ isActive }) => (isActive ? s.activeLink : s.link);
 
@@ -18,37 +19,49 @@ const IncomeByCategories = ({
   setCategory,
   category,
   reportsType,
+  date,
 }) => {
+  const navigate = useNavigate();
   const { data: incomeCategories } = useGetIncomeCategoriesQuery();
   const { data = [], isFetching } = useGetIncomeQuery();
   const { incomes = [] } = data;
-  const location = useLocation();
+  const { pathname } = useLocation();
+  const [dateChanged, setDateChanged] = useState(false);
+
   const result = incomeCategories?.map(item => ({
     name: item,
     amount: dateTransactionFilter(incomes).reduce((acc, cost) => {
       return item === cost.category ? acc + cost.amount : acc;
     }, 0),
-    convertName: categoriesData[item],
+    convertName: incomeCategoriesData[item],
   }));
-
+  const pathNames = Object.values(expenseCategoriesData);
+  const showMostIncomeCategoryDiagram = pathNames.includes(pathname.slice(9));
   const mostIncomeCategory = [...result].sort(
     (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
   )[0].name;
-  const showMostIncomeCategoryDiagram =
-    location.pathname === '/reports/Products';
 
   useEffect(() => {
     if (reportsType === true) setCategory(mostIncomeCategory);
   }, [setCategory, mostIncomeCategory, reportsType]);
+
+  // if (dateChanged) {
+  //   navigate(incomeCategoriesData[mostIncomeCategory]);
+  //   setDateChanged(false);
+  // }
+
+  useEffect(() => {
+    navigate(incomeCategoriesData[mostIncomeCategory]);
+    // setDateChanged(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [date]);
 
   const elements = result
     ?.filter(({ amount }) => amount > 0)
     ?.map(({ name, amount, convertName }) => {
       const iconPath = sprite + `#${name}`;
       const backgroundPath = backgroundSprite + `#${name}`;
-      const amountNormalizer = amount
-        .toFixed(2)
-        .replace(/\d(?=(\d{3})+\.)/g, '$& ');
+      const amountNormalizer = amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$& ');
 
       const handleSetCategory = () => {
         if (category === name) {
@@ -83,7 +96,7 @@ const IncomeByCategories = ({
         <>
           <ul className={s.list}>{elements}</ul>
           {showMostIncomeCategoryDiagram && (
-            <Navigate to={categoriesData[mostIncomeCategory]} />
+            <Navigate to={incomeCategoriesData[mostIncomeCategory]} />
           )}
         </>
       )}
