@@ -30,6 +30,7 @@
   right: 0;
 }
 .Second_icon {
+  z-index: -1;
   position: absolute;
   margin-left: 35px;
   bottom: 0;
