@@ -83,6 +83,7 @@ const ReportPage = () => {
               setCategory={setCategory}
               category={category}
               reportsType={reportsType}
+              date={date}
             />
           ) : (
             <ExpenseByCategories
@@ -90,6 +91,7 @@ const ReportPage = () => {
               setCategory={setCategory}
               category={category}
               reportsType={reportsType}
+              date={date}
             />
           )}
         </div>

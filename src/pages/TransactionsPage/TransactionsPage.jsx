@@ -1,6 +1,5 @@
 import s from './TransactionsPage.module.css';
 import { ReactComponent as BarChart } from 'assets/svg/bar_chart.svg';
-
 import Balance from 'components/Balance/Balance';
 import Dashboard from '../../components/Dashboard/Dashboard';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
@@ -10,10 +9,8 @@ import Calendar from 'components/Calendar/Calendar';
 
 const TransactionsPage = () => {
   const { pathname } = useLocation();
-
   const vision = window.innerWidth > 767 || pathname === '/transactions';
-  const calendarVision =
-    window.innerWidth < 767 && pathname === '/transactions';
+  const calendarVision = window.innerWidth < 767 && pathname === '/transactions';
   const [date, setDate] = useState(() => new Date());
 
   return (
@@ -37,14 +34,8 @@ const TransactionsPage = () => {
 
         <Dashboard date={date} setDate={setDate} />
         <Routes>
-          <Route
-            path="expenses"
-            element={<ExpensesAndIncome date={date} setDate={setDate} />}
-          />
-          <Route
-            path="incomes"
-            element={<ExpensesAndIncome date={date} setDate={setDate} />}
-          />
+          <Route path="expenses" element={<ExpensesAndIncome date={date} setDate={setDate} />} />
+          <Route path="incomes" element={<ExpensesAndIncome date={date} setDate={setDate} />} />
         </Routes>
       </div>
     </main>
