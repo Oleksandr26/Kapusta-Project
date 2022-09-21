@@ -21,8 +21,7 @@ export const TransactionDetails = () => {
   const { expenses } = expenseData;
   const { incomes } = incomeData;
 
-  const transactionsType =
-    location.pathname === '/transactions/expenses' ? expenses : incomes;
+  const transactionsType = location.pathname === '/transactions/expenses' ? expenses : incomes;
 
   const handleDeleteTransaction = async id => {
     setModal(false);
@@ -49,8 +48,7 @@ export const TransactionDetails = () => {
     }
   };
 
-  const summStyle =
-    location.pathname === '/transactions/expenses' ? s.minus : s.plus;
+  const summStyle = location.pathname === '/transactions/expenses' ? s.minus : s.plus;
 
   return (
     <>

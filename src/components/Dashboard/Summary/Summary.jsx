@@ -7,8 +7,8 @@ const Summary = ({ params = '' }) => {
   const [showIncomes, setShowIncomes] = useState(false);
   const [showExpenses, setShowExpenses] = useState(true);
 
-  const { data: incomeStats } = useGetIncomeQuery();
-  const { data: expenseStats } = useGetExpenseQuery();
+  const { data: incomeStats = [] } = useGetIncomeQuery();
+  const { data: expenseStats = [] } = useGetExpenseQuery();
 
   useEffect(() => {
     if (checkType === 'expenses') {
@@ -44,8 +44,8 @@ const Summary = ({ params = '' }) => {
       .reverse();
   };
 
-  const expenseSummaryStatus = expenseStats.expenses.length > 0;
-  const incomeSummaryStatus = incomeStats.incomes.length > 0;
+  const expenseSummaryStatus = expenseStats?.expenses.length > 0;
+  const incomeSummaryStatus = incomeStats?.incomes.length > 0;
 
   return (
     <div className={s.summary}>

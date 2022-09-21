@@ -3,14 +3,8 @@ import Modal from 'components/Modal/Modal';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import {
-  useGetExpenseQuery,
-  useGetIncomeQuery,
-} from 'redux/transaction/transactionOperations';
-import {
-  getCurrentUser,
-  handleUpdateUserBalance,
-} from '../../redux/auth/auth-operations';
+import { useGetExpenseQuery, useGetIncomeQuery } from 'redux/transaction/transactionOperations';
+import { getCurrentUser, handleUpdateUserBalance } from '../../redux/auth/auth-operations';
 import s from './Balance.module.css';
 
 const Balance = () => {

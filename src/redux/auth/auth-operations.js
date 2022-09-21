@@ -16,49 +16,40 @@ export const handleRegistration = createAsyncThunk(
   }
 );
 
-export const handleAuthGoogle = createAsyncThunk(
-  'auth/google',
-  async (_, { rejectWithValue }) => {
-    try {
-      return await api.authGoogle();
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
+export const handleAuthGoogle = createAsyncThunk('auth/google', async (_, { rejectWithValue }) => {
+  try {
+    return await api.authGoogle();
+  } catch ({ response }) {
+    return rejectWithValue(response.data);
   }
-);
+});
 
-export const handleLogin = createAsyncThunk(
-  'auth/login',
-  async (data, { rejectWithValue }) => {
-    try {
-      return await api.login(data);
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
+export const handleLogin = createAsyncThunk('auth/login', async (data, { rejectWithValue }) => {
+  try {
+    return await api.login(data);
+  } catch ({ response }) {
+    return rejectWithValue(response.data);
   }
-);
+});
 
-export const handleLogout = createAsyncThunk(
-  'auth/logout',
-  async (_, { rejectWithValue }) => {
-    try {
-      return api.logout();
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
-    }
+export const handleLogout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
+  try {
+    return api.logout();
+  } catch ({ response }) {
+    return rejectWithValue(response.data);
   }
-);
+});
 
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
   async (_, { getState, rejectWithValue }) => {
     try {
       const token = getState().auth.accessToken;
-
       api.setToken(token);
       return await api.currentUser();
-    } catch ({ response }) {
-      return rejectWithValue(response.data);
+    } catch (error) {
+      toast.error('Unauthorized. Please login again');
+      return rejectWithValue(error);
     }
   }
 );
@@ -70,9 +61,10 @@ export const handleUpdateUserBalance = createAsyncThunk(
       const balance = await api.userBalance({ newBalance: amount });
       toast.success('Your balance was confirm');
       return balance;
-    } catch ({ response }) {
+    } catch (error) {
+      console.log('error updateUserBalance: ', error);
       toast.error('Your network is dead. Try it later');
-      return rejectWithValue(response.data);
+      return rejectWithValue(error.response.data);
     }
   }
 );
