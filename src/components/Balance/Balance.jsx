@@ -94,15 +94,15 @@ const Balance = () => {
         <button className={s.confirmBtn} type="submit" disabled={inputStatus}>
           CONFIRM
         </button>
+        {modalActive && (
+          <Modal
+            className={s.modal}
+            handleToggle={handleToggle}
+            active={modalActive}
+            setActive={setModalActive}
+          />
+        )}
       </form>
-      {modalActive && (
-        <Modal
-          className={s.modal}
-          handleToggle={handleToggle}
-          active={modalActive}
-          setActive={setModalActive}
-        />
-      )}
     </div>
   );
 };
