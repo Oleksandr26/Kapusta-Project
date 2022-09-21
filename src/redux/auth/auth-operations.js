@@ -2,28 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 import * as api from 'helpers/auth';
 
-export const handleRegistration = createAsyncThunk(
-  'auth/registration',
-  async (data, { rejectWithValue }) => {
-    try {
-      const register = await api.registration(data);
-      toast.success('Your registration is successful! Please log in.');
-      return register;
-    } catch ({ response }) {
-      toast.warn('Your account is already registered');
-      return rejectWithValue(response.data);
-    }
-  }
-);
-
-export const handleAuthGoogle = createAsyncThunk('auth/google', async (_, { rejectWithValue }) => {
-  try {
-    return await api.authGoogle();
-  } catch ({ response }) {
-    return rejectWithValue(response.data);
-  }
-});
-
 export const handleLogin = createAsyncThunk('auth/login', async (data, { rejectWithValue }) => {
   try {
     return await api.login(data);
@@ -35,6 +13,30 @@ export const handleLogin = createAsyncThunk('auth/login', async (data, { rejectW
 export const handleLogout = createAsyncThunk('auth/logout', async (_, { rejectWithValue }) => {
   try {
     return api.logout();
+  } catch ({ response }) {
+    return rejectWithValue(response.data);
+  }
+});
+export const handleRegistration = createAsyncThunk(
+  'auth/registration',
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const register = await api.registration(data);
+      dispatch(handleLogin(data));
+      toast.success('Your registration is successful! You also login in app .');
+      return register;
+    } catch ({ response }) {
+      if (response.status === 409) {
+        dispatch(handleLogin(data));
+      }
+      return rejectWithValue(response.data);
+    }
+  }
+);
+
+export const handleAuthGoogle = createAsyncThunk('auth/google', async (_, { rejectWithValue }) => {
+  try {
+    return await api.authGoogle();
   } catch ({ response }) {
     return rejectWithValue(response.data);
   }
