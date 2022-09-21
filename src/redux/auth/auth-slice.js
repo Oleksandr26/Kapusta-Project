@@ -38,7 +38,6 @@ const authSlice = createSlice({
       store.userData = { ...payload.userData };
       store.token = payload.token;
       store.loading = false;
-      // console.log(payload);
     },
     [handleRegistration.rejected]: (store, { payload }) => {
       store.loading = false;
@@ -48,7 +47,6 @@ const authSlice = createSlice({
 
     [handleAuthGoogle.fulfilled]: (store, { payload }) => {
       store.loading = false;
-      // console.log(payload);
     },
 
     // -------------------login------------------------------
@@ -91,9 +89,9 @@ const authSlice = createSlice({
       store.userData = { ...payload };
       store.currentUser = true;
     },
-    [getCurrentUser.rejected]: (store, { payload }) => {
+    [getCurrentUser.rejected]: (store, { error }) => {
       store.loading = false;
-      store.error = payload.message;
+      store.error = error.message;
     },
 
     // -------------------updateBalance----------------------------------

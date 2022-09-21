@@ -6,20 +6,22 @@ export const handleChosenCategoryUniqueLabels = (arr, category) => {
 };
 
 export const newDiagramHeight = (diagramForSelectedMonth, canvasTag) => {
-  let newHeight = '';
-  let startedHeight = 60;
-  const tabletAndDesktopScreen = 768;
- 
-  const totalBars = diagramForSelectedMonth?.length;
-  if (totalBars > 1 && window.innerWidth < tabletAndDesktopScreen) {
-    newHeight = (totalBars - 1) * 40 + startedHeight;
-    canvasTag.style.height = newHeight + 'px';
+  if (canvasTag !== undefined) {
+    let newHeight = '';
+    let startedHeight = 60;
+    const tabletAndDesktopScreen = 768;
 
-  } else if (totalBars === 1 && window.innerWidth < tabletAndDesktopScreen) {
-    canvasTag.style.height = 60 + 'px';
-  
-  } else {
-    return;
+    const totalBars = diagramForSelectedMonth?.length;
+
+    if (totalBars > 1 && window.innerWidth < tabletAndDesktopScreen) {
+      newHeight = (totalBars - 1) * 40 + startedHeight;
+
+      canvasTag.style.height = newHeight + 'px';
+    } else if (totalBars === 1 && window.innerWidth < tabletAndDesktopScreen) {
+      canvasTag.style.height = 60 + 'px';
+    } else {
+      return;
+    }
   }
 };
 
