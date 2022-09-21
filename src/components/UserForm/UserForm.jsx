@@ -3,6 +3,7 @@ import { handleLogin, handleRegistration } from 'redux/auth/auth-operations';
 import { useForm } from 'react-hook-form';
 import { GoogleLogin } from '@moeindana/google-oauth';
 import s from './UserForm.module.css';
+import { toast } from 'react-toastify';
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const UserForm = () => {
             dispatch(handleRegistration(userData));
           }}
           onError={() => {
-            console.log('Login Failed');
+            toast.error('Google authorization failed');
           }}
           locale="en"
           size="medium"

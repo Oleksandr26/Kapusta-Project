@@ -43,7 +43,6 @@ const ExpenseByCategories = ({
 
   const pathNames = Object.values(incomeCategoriesData);
   const showMostExpesiveCategoryDiagram = pathNames.includes(pathname.slice(9));
-
   useEffect(() => {
     if (reportsType === false) setCategory(mostExpensiveCategory);
   }, [setCategory, mostExpensiveCategory, reportsType]);
@@ -88,7 +87,12 @@ const ExpenseByCategories = ({
         </div>
       ) : (
         <>
-          <ul className={s.list}>{elements}</ul>
+          {elements.length > 0 ? (
+            <ul className={s.list}>{elements}</ul>
+          ) : (
+            <h3 className={s.title}>You don't have expense transactions in the current period</h3>
+          )}
+
           {showMostExpesiveCategoryDiagram && (
             <Navigate to={expenseCategoriesData[mostExpensiveCategory]} />
           )}

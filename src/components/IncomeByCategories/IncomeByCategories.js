@@ -26,7 +26,6 @@ const IncomeByCategories = ({
   const { data = [], isFetching } = useGetIncomeQuery();
   const { incomes = [] } = data;
   const { pathname } = useLocation();
-
   const result = incomeCategories?.map(item => ({
     name: item,
     amount: dateTransactionFilter(incomes).reduce((acc, cost) => {
@@ -87,7 +86,11 @@ const IncomeByCategories = ({
         </div>
       ) : (
         <>
-          <ul className={s.list}>{elements}</ul>
+          {elements.length > 0 ? (
+            <ul className={s.list}>{elements}</ul>
+          ) : (
+            <h3 className={s.title}>You don't have income transactions in the current period</h3>
+          )}
           {showMostIncomeCategoryDiagram && (
             <Navigate to={incomeCategoriesData[mostIncomeCategory]} />
           )}

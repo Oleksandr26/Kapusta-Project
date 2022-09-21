@@ -1,16 +1,10 @@
 import { Chart, registerables } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 
-import {
-  useGetExpenseQuery,
-  useGetIncomeQuery,
-} from 'redux/transaction/transactionOperations';
+import { useGetExpenseQuery, useGetIncomeQuery } from 'redux/transaction/transactionOperations';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import DiagramConfig from './DiagramConfig&Data';
-import {
-  handleChosenCategoryUniqueLabels,
-  newDiagramHeight,
-} from './DiagramLogic';
+import { handleChosenCategoryUniqueLabels, newDiagramHeight } from './DiagramLogic';
 import { useEffect, useState } from 'react';
 
 Chart.register(ChartDataLabels, ...registerables);
@@ -30,36 +24,23 @@ export function Diagram({ dateTransactionFilter, category }) {
   }, []);
 
   const canvasTag = document.querySelector('canvas');
-
   if (incomes !== undefined && expenses !== undefined) {
     MONTH_CASHFLOW.push(...incomes, ...expenses);
   }
 
-  const chosenCategoryUniqueLabels = handleChosenCategoryUniqueLabels(
-    MONTH_CASHFLOW,
-    category
-  );
+  const chosenCategoryUniqueLabels = handleChosenCategoryUniqueLabels(MONTH_CASHFLOW, category);
 
   const diagramForSelectedMonth = chosenCategoryUniqueLabels
     ?.map(item => ({
       descriptionName: item,
-      amount: dateTransactionFilter(MONTH_CASHFLOW).reduce(
-        (acc, transaction) => {
-          return item === transaction.description
-            ? acc + transaction.amount
-            : acc;
-        },
-        0
-      ),
+      amount: dateTransactionFilter(MONTH_CASHFLOW).reduce((acc, transaction) => {
+        return item === transaction.description ? acc + transaction.amount : acc;
+      }, 0),
     }))
-    .sort(
-      (firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount
-    )
+    .sort((firstAmount, secondAmount) => secondAmount.amount - firstAmount.amount)
     .filter(el => el.amount !== 0);
 
-  const labels = diagramForSelectedMonth?.map(
-    ({ descriptionName }) => descriptionName
-  );
+  const labels = diagramForSelectedMonth?.map(({ descriptionName }) => descriptionName);
 
   const parsedData = diagramForSelectedMonth?.map(({ amount }) => {
     var parts = amount.toString().split(`.`);
@@ -96,15 +77,13 @@ export function Diagram({ dateTransactionFilter, category }) {
   };
 
   newDiagramHeight(diagramForSelectedMonth, canvasTag);
+
   return (
     <>
       {isMobile ? (
         <Bar options={DiagramConfig.Mobile} data={MobileData} />
       ) : (
-        <Bar
-          options={DiagramConfig.TabletAndDesktop}
-          data={TabletAndDesktopData}
-        />
+        <Bar options={DiagramConfig.TabletAndDesktop} data={TabletAndDesktopData} />
       )}
     </>
   );

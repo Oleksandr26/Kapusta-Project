@@ -6,7 +6,7 @@ export const handleChosenCategoryUniqueLabels = (arr, category) => {
 };
 
 export const newDiagramHeight = (diagramForSelectedMonth, canvasTag) => {
-  if (canvasTag !== undefined) {
+  if (canvasTag !== undefined && canvasTag !== null) {
     let newHeight = '';
     let startedHeight = 60;
     const tabletAndDesktopScreen = 768;
