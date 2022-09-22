@@ -48,8 +48,8 @@ const Chart = ({ dateTransactionFilter, category }) => {
   return (
     <ul className={s.list}>
       {diagramForSelectedMonth.map(({ descriptionName, amount }, index) => (
-        <li style={{ width: '100%' }} key={nanoid()}>
-          <div className={s.description} style={{ width: (amount / maxPrice) * diagramWidth }}>
+        <li style={{ width: '10%' }} key={nanoid()}>
+          <div className={s.description}>
             <p className={s.category}>{descriptionName}&nbsp;</p>
             <p className={s.price}>{formated(amount)}&nbsp;&#8372;</p>
           </div>
