@@ -50,7 +50,7 @@ export const getCurrentUser = createAsyncThunk(
       api.setToken(token);
       return await api.currentUser();
     } catch (error) {
-      toast.error('Unauthorized. Please login again');
+      console.log('Unauthorized. Please login again');
       return rejectWithValue(error);
     }
   }

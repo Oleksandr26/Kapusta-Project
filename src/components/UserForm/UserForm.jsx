@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { handleLogin, handleRegistration } from 'redux/auth/auth-operations';
 import { useForm } from 'react-hook-form';
-import { GoogleLogin } from '@moeindana/google-oauth';
+import { ReactComponent as GoogleIcon } from '../../assets/svg/google.svg';
+import { useGoogleLogin } from '@moeindana/google-oauth';
 import s from './UserForm.module.css';
 import { toast } from 'react-toastify';
 
@@ -24,27 +25,32 @@ const UserForm = () => {
     reset();
   };
 
+  const login = useGoogleLogin({
+    onSuccess: response => {
+      const userData = {
+        email: response.email,
+        password: response.id,
+      };
+      dispatch(handleRegistration(userData));
+    },
+    onError: () => {
+      toast.error('Google authorization failed');
+    },
+  });
   return (
     <div className={` ${s.backgraund}`}>
-      <div className={s.google}>
-        <GoogleLogin
-          onSuccess={response => {
-            const userData = {
-              email: response.email,
-              password: response.kid,
-            };
-            dispatch(handleRegistration(userData));
-          }}
-          onError={() => {
-            toast.error('Google authorization failed');
-          }}
-          locale="en"
-          size="medium"
-          shape="pill"
-          theme="filled_black"
-        />
-      </div>
+      <p className={s.text}>You can log in with your Google Account:</p>
+      <button
+        className={s.auth_button}
+        onClick={() => {
+          login();
+        }}
+      >
+        <GoogleIcon className={s.googleIcon} />
+        <span className={s.span}>Google</span>
+      </button>
       <p className={s.text}>Or log in using an email and password, after registering:</p>
+
       <form className={s.form}>
         <label className={s.label}>
           <span className={s.label_text}>
