@@ -37,15 +37,11 @@ const UserForm = () => {
       toast.error('Google authorization failed');
     },
   });
+
   return (
     <div className={` ${s.backgraund}`}>
       <p className={s.text}>You can log in with your Google Account:</p>
-      <button
-        className={s.auth_button}
-        onClick={() => {
-          login();
-        }}
-      >
+      <button className={s.auth_button} onClick={() => login()}>
         <GoogleIcon className={s.googleIcon} />
         <span className={s.span}>Google</span>
       </button>

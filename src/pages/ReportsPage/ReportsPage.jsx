@@ -5,7 +5,6 @@ import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
 import ExpenseByCategories from 'components/ExpenseByCategories/ExpenseByCategories';
-// import { Diagram } from 'components/Diagram/Diagram';
 import IncomeByCategories from 'components/IncomeByCategories/IncomeByCategories';
 import ReportsDate from 'components/ReportsDate/ReportsDate';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
