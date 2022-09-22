@@ -1,0 +1,13 @@
+.list {
+  padding-bottom: 50px;
+}
+​.category,
+.price {
+  margin: 20px 0 6px;
+  font-size: 10px;
+  color: var(--main-color);
+}
+​.description {
+  display: flex;
+  justify-content: space-between;
+}

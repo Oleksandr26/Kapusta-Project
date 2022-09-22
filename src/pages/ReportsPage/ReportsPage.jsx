@@ -5,12 +5,13 @@ import { useState } from 'react';
 import Balance from 'components/Balance/Balance';
 import MonthTotal from 'components/MonthTotal/MonthTotal';
 import ExpenseByCategories from 'components/ExpenseByCategories/ExpenseByCategories';
-import { Diagram } from 'components/Diagram/Diagram';
+// import { Diagram } from 'components/Diagram/Diagram';
 import IncomeByCategories from 'components/IncomeByCategories/IncomeByCategories';
 import ReportsDate from 'components/ReportsDate/ReportsDate';
 import { ReactComponent as BackArrow } from 'assets/svg/back-arrow.svg';
 import { ReactComponent as LeftArrow } from 'assets/svg/left-arrow.svg';
 import { ReactComponent as RigthArrow } from 'assets/svg/right-arrow.svg';
+import Chart from 'components/Chart/Chart';
 
 const ReportPage = () => {
   const [date, setDate] = useState(new Date());
@@ -91,9 +92,7 @@ const ReportPage = () => {
           <Routes>
             <Route
               path=":categoryName"
-              element={
-                <Diagram dateTransactionFilter={dateTransactionFilter} category={category} />
-              }
+              element={<Chart dateTransactionFilter={dateTransactionFilter} category={category} />}
             />
           </Routes>
         </div>

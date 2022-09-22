@@ -8,7 +8,7 @@
     width: 480px;
   }
 }
-@media screen and (min-width: 678px) {
+@media screen and (min-width: 768px) {
   .main {
     width: 768px;
   }
@@ -68,8 +68,7 @@
 }
 @media screen and (min-width: 768px) {
   .meta {
-    background: url('../../assets/png/tabletBottomBG.png') no-repeat bottom
-      right;
+    background: url('../../assets/png/tabletBottomBG.png') no-repeat bottom right;
   }
 
   .main {
