@@ -60,19 +60,11 @@ const ReportPage = () => {
         <MonthTotal date={date} />
         <div className={s.block}>
           <div className={s.types}>
-            <button
-              type="button"
-              className={s.leftArrow}
-              onClick={() => changeReportsVision()}
-            >
+            <button type="button" className={s.leftArrow} onClick={() => changeReportsVision()}>
               <LeftArrow className={s.iconArrow} />
             </button>
             <p className={s.title}> {reportsType ? 'Income' : 'Expenses'} </p>
-            <button
-              type="button"
-              className={s.rightArrow}
-              onClick={() => changeReportsVision()}
-            >
+            <button type="button" className={s.rightArrow} onClick={() => changeReportsVision()}>
               <RigthArrow className={s.iconArrow} />
             </button>
           </div>
@@ -100,10 +92,7 @@ const ReportPage = () => {
             <Route
               path=":categoryName"
               element={
-                <Diagram
-                  dateTransactionFilter={dateTransactionFilter}
-                  category={category}
-                />
+                <Diagram dateTransactionFilter={dateTransactionFilter} category={category} />
               }
             />
           </Routes>

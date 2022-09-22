@@ -24,7 +24,10 @@
   margin: 0;
   color: var(--second-color);
 }
-
+.title {
+  text-align: center;
+  color: var(--second-color);
+}
 .link {
   color: var(--icons-color);
 }
