@@ -3,7 +3,7 @@ import {
   handleLogin,
   handleLogout,
   handleRegistration,
-  handleAuthGoogle,
+  // handleAuthGoogle,
   initNewSession,
   getCurrentUser,
   handleUpdateUserBalance,
