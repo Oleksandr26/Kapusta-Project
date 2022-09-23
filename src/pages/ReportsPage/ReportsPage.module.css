@@ -84,9 +84,7 @@
     box-shadow: var(--shadow);
   }
   .chart_container {
-    height: 399px;
     padding: 22px 35px;
-
     background: #ffffff;
     box-shadow: var(--shadow);
     border-radius: 30px;
@@ -113,8 +111,7 @@
   }
 
   .chart_container {
-    height: 422px;
-    padding: 0 138px;
+    padding: 20px 138px;
   }
 }
 

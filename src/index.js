@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
 import './index.css';
-import { BrowserRouter, Navigate } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
@@ -15,7 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter basename="/Kapusta_Team-Project/">
-          <GoogleOAuthProvider clientId="576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com">
+          {/* <GoogleOAuthProvider clientId="576019218839-r0qvrtbgo3utp9s4tvvgn21rv60so4c7.apps.googleusercontent.com"> */}
+          <GoogleOAuthProvider clientId="360398004101-61pu4g5lqgm4i3oc66c0p0jssd3ofd2i.apps.googleusercontent.com">
             <App />
           </GoogleOAuthProvider>
         </BrowserRouter>
@@ -30,11 +31,11 @@ instance.interceptors.response.use(
     return response;
   },
   error => {
-    if (error.response.data.message === 'Unauthorized') {
-      <Navigate to="/" />;
-      return;
-    }
-    if (error.response.data.message === 'Invalid session') {
+    console.log('error.response.data: ', error.response.data);
+    if (
+      error.response.data.message === 'Invalid session' ||
+      error.response.data.message === 'Unauthorized'
+    ) {
       dispatch(initNewSession());
     }
     return Promise.reject(error);

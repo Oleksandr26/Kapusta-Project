@@ -44,19 +44,19 @@ const authSlice = createSlice({
       store.error = payload.message;
     },
     // -----------------auth/google----------------------------
-    [handleAuthGoogle.pending]: store => {
-      store.loading = true;
-      store.error = null;
-    },
-    [handleAuthGoogle.fulfilled]: (store, { payload }) => {
-      console.log('handleAuthGoogle.fulfilled payload: ', payload);
-      store.loading = false;
-    },
-    [handleAuthGoogle.rejected]: (store, { payload }) => {
-      console.log('handleAuthGoogle.rejected payload: ', payload);
-      store.loading = false;
-      store.error = payload.message;
-    },
+    // [handleAuthGoogle.pending]: store => {
+    //   store.loading = true;
+    //   store.error = null;
+    // },
+    // [handleAuthGoogle.fulfilled]: (store, { payload }) => {
+    //   console.log('handleAuthGoogle.fulfilled payload: ', payload);
+    //   store.loading = false;
+    // },
+    // [handleAuthGoogle.rejected]: (store, { payload }) => {
+    //   console.log('handleAuthGoogle.rejected payload: ', payload);
+    //   store.loading = false;
+    //   store.error = payload.message;
+    // },
 
     // -------------------login------------------------------
 
