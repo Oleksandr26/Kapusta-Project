@@ -49,11 +49,9 @@ const authSlice = createSlice({
     //   store.error = null;
     // },
     // [handleAuthGoogle.fulfilled]: (store, { payload }) => {
-    //   console.log('handleAuthGoogle.fulfilled payload: ', payload);
     //   store.loading = false;
     // },
     // [handleAuthGoogle.rejected]: (store, { payload }) => {
-    //   console.log('handleAuthGoogle.rejected payload: ', payload);
     //   store.loading = false;
     //   store.error = payload.message;
     // },
@@ -123,8 +121,6 @@ const authSlice = createSlice({
       store.error = null;
     },
     [initNewSession.fulfilled]: (state, { payload }) => {
-      console.log('initNewSession state: ', state);
-      console.log('initNewSession payload: ', payload);
       state.accessToken = payload.newAccessToken;
       state.refreshToken = payload.newRefreshToken;
       state.sid = payload.newSid;

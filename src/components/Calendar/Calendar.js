@@ -10,6 +10,7 @@ const Calendar = ({ date, setDate }) => {
       <DatePicker
         className={s.calendar}
         dateFormat="dd/MM/yyyy"
+        maxDate={new Date()}
         selected={date}
         onChange={date => setDate(date)}
       />

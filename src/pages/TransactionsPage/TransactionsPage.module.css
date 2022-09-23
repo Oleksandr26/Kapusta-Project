@@ -95,7 +95,7 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .meta {
     background: url('../../assets/png/tabletBottomBG.png') no-repeat;
-    background-position: bottom 59px right 88px;
+    background-position: bottom 30px right 110px;
   }
 }
 @media screen and (min-width: 1280px) {

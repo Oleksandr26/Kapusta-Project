@@ -64,7 +64,6 @@ export const handleUpdateUserBalance = createAsyncThunk(
       toast.success('Your balance was confirm');
       return balance;
     } catch (error) {
-      console.log('error updateUserBalance: ', error);
       toast.error('Your network is dead. Try it later');
       return rejectWithValue(error.response.data);
     }
@@ -73,19 +72,14 @@ export const handleUpdateUserBalance = createAsyncThunk(
 
 export const initNewSession = createAsyncThunk(
   'auth/newSession',
-  async (data, { getState, rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      console.log('initNewSession getState: ', getState);
-      console.log('initNewSession data: ', data);
       const { accessToken, refreshToken, sid } = getState().auth;
-
       api.setRefreshToken(refreshToken);
       const result = await api.newSession({ sid });
       api.setToken(accessToken);
-      console.log('initNewSession result: ', result);
       return result;
     } catch ({ response }) {
-      console.log('initNewSession response: ', response);
       return rejectWithValue(response.data);
     }
   }

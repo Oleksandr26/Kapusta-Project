@@ -17,7 +17,7 @@ import { getAccessToken, getUser } from 'redux/auth/auth-selector';
 const TransactionsPage = () => {
   const { pathname } = useLocation();
   const vision = window.innerWidth > 767 || pathname === '/transactions';
-  const calendarVision = window.innerWidth < 767 && pathname === '/transactions';
+  const calendarVision = window.innerWidth < 768 && pathname === '/transactions';
   const [date, setDate] = useState(() => new Date());
   const currentUser = useSelector(getUser);
   const accessToken = useSelector(getAccessToken);
