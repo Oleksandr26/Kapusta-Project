@@ -88,12 +88,16 @@ const ReportPage = () => {
           )}
         </div>
         <div className={s.chart_container} id="flexible">
-          <Routes>
-            <Route
-              path=":categoryName"
-              element={<Chart dateTransactionFilter={dateTransactionFilter} category={category} />}
-            />
-          </Routes>
+          <div className={s.chart_lines}>
+            <Routes>
+              <Route
+                path=":categoryName"
+                element={
+                  <Chart dateTransactionFilter={dateTransactionFilter} category={category} />
+                }
+              />
+            </Routes>
+          </div>
         </div>
       </div>
     </main>

@@ -73,16 +73,19 @@ export const handleUpdateUserBalance = createAsyncThunk(
 
 export const initNewSession = createAsyncThunk(
   'auth/newSession',
-  async (_, { getState, rejectWithValue }) => {
+  async (data, { getState, rejectWithValue }) => {
     try {
+      console.log('initNewSession getState: ', getState);
+      console.log('initNewSession data: ', data);
       const { accessToken, refreshToken, sid } = getState().auth;
 
       api.setRefreshToken(refreshToken);
       const result = await api.newSession({ sid });
       api.setToken(accessToken);
-
+      console.log('initNewSession result: ', result);
       return result;
     } catch ({ response }) {
+      console.log('initNewSession response: ', response);
       return rejectWithValue(response.data);
     }
   }

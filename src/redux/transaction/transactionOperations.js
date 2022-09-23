@@ -20,10 +20,12 @@ export const transactionApi = createApi({
   endpoints: builder => ({
     getIncomeCategories: builder.query({
       query: () => `/income-categories`,
+      tagTypes: ['Transactions'],
     }),
 
     getExpenseCategories: builder.query({
       query: () => `/expense-categories`,
+      tagTypes: ['Transactions'],
     }),
 
     getPeriodData: builder.query({
