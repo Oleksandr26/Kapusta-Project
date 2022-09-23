@@ -36,6 +36,7 @@ instance.interceptors.response.use(
       error.response.data.message === 'Invalid session' ||
       error.response.data.message === 'Unauthorized'
     ) {
+      console.log('запуск initNewSession ');
       dispatch(initNewSession());
     }
     return Promise.reject(error);
