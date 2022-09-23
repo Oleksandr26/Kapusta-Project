@@ -1,3 +1,6 @@
+.list {
+  background-color: transparent;
+}
 .item:not(:last-child) {
   margin-bottom: 16px;
 }
