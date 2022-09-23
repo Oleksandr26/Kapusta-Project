@@ -47,7 +47,6 @@ export const TransactionDetails = () => {
       return amountNormalizer;
     }
   };
-
   const summStyle = location.pathname === '/transactions/expenses' ? s.minus : s.plus;
 
   return (
@@ -69,22 +68,25 @@ export const TransactionDetails = () => {
           <table>
             <tbody>
               {transactionsType
-                ?.map(item => (
-                  <tr className={s.body} key={item._id}>
-                    <td className={s.body__empty}></td>
-                    <td className={s.body__date}>{item.date}</td>
-                    <td className={s.body__description}>{item.description}</td>
-                    <td className={s.body__category}>{item.category}</td>
-                    <td className={summStyle}>{normalize(item.amount)}</td>
-                    <td className={s.body__delete}>
-                      <button
-                        onClick={() => onDelete(item._id)}
-                        type="button"
-                        className={s.btnDelete}
-                      ></button>
-                    </td>
-                  </tr>
-                ))
+                ?.map(({ date, description, category, amount, _id }) => {
+                  const normalizeDate = new Date(date).toLocaleDateString('en-GB');
+                  return (
+                    <tr className={s.body} key={_id}>
+                      <td className={s.body__empty}></td>
+                      <td className={s.body__date}>{normalizeDate}</td>
+                      <td className={s.body__description}>{description}</td>
+                      <td className={s.body__category}>{category}</td>
+                      <td className={summStyle}>{normalize(amount)}</td>
+                      <td className={s.body__delete}>
+                        <button
+                          onClick={() => onDelete(_id)}
+                          type="button"
+                          className={s.btnDelete}
+                        ></button>
+                      </td>
+                    </tr>
+                  );
+                })
                 ?.reverse()}
             </tbody>
           </table>
